@@ -1,0 +1,82 @@
+// Blog Posts Block
+//
+// This is the blog posts block, which is a for the Recent Blog Posts
+// custom block type. It is used to display a list of news/blog posts.
+//
+// .blockstyle-lightaccent - Modifier to make block display with a light background color.
+// .blockstyle-accentheader - Modifier to make the block display with a dark title, and light body.
+// .blockstyle-accent - Modifier to make the block display with a dark background.
+//
+// Markup: blog-posts-block.twig
+//
+// Style guide: Components.Blog Posts Block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// <ul> required to override
+// default body text styling.
+ul.blog-posts-block__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-posts-block__list-item {
+  border-bottom: 1px solid $color-ash;
+  display: flex;
+  margin-bottom: $padding-md;
+  padding-bottom: $padding-md;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .blockstyle-accent & {
+    border-color: $color-slate;
+  }
+}
+
+.blog-posts-block__image {
+  padding-right: 15px;
+}
+
+.blog-posts-block__placeholder-img {
+  background-color: $color-menu-gray;
+  display: block;
+  height: 80px;
+  width: 80px;
+}
+
+// <h3> required to override
+// default body text styling.
+h3.blog-posts-block__item-title {
+  font-size: 1.4rem;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.blog-posts-block__date {
+  color: $color-charcoal;
+  margin: $padding-sm 0;
+  padding-left: 5px;
+}
+
+.blog-posts-block__more-link {
+  border-top: 1px solid $color-smoke;
+  margin-top: $padding-md;
+  padding: $padding-md 0 $padding-xsm;
+  text-align: right;
+
+  .blockstyle-accent & {
+    border-color: $color-slate;
+  }
+
+  .blockstyle-accentheader &,
+  .blockstyle-lightaccent & {
+    border-color: $color-ash;
+  }
+}

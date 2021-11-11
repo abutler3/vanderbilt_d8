@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display multi-column block output.
+ */
+#}
+{%
+  include '@vanderbilt_d8/multi-column-block/multi-column-block.twig' with {
+    'title': title,
+    'column_class': column_class,
+    'columns': columns
+  } only
+%}

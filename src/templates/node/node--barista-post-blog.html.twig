@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * vanderbilt_d8 theme implementation to display a barisat_post_blog node.
+ *
+ * @see template_preprocess_node()
+ * @see baritsa_posts_node_view()
+ */
+#}
+{{ attach_library('vanderbilt_d8/blog') }}
+{% set classes = [
+  'blog__wrapper',
+] %}
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes }}>
+
+    <div class="blog__description">
+      {% if elements['#hide_body'] %}
+        {{ content|without('feed_icon', 'body', 'blog_posts', 'field_lockdown_auth') }}
+      {% else %}
+        {{ content|without('feed_icon', 'blog_posts', 'field_lockdown_auth') }}
+      {% endif %}
+    </div>
+
+    {% if content.blog_posts %}
+      <div class="blog__post-listings barista-posts-grouping">
+        {{ content.blog_posts }}
+      </div>
+    {% endif %}
+
+    {% if content.feed_icon %}
+      <div class="blog__rss-link">
+        {{ content.feed_icon }}
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>

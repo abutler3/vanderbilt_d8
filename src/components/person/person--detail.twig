@@ -1,0 +1,159 @@
+{#
+/**
+ * @file
+ * Component to display a full Person detail.
+ *
+ * NOTE: This component is used by both custom/barista-person-detail.html.twig
+ * as well as the node/node--person--full.html.twig display.
+ */
+#}
+{{ attach_library('vanderbilt_d8/person') }}
+<div class="person-page__container">
+
+  <div class="person-page__header-row row">
+    {% if content.photo %}
+      <div class="person-page__photo col-sm-2">
+        <div class="person-page__photo-container">
+          {{ content.photo }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="person-page__header-container col-sm-10">
+      <div class="person-page__header">
+        <h1 class="person-page__page-title">
+          {{ label }}
+        </h1>
+        {#
+          The Persons Title, and Departement
+          - Local nodes use content.title_dept (paragraph field)
+          - Remote directory entries use content.title, and content.department
+        #}
+        {% if content.title_dept or content.title or content.department %}
+          <div class="person-page__titles">
+            {% if content.title_dept %}
+              {{ content.title_dept }}
+            {% endif %}
+            {% if content.title or content.department %}
+              <div class="person__titles">
+                {% if content.title %}
+                  <div class="person__titles-title{{ content.department ? ' with-dept' }}">
+                    {{ content.title }}
+                  </div>
+                {% endif %}
+                {% if content.department %}
+                  <div class="person__titles-dept">
+                    {{ content.department }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+    {% if content.address or content.phone_numbers or content.email %}
+      <div class="person__content-section person-page__contact-details">
+        {% if content.address %}
+          <div class="person__content-item person__address">
+            {{ content.address }}
+          </div>
+        {% endif %}
+        {% if content.phone_numbers %}
+          <div class="person__content-item person__phone">
+            {{ content.phone_numbers }}
+          </div>
+        {% endif %}
+        {% if content.email %}
+          <div class="person__content-item person__email">
+            <a href="mailto:{{ content.email }}">
+              <i class="fa fa-fw fa-envelope"></i>
+              {{ content.email }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    </div>
+  </div>
+
+  {% if content.more_info_link %}
+    <div class="person__content-section">
+      <div class="personcontent-item person-page__more-info-link">
+        <h4 class="person__content-section-title">More Information</h4>
+        <i class="fa fa-fw fa-globe"></i>
+        {{ content.more_info_link }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if content.brief_description or content.body or field_cv %}
+    <div class="person__content-section">
+      {% if content.brief_description %}
+        <div class="person__content-item person-page__brief-description">
+          {{ content.brief_description }}
+        </div>
+      {% endif %}
+      {% if content.body %}
+        <div class="person__content-item person-page__bio">
+          {{ content.body }}
+        </div>
+      {% endif %}
+      {% if content.field_cv %}
+        <div class="person__content-item person-page__cv">
+          {{ content.field_cv }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if content.clinical_interest or content.website_for_patients %}
+    <div class="person__content-section">
+      {% if content.clinical_interest %}
+        <h4 class="person__content-section-title">Clinical Interests</h4>
+        <div class="person__content-item person-page__clinical-interests">
+          {{ content.clinical_interest|raw }}
+        </div>
+      {% endif %}
+      {% if content.website_for_patients %}
+        <div class="person__content-item person-page__patient-website">
+          {{ content.website_for_patients|raw }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if content.research_description or content.lab_website or content.postdoctoral_positions %}
+    <div class="person__content-section">
+      <h4 class="person__content-section-title">Research Information</h4>
+      {% if content.research_description %}
+        <div class="person__content-item person-page__research-info">
+          {{ content.research_description }}
+        </div>
+      {% endif %}
+      {% if content.lab_website %}
+        <div class="person__content-item person-page__lab-website">
+          {{ content.lab_website }}
+        </div>
+      {% endif %}
+      {% if content.postdoctoral_positions %}
+        <div class="person__content-item person-page__postdoc-positions">
+          {{ content.postdoctoral_positions }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if content.publications %}
+    <div class="person__content-section">
+      <div class="person__content-item person-page__publications">
+        <h4 class="person__content-section-title">Selected Publications</h4>
+        {% include "@vanderbilt_d8/publications/publications.twig" with {
+          "publications": content.publications,
+        } only %}
+      </div>
+    </div>
+  {% endif %}
+
+</div>

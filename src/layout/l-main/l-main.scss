@@ -1,0 +1,16 @@
+// Styling for main layout.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.l-main__featured {
+  margin: 0 -20px;
+}
+
+.l-main__content {
+  padding-bottom: $padding-md-lg;
+
+  &.with-sidebar {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,33 @@
+// Bootstrap Navs
+//
+// Bootstrap navs include a tab and pill configuration. Below is an
+// a tab example with drop down. For complete markup requirements
+// and a full list of options see: http://getbootstrap.com/components/#nav.
+//
+// Markup:
+// <ul class="nav nav-tabs">
+//   <li role="presentation" class="active">
+//     <a href="#">Inceptos Fringilla</a>
+//   </li>
+//   <li role="presentation">
+//     <a href="#">Parturient Bibendum Adipiscing</a>
+//   </li>
+//   <li role="presentation" class="dropdown">
+//     <a id="dLabel" data-target="#" href="https://vanderbilthealth.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+//       Dropdown <span class="caret"></span>
+//     </a>
+//     <ul class="dropdown-menu" aria-labelledby="dLabel">
+//       <li><a href="#">Magna Sollicitudin</a></li>
+//       <li><a href="#">Inceptos</a></li>
+//       <li><a href="#">Euismod Parturient Nibh</a></li>
+//       <li role="separator" class="divider"></li>
+//       <li><a href="#">Justo</a></li>
+//     </ul>
+//   </li>
+// </ul>
+
+// Core variables and mixins.
+@import "bootstrap-init";
+
+// Navs component styling.
+@import "bootstrap/navs";

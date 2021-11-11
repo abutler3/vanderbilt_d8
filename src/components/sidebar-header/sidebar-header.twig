@@ -1,0 +1,12 @@
+{{ attach_library('vanderbilt_d8/sidebar-header') }}
+
+<section class="col-sm-4 sidebar sidebar-header" role="complementary">
+  <h2 class="sidebar__heading"><a href="#">{{ heading }}</a></h2>
+  <ul class="sidebar__list">
+    {% for item in items %}
+      <li class="sidebar__list--item">
+        <a href="#">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

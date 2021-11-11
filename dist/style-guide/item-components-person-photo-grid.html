@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Style Guide</title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" href="kss-assets/kss.css">
+  <link rel="stylesheet" href="../all/all.css">
+
+</head>
+  <body id="kss-node">
+
+      <a href="#kss-main-content" class="kss-skip-link">
+      Jump to main content
+    </a>
+
+    <div class="kss-wrapper">
+
+      <div class="kss-sidebar">
+
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <a class="mc__sprite mc__sprite--logo-header" href="/themes/custom/vanderbilt_d8/dist/style-guide/" alt="Vanderbilt University Medical Center logo"><h1>Vanderbilt University Medical Center</h1></a>
+            <h1 class="kss-doc-title visuallyhidden">Style Guide</h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+                              <li class="kss-menu-item">
+                    <a href="section-components.html"><span class="kss-ref">1</span><span class="kss-name">Components</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-general.html"><span class="kss-ref">2</span><span class="kss-name">General</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-layouts.html"><span class="kss-ref">3</span><span class="kss-name">Layouts</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-pages.html"><span class="kss-ref">4</span><span class="kss-name">Pages</span></a>
+                                  </li>
+                            <li><button class="kss-menu-full-width js-full-width" title="Remove navigation and padding to show what a component looks like at full page width.">Remove Navigation</button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="kss-content">
+        <article role="main" class="kss-article">
+        
+          
+                                  <div id="kssref-components-person-photo-grid" class="kss-section kss-depth-2">
+              <div class="kss-style">
+                                <h2 class="kss-title kss-title--level-2">
+                  <a class="kss-title__permalink" href="#kssref-components-person-photo-grid">
+                    Person Photo Grid
+                  </a>
+                </h2>
+
+                                  <div class="kss-description">
+                    <p>This is the person component displayed as &quot;Photo Grid&quot;.</p>
+
+                  </div>
+                
+                              </div>
+
+                              <div class="kss-modifier-block">
+
+                  <div class="kss-modifier kss-modifier-original">
+                    <div class="kss-modifier-example">
+                      
+<article class="person person-grid__item-wrapper node--view-mode-photo-grid">
+  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+    <div class="flipper">
+      <div class="person-grid__image flip--front">
+                  <a href="#"><img src="http://placehold.it/256x360" alt="Person name"></a>
+              </div>
+      <div class="person-grid__content flip--back">
+                  <h3 class="person-grid__name">Ban Allos, MD</h3>
+                          <div class="person-grid__title">Associate Professor of Medicine, Preventative Medicine</div>
+                          <div class="person-grid__email">
+            <a href="mailto:email@email.com">
+              <i class="fa fa-fw fa-envelope"></i>
+              Email
+            </a>
+          </div>
+              </div>
+    </div>
+  </div>
+</article>
+
+                    </div>
+                  </div>
+
+                                                      <div class="kss-markup">
+                    <button class="js-show-markup">Show Markup Example</button>
+                    <template>
+                      <pre><code data-language="html">{{ attach_library(&#039;vanderbilt_d8/person&#039;) }}
+&lt;article class=&quot;person person-grid__item-wrapper {{ modifier_class }}&quot;&gt;
+  &lt;div class=&quot;flip-container&quot; ontouchstart=&quot;this.classList.toggle(&#039;hover&#039;);&quot;&gt;
+    &lt;div class=&quot;flipper&quot;&gt;
+      &lt;div class=&quot;person-grid__image flip--front&quot;&gt;
+        {% if photo %}
+          {{ photo }}
+        {% else %}
+          &lt;div class=&quot;person-grid__placeholder-image&quot;&gt;&lt;/div&gt;
+        {% endif %}
+      &lt;/div&gt;
+      &lt;div class=&quot;person-grid__content flip--back&quot;&gt;
+        {% if link %}
+          &lt;h3 class=&quot;person-grid__name&quot;&gt;
+            &lt;a href=&quot;{{ link }}&quot;&gt;{{ name }}&lt;/a&gt;
+          &lt;/h3&gt;
+        {% else %}
+          &lt;h3 class=&quot;person-grid__name&quot;&gt;{{ name }}&lt;/h3&gt;
+        {% endif %}
+        {% if title %}
+          &lt;div class=&quot;person-grid__title&quot;&gt;{{ title }}&lt;/div&gt;
+        {% endif %}
+        {% if email %}
+          &lt;div class=&quot;person-grid__email&quot;&gt;
+            &lt;a href=&quot;mailto:{{ email }}&quot;&gt;
+              &lt;i class=&quot;fa fa-fw fa-envelope&quot;&gt;&lt;/i&gt;
+              {{ &#039;Email&#039;|t }}
+            &lt;/a&gt;
+          &lt;/div&gt;
+        {% endif %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+                    </template>
+                  </div>
+                                  </div>
+
+                                          </div>
+                          </article>
+      </div>
+
+    </div>
+  
+<!-- SCRIPTS -->
+<!-- Fake drupalSettings -->
+<script type="application/json" data-drupal-selector="drupal-settings-json">
+  {}
+</script>
+<!-- / Fake drupalSettings -->
+<script src="/core/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/core/assets/vendor/jquery-once/jquery.once.min.js"></script>
+<script src="/core/assets/vendor/domready/ready.min.js"></script>
+<script src="/core/misc/drupalSettingsLoader.js"></script>
+<script src="/core/misc/drupal.js"></script>
+<script src="/core/misc/drupal.init.js"></script>
+<script src="kss-assets/kss.js"></script>
+<script src="kss-assets/rainbow.min.js"></script>
+<script src="kss-assets/main.js"></script>
+<script src="../bootstrap/js/dropdown.js"></script>
+<script src="../bootstrap/js/modal.js"></script>
+<script src="../bootstrap/js/affix.js"></script>
+<script src="../js/jquery.flexslider-min.js"></script>
+<script src="../js/menus.js"></script>
+<script src="../js/site-search.js"></script>
+<script src="../js/slideshow.js"></script>
+
+
+<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

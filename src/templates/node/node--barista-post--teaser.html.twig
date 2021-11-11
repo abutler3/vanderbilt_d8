@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * vanderbilt_d8 theme implementation to display a barista_post node in teaser mode.
+ *
+ * @see template_preprocess_node()
+ * @see baritsa_posts_node_view()
+ */
+#}
+{{ attach_library('vanderbilt_d8/blog') }}
+{% set classes = [
+  'node-barista-post',
+  'post-style-' ~ view_mode|clean_class,
+  'blog-post__wrapper--teaser'
+] %}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <header>
+      <h2{{ title_attributes.addClass('blog-post__title--teaser') }}>
+        {% if content.field_barista_posts_external_url|render|trim %}
+          <a href="{{ content.field_barista_posts_external_url.0['#plain_text'] }}" target="_blank" rel="external">{{ label }}</a>
+        {% else %}
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        {% endif %}
+      </h2>
+    </header>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes }}>
+
+    {% set blog_format_settings = elements['#blog_format_settings'] %}
+    {% set blog_categories = content.field_barista_posts_category|render|trim %}
+    {% set author = content.field_barista_posts_author|render|trim %}
+    {% if ('dates' in blog_format_settings) or
+      ('author' in blog_format_settings) or
+      (blog_categories) %}
+      <div class="blog-post__meta-wrapper">
+        {% if 'author' in blog_format_settings and author %}
+          <div class="blog-post__meta-item blog-post__author">
+            <i class="fa fa-user"></i>
+            {{ content.field_barista_posts_author }}
+          </div>
+        {% endif %}
+        {% if 'dates' in blog_format_settings %}
+          <div class="blog-post__meta-item blog-post__date">
+            <i class="fa fa-calendar"></i>
+            {{ node.createdtime | date('F j, Y') }}
+          </div>
+        {% endif %}
+        {% if blog_categories %}
+          <div class="blog-post__meta-item blog-post__categories">
+            <i class="fa fa-bookmark"></i>
+            Posted in {{ content.field_barista_posts_category }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if content.field_barista_posts_external_url|render|trim %}
+      <a class="blog-post__external-link" href="{{ content.field_barista_posts_external_url.0['#plain_text'] }}" target="_blank">{{ content.field_barista_posts_external_url }}</a>
+    {% endif %}
+
+    <div class="row row--default blog-post__content-wrapper">
+      {% if content.field_barista_posts_image|render|trim %}
+        <div class="blog-post__image col-xs-12 col-sm-3">
+          {{ content.field_barista_posts_image }}
+        </div>
+      {% endif %}
+
+      {% if content.field_barista_posts_image|render|trim %}
+        {% set teaser_class = 'blog-post__text col-xs-12 col-sm-9' %}
+      {% else %}
+        {% set teaser_class = 'blog-post__text col-xs-12' %}
+      {% endif %}
+
+      <div class="{{ teaser_class }}">
+        {% set contentBody %}
+          {{ content.body }}
+        {% endset %}
+        {{ contentBody|striptags }}
+      </div>
+    </div>
+
+    {% if 'tags' in blog_format_settings and content.field_barista_posts_tags['#items'] is not empty %}
+      <div class="blog-post__meta-item blog-post__tags">
+        <i class="fa fa-tag"></i>
+        {{ content.field_barista_posts_tags }}
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>

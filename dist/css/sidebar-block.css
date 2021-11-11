@@ -1,0 +1,11 @@
+.sidebar.sidebar-block {
+  padding: 2rem;
+  width: 100%;
+  background: #ececec; }
+
+.sidebar.block {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ececec; }
+  .sidebar.block:last-child {
+    border: 0; }

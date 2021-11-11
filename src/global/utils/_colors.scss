@@ -1,0 +1,153 @@
+// Colors
+//
+// All Sass color variables prefixed with $color-.
+// This makes it easy to figure out what a variable
+// is for later.
+//
+// Markup:
+// <h3>Vanderbilt University Medical Center Brand Colors</h3>
+// <div class="kss-swatch" style="background-color: #eef4f3">
+//   <div class="kss-swatch__hex">$color-ice<br>#eef4f3</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #e3eae9">
+//   <div class="kss-swatch__hex">$color-frozen<br>#e3eae9</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #dfe4e3">
+//   <div class="kss-swatch__hex">$color-gallery<br>#dfe4e3</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #027da7">
+//   <div class="kss-swatch__hex">$color-pacific<br>#027da7</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #02535a">
+//   <div class="kss-swatch__hex">$color-peacock<br>#02535a</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #354a58">
+//   <div class="kss-swatch__hex">$color-stormy<br>#354a58</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #378163">
+//   <div class="kss-swatch__hex">$color-grass<br>#378163</div>
+// </div>
+// <div class="break"></div>
+// <h3>Main Menu Colors</h3>
+// <div class="kss-swatch" style="background-color: #13545b">
+//   <div class="kss-swatch__hex">$color-menu-dk-green<br>#13545b</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #79ada5">
+//   <div class="kss-swatch__hex">$color-menu-pale-green<br>#79ada5</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #378163">
+//   <div class="kss-swatch__hex">$color-menu-bright-green<br>#378163</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #a48850">
+//   <div class="kss-swatch__hex">$color-menu-gold<br>#a48850</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #643b56">
+//   <div class="kss-swatch__hex">$color-menu-purple<br>#643b56</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #e97032">
+//   <div class="kss-swatch__hex">$color-menu-orange<br>#e97032</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #d48323">
+//   <div class="kss-swatch__hex">$color-menu-dk-orange<br>#d48323</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #e0ab39">
+//   <div class="kss-swatch__hex">$color-menu-yellow<br>#e0ab39</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #3b7bb7">
+//   <div class="kss-swatch__hex">$color-menu-blue<br>#3b7bb7</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #f3f3f3">
+//   <div class="kss-swatch__hex">$color-menu-concrete<br>#f3f3f3</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #f5f5f5">
+//   <div class="kss-swatch__hex">$color-menu-dust<br>#f5f5f5</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #e5e5e5">
+//   <div class="kss-swatch__hex">$color-menu-dk-dust<br>#e5e5e5</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #dddddd">
+//   <div class="kss-swatch__hex">$color-menu-lt-gray<br>#dddddd</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #c4c3bf">
+//   <div class="kss-swatch__hex">$color-menu-stone<br>#c4c3bf</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #b3b3b3">
+//   <div class="kss-swatch__hex">$color-menu-gray<br>#b3b3b3</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #696969">
+//   <div class="kss-swatch__hex">$color-menu-dk-gray<br>#696969</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #59616b">
+//   <div class="kss-swatch__hex">$color-menu-slate<br>#59616b</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #333d4a">
+//   <div class="kss-swatch__hex">$color-menu-steel<br>#333d4a</div>
+// </div>
+// <div class="break"></div>
+// <h3>Additional Whites, Grays, Blacks</h3>
+// <div class="kss-swatch" style="background-color: #ffffff">
+//   <div class="kss-swatch__hex">$color-white<br>#ffffff</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #ececec">
+//   <div class="kss-swatch__hex">$color-smoke<br>#ececec</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #cacaca">
+//   <div class="kss-swatch__hex">$color-slate<br>#cacaca</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #8f8f8f">
+//   <div class="kss-swatch__hex">$color-silver<br>#8f8f8f</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #4e4e4e">
+//   <div class="kss-swatch__hex">$color-charcoal<br>#4e4e4e</div>
+// </div>
+// <div class="kss-swatch" style="background-color: #000000">
+//   <div class="kss-swatch__hex">$color-black<br>#000000</div>
+// </div>
+//
+// Style guide: General.colors
+
+// VUMC Brand Colors
+$color-ice: #eef4f3;
+$color-frozen: #e3eae9;
+$color-gallery: #dfe4e3;
+$color-peacock: #02535a;
+$color-stormy: #354a58;
+$color-pacific: #027da7;
+$color-grass: #378163;
+
+// Grays
+$color-black: #000000;
+$color-tundora: #4b4b4b;
+$color-charcoal: #4e4e4e;
+$color-silver: #8f8f8f;
+$color-dusty-gray: #9b9b9b;
+$color-slate: #cacaca;
+$color-ash: #d7d7d7;
+$color-smoke: #ececec;
+$color-mercury: #eeeeee;
+$color-dust: #f9f9f9;
+$color-white: #ffffff;
+
+// Main Menu colors
+$color-menu-dk-green: #13545b;
+$color-menu-pale-green: #79ada5;
+$color-menu-bright-green: #378163;
+$color-menu-gold: #a48850;
+$color-menu-purple: #643b56;
+$color-menu-orange: #e97032;
+$color-menu-dk-orange: #d48323;
+$color-menu-yellow: #e0ab39;
+$color-menu-blue: #3b7bb7;
+$color-menu-concrete: #f3f3f3;
+$color-menu-dust: #f5f5f5;
+$color-menu-dk-dust: #e5e5e5;
+$color-menu-lt-gray: #dddddd;
+$color-menu-stone: #c4c3bf;
+$color-menu-gray: #b3b3b3;
+$color-menu-dk-gray: #696969;
+$color-menu-slate: #59616b;
+$color-menu-steel: #333d4a;
+
+// Bootstrap color overrides
+$nav-pills-active-link-hover-bg: #02535a;
+$nav-pills-active-link-hover-color: #ffffff;

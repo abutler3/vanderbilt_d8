@@ -1,0 +1,12 @@
+.item-list .blog-categories__items,
+.blog-categories__items {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .item-list .blog-categories__items li,
+  .blog-categories__items li {
+    margin: 0 0 0.5rem;
+    padding: 0; }
+
+.blog-categories__icon {
+  margin-right: 0.5rem; }

@@ -1,0 +1,163 @@
+// @File
+// Styling for blog post content type (barista_post).
+// @See:
+// Related module:
+// /modules/custom/barista_posts
+// Related template files:
+// node--barista-post.html.twig
+// node--barista-post--teaser.html.twig
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+
+.blog-post__wrapper--teaser {
+  border-bottom: 1px solid $color-menu-lt-gray;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.blog-post__title--teaser {
+  @include vumc-section-title;
+  margin: 0 0 1rem;
+
+  a {
+    font-weight: $font-weight-regular;
+  }
+
+  a[rel~='external']::after {
+    content: '\f08e';
+    font-family: $font-family-fontawesome;
+    display: inline-block;
+    margin-top: 0;
+    padding-left: 7px;
+    opacity: 0.7;
+    font-size: 1.4rem;
+    color: $color-menu-dk-gray;
+  }
+}
+
+.blog-post__content-wrapper {
+  padding-top: 1rem;
+}
+
+.blog-post__image {
+  padding-top: 5px;
+  padding-bottom: $padding-md;
+
+  @include breakpoint($bp-sm) {
+    padding-bottom: 0;
+  }
+
+  img {
+    margin: 0 auto;
+    width: 100%;
+
+    @include breakpoint($bp-sm) {
+      width: auto;
+    }
+  }
+}
+
+.blog-post__image-caption {
+  padding-top: 20px;
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.blog-post__meta-item {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+
+  div,
+  a {
+    display: inline-block;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+
+.blog-post__external-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.blog-post__text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.blog-post__text--full {
+  padding-bottom: $padding-md;
+
+  @include breakpoint($bp-sm) {
+    padding-bottom: 0;
+  }
+}
+
+.blog-post__tags {
+  margin: 0;
+  padding: 3rem 0 0;
+
+  div,
+  a {
+    display: inline-block;
+  }
+}
+
+.blog-post__posts-nav {
+  display: flex;
+  flex-wrap: no-wrap;
+  list-style: none;
+  margin: 0;
+  padding: 30px 0 10px;
+}
+
+.blog-post__posts-nav-previous,
+.blog-post__posts-nav-next {
+  font-weight: $font-weight-bold;
+  width: 50%;
+
+  .fa {
+    display: inline-block;
+    font-size: 50px;
+  }
+
+  a {
+    align-items: center;
+    display: flex;
+  }
+
+  a:focus,
+  a:hover {
+    text-decoration: none;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+.blog-post__posts-nav-previous {
+  padding-right: 1rem;
+}
+
+.blog-post__posts-nav-next {
+  padding-left: 1rem;
+
+  a {
+    justify-content: flex-end;
+  }
+}

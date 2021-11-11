@@ -1,0 +1,138 @@
+.container {
+  width: 100%; }
+
+.row {
+  margin-left: -20px;
+  margin-right: -20px; }
+
+.row--default {
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.mc__site__wrap {
+  display: block;
+  margin: 0 auto;
+  /*max-width: 1170px;*/
+  width: 100%; }
+
+.mc__remove__space {
+  margin: 0;
+  padding: 0; }
+
+.mc__link {
+  color: #027da7;
+  text-decoration: none; }
+
+.mc__body {
+  /*background: #e3eae9;*/
+  padding: 97px 0 0; }
+
+#site-wrapper {
+  /*background-color: #eef4f3;*/
+/*  max-width: 1170px;*/  
+  position: relative;
+  z-index: 0; }
+  #site-wrapper::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+#site-canvas {
+  background-color: #ffffff;
+  float: left;
+  /*max-width: 1170px;*/
+  padding: 20px;
+  width: 100%; }
+
+.l-main__main {
+  max-width: 1170px;
+}
+
+.l-main__content-header, .region-help {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+#sitename,
+.header-site {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 300;
+  display: block;
+  color: #02535a; }
+  #sitename a,
+  .header-site a {
+    color: #02535a;
+    font-weight: 300; }
+    #sitename a:hover, #sitename a:focus,
+    .header-site a:hover,
+    .header-site a:focus {
+      color: #02535a;
+      text-decoration: none; }
+
+.page-title {
+  color: #02535a;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  line-height: 1.1;
+  padding-bottom: 10px; }
+  .page-title.hidden-title {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0; }
+
+.banner {
+  padding: 0 1.5rem; }
+
+.small-module {
+  margin: 0 0 25px;
+  width: auto;
+  border: 1px solid #c4c3bf;
+  line-height: 20px;
+  padding: 10px; }
+
+.read-more-link,
+.read-more-link-inverted {
+  text-align: right;
+  margin-top: 1.4rem; }
+
+.element-invisible {
+  margin: 0;
+  padding: 0;
+  width: 1px;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px; }
+
+.rtecenter {
+  text-align: center; }
+
+.add-width {
+  max-width: 1170px;
+}
+
+.center-margin {
+  margin: 0 auto !important;
+}
+
+.add-center {
+  margin: 0 auto;
+}
+
+/* Helper CSS classes */
+.hspace-10 { margin: 0 10px; }
+.hspace-15 { margin: 0 15px; }
+.hspace-20 { margin: 0 20px; }
+.hspace-25 { margin: 0 25px; }
+.hspace-30 { margin: 0 30px; }
+
+.vspace-10 { margin: 10px 0; }
+.vspace-15 { margin: 15px 0; }
+.vspace-20 { margin: 20px 0; }
+.vspace-25 { margin: 25px 0; }
+.vspace-30 { margin: 30px 0; }

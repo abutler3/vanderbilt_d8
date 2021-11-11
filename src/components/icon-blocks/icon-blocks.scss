@@ -1,0 +1,34 @@
+// Icon block
+//
+// This is only a demo block to show the usage of icons.
+//
+// Markup: icon-blocks.twig
+//
+// Style guide: Components.Icons Blocks
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.icon__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  i {
+    flex: 0 0 30px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &.icon__item--no-icon {
+    padding-left: 30px;
+    margin-bottom: 0.5rem;
+
+    + .icon__item--no-icon {
+      margin-bottom: 1rem;
+    }
+  }
+}

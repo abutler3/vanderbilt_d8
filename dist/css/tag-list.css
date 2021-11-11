@@ -1,0 +1,29 @@
+.tag-list__list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.tag-list__term {
+  margin: 0 0 0.5rem; }
+
+.tag-list__term-icon {
+  margin-right: 0.5rem; }
+
+.tag-list__body--cloud .tag-list__term {
+  display: inline-block;
+  margin-right: 0.5rem; }
+
+.tag-list__body--cloud .tag-list__term-weight--5 {
+  font-size: 2em; }
+
+.tag-list__body--cloud .tag-list__term-weight--4 {
+  font-size: 1.75em; }
+
+.tag-list__body--cloud .tag-list__term-weight--3 {
+  font-size: 1.5em; }
+
+.tag-list__body--cloud .tag-list__term-weight--2 {
+  font-size: 1.25em; }
+
+.tag-list__body--cloud .tag-list__term-weight--1 {
+  font-size: 1em; }

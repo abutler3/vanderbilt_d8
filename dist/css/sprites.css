@@ -1,0 +1,144 @@
+.mc__sprite {
+  display: block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url("../assets/mc-sprites@2x.png");
+  background-size: 260px 168px;
+  outline: 0;
+  text-indent: 999%;
+  white-space: nowrap;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: scale(1); }
+
+.mc__sprite--logo-header {
+  width: 215px;
+  height: 38px;
+  background-position: 0 0; }
+
+.mc__body .mc__sprite--logo-header {
+  width: 215px;
+  height: 38px;
+  background-position: 0 0; }
+
+.mc__sprite--icon-az {
+  width: 40px;
+  height: 38px;
+  background-position: -94px -41px; }
+
+.mc__sprite--icon-bus {
+  width: 52px;
+  height: 24px;
+  background-position: -137px -41px; }
+
+.mc__sprite--icon-email {
+  width: 34px;
+  height: 28px;
+  background-position: -191px -41px; }
+
+.mc__sprite--icon-hr {
+  width: 35px;
+  height: 35px;
+  background-position: -220px 0; }
+
+.mc__sprite--icon-kronos {
+  width: 38px;
+  height: 39px;
+  background-position: -180px -70px; }
+
+.mc__sprite--icon-nursing {
+  background-image: none;
+  width: 47px;
+  height: 55px; }
+
+.mc__sprite--icon-nursing::after {
+  background-image: url("../assets/mc-sprites@2x.png");
+  background-position: -222px -110px;
+  padding: 19px 0 0;
+  width: 22px;
+  top: 8px;
+  left: 10px; }
+
+.mc__sprite--icon-nursing::after,
+.mc__sprite--icon-nursing::before {
+  content: '';
+  background-repeat: no-repeat;
+  background-size: 260px 168px;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  position: absolute; }
+
+.mc__sprite--icon-nursing::before {
+  background-image: url("../assets/mc-sprites@2x.png");
+  background-position: -212px -129px;
+  padding: 21px 0 0;
+  width: 47px;
+  bottom: 7px;
+  left: 0; }
+
+.mc__sprite--icon-people-finder {
+  width: 40px;
+  height: 29px;
+  background-position: 0 -83px; }
+
+.mc__sprite--icon-resources {
+  width: 30px;
+  height: 37px;
+  background-position: -220px -72px; }
+
+.mc__sprite--icon-star-panel {
+  width: 46px;
+  height: 40px;
+  background-position: -1px -41px; }
+
+.mc__sprite--icon-starbrite {
+  width: 39px;
+  height: 39px;
+  background-position: -50px -41px; }
+
+.mc__sprite--social-facebook {
+  width: 28px;
+  height: 30px;
+  background-position: -44px -82px; }
+
+.mc__sprite--social-google-plus {
+  width: 28px;
+  height: 30px;
+  background-position: -74px -82px; }
+
+.mc__sprite--social-twitter {
+  width: 24px;
+  height: 21px;
+  background-position: -103px -79px; }
+
+.mc__sprite--social-youtube {
+  width: 50px;
+  height: 21px;
+  background-position: -128px -91px; }
+
+.mc__sprite--search-icon {
+  display: block;
+  width: 20px;
+  height: 18px;
+  background-position: -136px -69px; }
+  @media (max-width: 375px) {
+    .mc__sprite--search-icon {
+      display: none; } }
+
+.mc__sprite--hamburger-icon {
+  width: 19px;
+  height: 16px;
+  background-position: -158px -70px; }
+
+[data-pie-id] {
+  background: transparent;
+  border-radius: 50%;
+  display: block;
+  height: 0;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 0 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1; }

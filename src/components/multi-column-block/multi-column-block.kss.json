@@ -1,0 +1,15 @@
+{
+  "title": "Test Multi-Column Block",
+  "column_class": "multi-column-block__content--3-col",
+  "columns": [
+    {
+      "column": "<div class=\"block text-block blockstyle-accent\"><h2 class=\"block__title text-block__title\">Ipsum Cras Purus</h2><div class=\"block__body text-block__body\"><p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p></div></div>"
+    },
+    {
+      "column": "<div class=\"block text-block blockstyle-accentheader\"><h2 class=\"block__title text-block__title\">Egestas Sollicitudin</h2><div class=\"block__body text-block__body\"><p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p></div></div>"
+    },
+    {
+      "column": "<div class=\"block text-block blockstyle-lightaccent\"><h2 class=\"block__title text-block__title\">Inceptos Ridiculus Amet</h2><div class=\"block__body text-block__body\"><p>Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo.</p></div></div>"
+    }
+  ]
+}

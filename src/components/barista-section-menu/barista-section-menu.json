@@ -1,0 +1,77 @@
+{
+  "title": "Brittingham Society",
+  "menus": [
+    {
+      "menu_type": "section-menu",
+      "menu_tree": [
+        {
+          "text": "Brittingham Society Home",
+          "url": "/brittingham_home"
+        },
+        {
+          "text": "About the Brittingham Society",
+          "url": "/about_brittingham_society"
+        },
+        {
+          "text": "Residency Program",
+          "url": "/residents-2016-0"
+        },
+        {
+          "text": "Brittingham Society Presidents",
+          "url": "/brittingham_presidents"
+        },
+        {
+          "text": "Photo Galleries",
+          "url": "/photo_galleries",
+          "submenu": [
+            {
+              "text": "Brittingham 2012 Alumni Reunion",
+              "url": "/brittingham2012ReunionPhotos"
+            },
+            {
+              "text": "Brittingham 2010 Alumni Reunion",
+              "url": "/brittingham2010ReunionPhotos"
+            }
+          ]
+        },
+        {
+          "text": "Fox and Hedgehog",
+          "url": "/fox_hedgehog"
+        },
+        {
+          "text": "Giving",
+          "url": "/brittingham/give",
+          "submenu": [
+            {
+              "text": "Brittingham Learning Center",
+              "url": "/brittingham-lc"
+            },
+            {
+              "text": "Canby Robinson Society",
+              "url": "/canby_robinson"
+            },
+            {
+              "text": "Tinsley Randolph Harrison Society",
+              "url": "/trh_society"
+            }
+          ]
+        },
+        {
+          "text": "Vanderbilt Medicine Reunion",
+          "url": "http://reunion.vanderbilt.edu/medicine/",
+          "options": {
+            "attributes": {
+              "class": {
+                "classes": "fa-lock"
+              }
+            }
+          }
+        },
+        {
+          "text": "Contact the Brittingham Society",
+          "url": "/brittingham_contact"
+        }
+      ]
+    }
+  ]
+}

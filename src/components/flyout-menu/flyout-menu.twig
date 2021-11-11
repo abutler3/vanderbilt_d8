@@ -1,0 +1,13 @@
+{{ attach_library('vanderbilt_d8/flyout-menu') }}
+
+{# Load functional header icons. #}
+{# include "@vanderbilt_d8/flyout-menu/flyout-menu-icons.twig" #}
+
+<nav class="mc__navbar">
+
+  {%
+    include "@vanderbilt_d8/menus/menus.twig" with {
+      'menus': menus
+    } only
+  %}
+</nav>

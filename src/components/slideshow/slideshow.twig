@@ -1,0 +1,62 @@
+<div class="block slideshow__wrapper">
+  {% if region != 'featured' and hero_banner %}
+    <h2 class="block__title slideshow__block-title">
+      {{ hero_banner }}
+    </h2>
+  {% endif %}
+  <div class="slideshow{{ region ? ' slideshow-region--' ~ region }}{{ type ? ' slideshow--' ~ type }} {{ captions_class }} add-width add-center">
+    {% if type == 'homepage'%}
+      <div class="slideshow__hero-banner">
+        {% if hero_banner and header_scale_factor %}
+          <div class="hero-text">
+            <h2 class="slideshow__hero-banner-title">
+              <div style="line-height: 1.25em; font-size:{{ header_scale_factor }}">
+                {{ hero_banner }}
+              </div>
+            </h2>
+          </div>
+        {% elseif hero_banner %}
+          <div class="hero-text">
+            <h2 class="slideshow__hero-banner-title">{{ hero_banner }}</h2>
+          </div>
+        {% endif %}
+        <div class="wrapper-hero-caption"><div class="hero-caption"></div></div>
+        <div class="background"><div><i class="icon-v"></i></div></div>
+      </div>
+    {% endif %}
+
+    <div class="flexslider flexslider--{{ type }} slideshow__container">
+      <ul class="slides">
+        {% for slide in slides %}
+          {%
+            include "@vanderbilt_d8/slideshow/slideshow-item.twig" with {
+              "image_uri": slide.image_uri,
+              "image_uri_retina": slide.image_uri_retina,
+              "img_alt": slide.img_alt,
+              "more_info_uri": slide.more_info_uri,
+              "style": slide.style,
+              "caption_output": slide.caption_output
+            } only
+          %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% if type == 'thumbnailgallery'%}
+      <div class="flexslider flexslider--{{ type }} slideshow__thumbs">
+        <ul class="slides">
+          {% for slide in slides %}
+            {%
+              include "@vanderbilt_d8/slideshow/slideshow-item.twig" with {
+                "type": type,
+                "image_uri": slide.image_uri,
+                "img_alt": slide.img_alt,
+                "style": slide.style
+              } only
+            %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>

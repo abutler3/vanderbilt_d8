@@ -1,0 +1,110 @@
+{
+  "hero_banner": {
+    "type": "homepage",
+    "effect": "slide",
+    "hero_banner": "Conducting research and treatment studies that focus on the brain and disorders of memory, mood and aging.",
+    "slides": [
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE ONE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE ONE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": null
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE TWO]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE TWO x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE THREE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE THREE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE FOUR]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE FOUR x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      }
+    ],
+    "loop": "true",
+    "nav": "true",
+    "pager": "true"
+  },
+  "standard_captions": {
+    "type": "full",
+    "effect": "fade",
+    "slides": [
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE ONE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE ONE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": null,
+        "style": "full",
+        "caption_output": "Curabitur in lobortis tellus. Mauris ornare in enim in condimentum. Sed porta mollis ipsum vitae molestie"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE TWO]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE TWO x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#",
+        "style": "full",
+        "caption_output": "Lorem ipsum dolor sit amet, ipsum vitae molestie"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE THREE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE THREE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#",
+        "style": "full",
+        "caption_output": "Sed porta mollis ipsum vitae molestie"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE FOUR]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE FOUR x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#",
+        "style": "full",
+        "caption_output": "Mauris ornare in enim in condimentum. Sed porta mollis ipsum vitae molestie"
+      }
+    ],
+    "loop": "true",
+    "nav": "true",
+    "pager": "true"
+  },
+  "standard": {
+    "type": "rotatingimage",
+    "effect": "fade",
+    "slides": [
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE ONE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE ONE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": null
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE TWO]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE TWO x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE THREE]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE THREE x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      },
+      {
+        "image_uri": "https://placehold.it/618x375/02a5db/ffffff?text=[SLIDE FOUR]",
+        "image_uri_retina": "https://placehold.it/1236x750/02a5db/ffffff?text=[SLIDE FOUR x2]",
+        "img_alt": "Placeholder Image",
+        "more_info_uri": "#"
+      }
+    ],
+    "loop": "",
+    "nav": "true",
+    "pager": "true"
+  }
+}

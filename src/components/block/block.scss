@@ -1,0 +1,78 @@
+// Default styling for custom block types used in VUMC
+// multi-sites.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.block {
+  padding: $padding-md-lg 0;
+
+  .l-main__featured & {
+    padding: 0 0 $padding-md;
+  }
+
+  .l-main__sidebar-second & {
+    border-bottom: 1px solid $color-ash;
+  }
+
+  .l-main__sidebar-second &:last-child {
+    border: 0;
+  }
+
+  .l-main__content & {
+    border-bottom: 1px solid $color-ash;
+
+    @include breakpoint ($bp-sm) {
+      border-bottom: 0;
+    }
+  }
+}
+
+// <h2> required to override
+// default body text styling.
+h2.block__title {
+  color: $color-peacock;
+  font-size: 21px;
+  font-weight: $font-weight-regular;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0 0 $padding-md;
+  text-transform: none;
+
+  .blockstyle-lightaccent & {
+    background-color: $color-dust;
+    padding: $padding-md;
+  }
+
+  .blockstyle-accent &,
+  .blockstyle-accentheader & {
+    background-color: $color-smoke;
+    padding: $padding-md;
+  }
+}
+
+.block__body {
+
+  .blockstyle-lightaccent &,
+  .blockstyle-accent &,
+  .blockstyle-accentheader & {
+    padding-bottom: $padding-md;
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+
+  .blockstyle-lightaccent &,
+  .blockstyle-accentheader & {
+    background-color: $color-dust;
+  }
+
+  .blockstyle-accent & {
+    background-color: $color-smoke;
+  }
+
+  .block-notitle.blockstyle-lightaccent &,
+  .block-notitle.blockstyle-accent &,
+  .blockstyle-accentheader & {
+    padding-top: $padding-md;
+  }
+}

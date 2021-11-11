@@ -1,0 +1,19 @@
+.primary-tabs {
+  margin: 2rem 0;
+  list-style: none; }
+
+.nav-pills > li > a:hover,
+.nav-pills > li > a:active {
+  text-decoration: none; }
+
+.nav-pills > li {
+  background-color: #f9f9f9; }
+  .nav-pills > li .is-active {
+    color: #ffffff;
+    background-color: #02535a; }
+  .nav-pills > li .is-active:hover, .nav-pills > li .is-active:focus {
+    color: #ffffff;
+    background-color: #02535a;
+    text-decoration: underline; }
+  .nav-pills > li:hover, .nav-pills > li:focus {
+    text-decoration: underline; }

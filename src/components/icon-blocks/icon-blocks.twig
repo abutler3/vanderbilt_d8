@@ -1,0 +1,30 @@
+{{ attach_library('vanderbilt_d8/icon-blocks') }}
+<section class="icon-blocks">
+  <h1 class="icon-blocks__heading">{{ heading }}</h1>
+  <article class="icon-blocks__item">
+    <h2 class="icon-blocks__name">{{ name }}</h2>
+    <p class="icon-blocks__title">{{ title }}</p>
+    <div class="icon__item">
+      <i aria-label="Address" class="fa fa-fw fa-building-o"></i>
+      <p class="icon-blocks__building">{{ building }}</p>
+    </div>
+
+    <div class="icon__item icon__item--no-icon">
+      <p class="icon-blocks__address">{{ address }}</p>
+    </div>
+
+    <div class="icon__item icon__item--no-icon">
+      <p class="icon-blocks__city">{{ cityStateZip }}</p>
+    </div>
+
+    <div class="icon__item">
+      <i aria-label="Address" class="fa fa-fw fa-phone"></i>
+      <p class="icon-blocks__phone">{{ phone }}</p>
+    </div>
+
+    <div class="icon__item">
+      <i aria-label="Address" class="fa fa-fw fa-envelope"></i>
+      <p class="icon-blocks__email">{{ email }}</p>
+    </div>
+  </article>
+</section>

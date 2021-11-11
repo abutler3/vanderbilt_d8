@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display RSS Reader Block output.
+ */
+#}
+{{ attach_library('vanderbilt_d8/rss-block') }}
+<div class="block rss-block {{ classes|join(' ') }}">
+  {% if entity.title %}
+    <h2 class="block__title rss-block__title">{{entity.title.0.value}}</h2>
+  {% endif %}
+  <div class="block__body rss-block__body barista-rss-container" data-block-type="{{ barista_rss_reader_bundle }}" data-block-id="{{ barista_rss_reader_id }}">
+    <i class="fa fa-spinner fa-spin"></i> Loading...
+  </div>
+  <script class="feeditemtemplate" type="text/baristatemplate">
+    <div class="rss-block__list-item">
+      <% if (this.image) { %>
+        <div class="rss-block__item-image">
+          <a href="@link">
+            <img src="@image" class="rss-block__image" />
+          </a>
+        </div>
+      <% } %>
+      <div class="rss-block__content<% if (this.image) { %> with-image<% } %>">
+        <h3 class="rss-block__item-title">
+          <a href="@link">@title</a>
+        </h3>
+        {% if barista_rss_reader_pub_date_display != 'hide' %}
+          <% if (this.date) { %>
+            <div class="rss-block__item-date">
+              {% if barista_rss_reader_pub_date_display != 'date_only' %}
+                Posted
+              {% else %}
+                <i class="fa fa-calendar"></i>
+              {% endif %}
+              @date_pretty
+            </div>
+          <% } %>
+        {% endif %}
+        {% if (barista_rss_reader_author_display == 'show') or (barista_rss_reader_description_display == 'show') %}
+          <div class="rss-block__meta">
+            {% if (barista_rss_reader_author_display == 'show') %}
+              <% if (this.author) { %>
+                <div class="rss-block__item-author">
+                  <i class="fa fa-user"></i> @author
+                </div>
+              <% } %>
+            {% endif %}
+            {% if (barista_rss_reader_description_display == 'show') %}
+              <% if (this.description) { %>
+                <div class="rss-block__item-description">
+                  @description
+                </div>
+              <% } %>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </script>
+</div>

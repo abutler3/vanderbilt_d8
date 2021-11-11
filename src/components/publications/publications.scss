@@ -1,0 +1,89 @@
+// Publications
+//
+// Publication listings that are grouped my category or year.
+//
+// Markup: publications.twig
+//
+// Style guide: Components.publications
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.publications__bibli-title {
+  margin: 2rem 0;
+}
+
+.publications__grouping-label {
+  @include font-stack-secondary;
+  color: $color-peacock;
+  font-size: 1.8rem;
+  margin: 2rem 0;
+}
+
+// <ul> required to override default styling.
+ul.publications__publications-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.publications__publications-listing {
+  margin: $padding-sm 0;
+  position: relative;
+
+  // When displayed on a Publication node, a variant on theme is applied.
+  .node--type-publication & {
+    background: $color-mercury;
+    padding: 2rem;
+  }
+
+  .inline-administrator-links {
+    float: right;
+    margin-left: 2rem;
+    position: relative;
+  }
+
+  .publication-no-image-icon {
+    color: $color-ash;
+    left: 0;
+    position: absolute;
+    top: 0.3rem;
+
+    // Update position with additional padding on parent.
+    .node--type-publication & {
+      color: $color-menu-gray;
+      left: 2rem;
+      top: 2.5rem;
+    }
+
+    + .media-body {
+      padding-left: 3.3rem;
+    }
+  }
+
+  .media-body {
+    margin-bottom: 1.5rem;
+    min-height: 3.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .barista-digital-reference {
+    display: block;
+    font-size: 1.125rem;
+  }
+}
+
+.publications__field--abstract {
+
+  .field__label {
+    font-weight: $font-weight-regular;
+    margin: 2rem 0;
+  }
+}

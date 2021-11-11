@@ -1,0 +1,47 @@
+// Primary Tabs
+//
+// This is the site's primary-tabs which provide links for various page actions.
+//
+// Markup: primary-tabs.twig
+//
+// Style guide: Components.Primary Tabs
+
+@import '../../global/utils/init';
+
+.primary-tabs {
+  margin: 2rem 0;
+  list-style: none;
+}
+
+// Overrides boostrap.
+.nav-pills > li > a:hover,
+.nav-pills > li > a:active {
+  text-decoration: none;
+}
+
+.nav-pills {
+
+  > li {
+    background-color: $color-dust;
+
+    .is-active {
+
+      & {
+        color: $nav-pills-active-link-hover-color;
+        background-color: $nav-pills-active-link-hover-bg;
+      }
+
+      &:hover,
+      &:focus {
+        color: $nav-pills-active-link-hover-color;
+        background-color: $nav-pills-active-link-hover-bg;
+        text-decoration: underline;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

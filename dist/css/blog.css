@@ -1,0 +1,12 @@
+.blog__description {
+  margin-bottom: 3rem; }
+
+.blog__rss-link {
+  padding-bottom: 14px;
+  text-align: center; }
+  .blog__rss-link a {
+    background-image: none;
+    display: inline-block;
+    height: auto;
+    text-indent: 0;
+    width: auto; }

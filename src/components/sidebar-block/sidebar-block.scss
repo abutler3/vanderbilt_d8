@@ -1,0 +1,32 @@
+// Sidebar Block
+//
+// This is the sidebar-block component which can be used
+// to store different types of content.
+//
+// Markup: sidebar-block.twig
+//
+// Style guide: Components.Sidebar Block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.sidebar {
+
+  &.sidebar-block {
+    padding: $padding-md;
+    width: 100%;
+    background: $color-smoke;
+  }
+
+  // Adds margin/padding and border as separator
+  // in between sidebar blocks.
+  &.block {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $color-smoke;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}

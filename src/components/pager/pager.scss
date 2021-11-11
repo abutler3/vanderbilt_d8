@@ -1,0 +1,86 @@
+// Pager
+//
+// This is the pager component.
+//
+// Markup: pager.twig
+//
+// Style guide: Components.Pager
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.pager {
+  border-bottom: 1px solid $color-menu-lt-gray;
+  clear: both;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.pager__items {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pager__item {
+  display: inline-block;
+  padding: 0;
+
+  @include breakpoint($bp-smaller) {
+    margin: 0 0.35rem;
+  }
+
+  // Interacting state.
+  &:hover,
+  &:focus,
+  &.pager-current,
+  &.is-active {
+
+    a {
+      border-bottom: 4px solid $color-ash;
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+
+  // Active page.
+  &.is-active,
+  &.pager-current {
+
+    a {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &.pager__item--previous,
+  &.pager__item--next {
+    @include breakpoint($bp-smaller) {
+      margin-right: 1rem;
+    }
+  }
+
+  &.pager__item--first,
+  &.pager__item--last,
+  &.pager__item--ellipsis {
+    display: none;
+
+    @include breakpoint($bp-smaller) {
+      display: inline-block;
+    }
+  }
+
+  // Default links.
+  a,
+  > span {
+    border-bottom: 4px solid $color-white;
+    display: block;
+    font-weight: $font-weight-regular;
+    padding: 0.5rem 1rem;
+    text-transform: lowercase;
+  }
+}

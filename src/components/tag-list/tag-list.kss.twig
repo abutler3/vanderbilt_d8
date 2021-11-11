@@ -1,0 +1,19 @@
+{%
+  include "@vanderbilt_d8/tag-list/tag-list.twig" with {
+    'title': title,
+    'modifier_class': modifier_class,
+    'tag_format': 'cloud',
+    'terms': terms
+  } only
+%}
+
+<hr />
+
+{%
+  include "@vanderbilt_d8/tag-list/tag-list.twig" with {
+    'title': title,
+    'modifier_class': modifier_class,
+    'tag_format': 'list',
+    'terms': terms
+  } only
+%}

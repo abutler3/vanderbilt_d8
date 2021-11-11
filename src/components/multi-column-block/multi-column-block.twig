@@ -1,0 +1,13 @@
+{{ attach_library('vanderbilt_d8/multi-column-block') }}
+<div class="block multi-column-block">
+  {% if title %}
+    <h2 class="block__title multi-column-block__title">{{ title }}</h2>
+  {% endif %}
+  <div class="block__body multi-column-block__body {{ column_class }}">
+    {% for column in columns %}
+      <div class="multi-column-block__block">
+        {{ column }}
+      </div>
+    {% endfor %}
+  </div>
+</div>

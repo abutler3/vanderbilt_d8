@@ -1,0 +1,12 @@
+{{ attach_library('vanderbilt_d8/l-three-col') }}
+
+<div class="l-three-col {{modifier_class}}">
+  {% for item in items %}
+    <div class="block">
+      <h3>{{item.title}}</h3>
+      <div class="block-body">
+        {{item.body}}
+      </div>
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,49 @@
+.publications__bibli-title {
+  margin: 2rem 0; }
+
+.publications__grouping-label {
+  font-family: "Roboto", "Arial", sans-serif;
+  color: #02535a;
+  font-size: 1.8rem;
+  margin: 2rem 0; }
+
+ul.publications__publications-list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.publications__publications-listing {
+  margin: 1rem 0;
+  position: relative; }
+  .node--type-publication .publications__publications-listing {
+    background: #eeeeee;
+    padding: 2rem; }
+  .publications__publications-listing .inline-administrator-links {
+    float: right;
+    margin-left: 2rem;
+    position: relative; }
+  .publications__publications-listing .publication-no-image-icon {
+    color: #d7d7d7;
+    left: 0;
+    position: absolute;
+    top: 0.3rem; }
+    .node--type-publication .publications__publications-listing .publication-no-image-icon {
+      color: #b3b3b3;
+      left: 2rem;
+      top: 2.5rem; }
+    .publications__publications-listing .publication-no-image-icon + .media-body {
+      padding-left: 3.3rem; }
+  .publications__publications-listing .media-body {
+    margin-bottom: 1.5rem;
+    min-height: 3.5rem; }
+    .publications__publications-listing .media-body:last-child {
+      margin-bottom: 0; }
+    .publications__publications-listing .media-body p {
+      margin: 0; }
+  .publications__publications-listing .barista-digital-reference {
+    display: block;
+    font-size: 1.125rem; }
+
+.publications__field--abstract .field__label {
+  font-weight: 400;
+  margin: 2rem 0; }

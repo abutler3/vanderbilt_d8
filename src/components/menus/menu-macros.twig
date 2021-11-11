@@ -1,0 +1,209 @@
+{#
+  Menu macros
+
+  These menus support the array structure from the Simplify Menu module.
+  https://www.drupal.org/project/simplify_menu
+
+  The array structure returned from `simplify_menu(menu_machine_name)`
+  is as follows. Within the `submenu` array, the structure can repeat
+  infinitely.
+
+    "menu_tree": [
+      {
+        "text": "Section Menu text",
+        "url": "#",
+        "active": true|false,*
+        "active-trail": true|false,*
+        "submenu": []
+      }
+    ]
+
+    * Note that active & active-trail support requires a patch
+      to Simplify Menu module.
+
+  Twig macros can be recursive by calling the macro from within the macro.
+  Check for subitems in the provided array, and call the macro again.
+
+  Example recursive macro:
+    Since a nested menu would exist within a parent <li>, pass in
+    an array of child menu-items. Menu items are then looped over,
+    and called recusively to output entire menu html structure.
+    {% macro menuMacro(menu) -%}
+      <ul>
+        {% for menu_item in menu %}
+          <li>
+            <a href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+            {% if menu_item.submenu %}
+              {{ _self.menuMacro(menu_item.submenu) }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {%- endmacro %}
+#}
+
+{#
+  Macro for the standard accordion output of a single menu item set.
+  This menu is used in the flyout menu.
+#}
+{% macro standardAccordionMenu(menu, level) -%}
+  {# Check if menu contains menu_tree, or is menu_tree. #}
+  {% if menu.menu_tree_main is defined  %}
+    {% set menu = menu.menu_tree_main %}
+  {% endif %}
+
+  {% set default_level = 1 %}
+
+  <div class="module__15qpHMBRHtRlNYQyfB6aDS module__3lmHNJo_yqty-XI4JEty7i module__1v4IWxfMNWEOM-6hO8Z53m module__2SJHmMQqaR6VY-Sm7Uu9uv">
+  <ul class="module__13HG0bPYDSb7E0b2J1eZSn module__35oBIfBh56ydj7tZ2bUYJ1 data-tracker-primaryMenu-menu mc__nav__menu nav__menu--{{ level|default(default_level) }}">
+    {% for i, menu_item in menu %}
+
+      {% set active = (menu_item.active) ? ' is-active' : '' %}
+      {%
+        set link_classes = [
+          menu_item.active ? 'is-active' : '',
+          menu_item.active_trail ? 'is-active-trail' : '',
+        ]|merge(menu_item.options.attributes.class ?: [])
+      %}
+      {% set url = menu_item.url %}
+
+      {% if menu_item.submenu %}
+        <li class="if module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX mc__nav__menu__item nav__menu__item--{{ level|default(default_level) }} has-submenu{{ active }}">
+          {# Click trigger controls the click expansion and only holds an icon. #}
+          <span class="mc__navbar__trigger mc__navbar__trigger--{{ level|default(default_level) }}">{{ menu_item.text }}</span>
+          <div class="mc__nav__submenu">
+            {% if url and menu_item.text %}
+              <a href="{{ url }}" class="mc__nav__link mc__nav__link--{{ level|default(default_level) }} {{ link_classes|join(' ')|trim }}">{{ menu_item.text }} {{ 'Home'|t }}</a>
+            {% endif %}
+
+            {# Since this menu item has a submenu, recall function and increment counter. #}
+            {{ _self.standardAccordionMenu(menu_item.submenu, level|default(default_level) + 1) }}
+          </div>
+        </li>
+      {% else %}
+        <li class="else module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX mc__nav__menu__item nav__menu__item--{{ level|default(default_level) }} no-submenu{{ active }}">
+          <a href="{{ url }}" class="mc__nav__link mc__nav__link--{{ level|default(default_level) }} {{ link_classes|join(' ')|trim }}">{{ menu_item.text }}</a>
+        </li>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+{%- endmacro %}
+
+{#
+  Macro for the static colored menu set.
+  This menu is used in the flyout menu.
+#}
+{% macro staticColoredMenu() -%}
+
+  <ul class="mc__nav__items__static">
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://peoplefinder.app.vumc.org/">{{ 'People Finder'|t }}</a>
+    </li>
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://www.vanderbilthealth.com/main/24065">{{ 'Referring Providers'|t }}</a>
+    </li>
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://www.vumc.org/medcenterparking/">{{ 'Locations and Parking'|t }}</a>
+    </li>
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://www.vumc.org/mcmain/atozdirectory">{{ 'A-Z Index'|t }}</a>
+    </li>
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://vanderbilthealth.com/patientandvisitorinfo">{{ 'Patient and Visitor Information'|t }}</a>
+    </li>
+    <li class="mc__nav__item">
+      <a class="mc__nav__link" href="https://www.myhealthatvanderbilt.com">{{ 'My Health at Vanderbilt'|t }}</a>
+    </li>
+  </ul>
+{%- endmacro %}
+
+{#
+  Macro for the standard inline menu.
+  This menu is used as the "Content Header" menu.
+  This menu supports Bootstrap Dropdowns.
+#}
+{% macro standardInlineMenu(menu, level) -%}
+
+  {# Check if menu contains menu_tree, or is menu_tree. #}
+  {% if menu.menu_tree is defined  %}
+    {% set menu = menu.menu_tree %}
+  {% endif %}
+
+  {% set default_level = 1 %}
+
+  <ul class="standard-inline-menu__menu menu-level--{{ level|default(default_level) }}">
+    {% for menu_item in menu -%}
+
+      {# Determine is current item is a dropdown. #}
+      {% set include_dropdowns = (level|default(default_level) == 1 and menu_item.submenu is defined) %}
+
+      {# <li> List-item classes. #}
+      {%
+        set item_classes = [
+          'standard-inline-menu__item',
+          'item-level--' ~ level|default(default_level),
+          menu_item.active ? 'is-active' : '',
+          menu_item.active_trail ? 'is-active-trail' : '',
+          include_dropdowns ? 'dropdown' : ''
+        ]
+      %}
+      {# <a> Link classes. #}
+      {%
+        set link_classes = [
+          'standard-inline-menu__link',
+          'link-level--' ~ level|default(default_level),
+          menu_item.active ? 'is-active' : '',
+          menu_item.active_trail ? 'is-active-trail' : '',
+        ]|merge(menu_item.options.attributes.class ?: [])
+      %}
+      <li class="{{ item_classes|join(' ')|trim }}">
+        {# Link element for current location in menu tree.  #}
+        <a class="{{ link_classes|join(' ')|trim }}" href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+
+        {# Top level items with a submenu get Bootstrap Dropdowns setup.  #}
+        {% if include_dropdowns %}
+          <a class="standard-inline-menu__dropdown-toggle" aria-haspopup="true" role="button" data-toggle="dropdown" aria-expanded="true">
+            <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="standard-inline-menu__dropdown-menu dropdown-menu">
+        {%- endif %}
+
+        {# Recursive menu call. #}
+        {% if menu_item.submenu %}
+          {# Since this menu item has a submenu, recall function and increment counter. #}
+          {{ _self.standardInlineMenu(menu_item.submenu, level|default(default_level) + 1) }}
+        {%- endif %}
+
+        {# Close Bootstrap Dropdowns setup.  #}
+        {% if include_dropdowns %}
+          </div>
+        {%- endif %}
+      </li>
+    {%- endfor %}
+  </ul>
+{%- endmacro %}
+
+{#
+  Macro for the Barista Section menu.
+  This menu is used as the "sidebar" menu.
+#}
+{% macro sectionMenu(menu) -%}
+  <ul class="section-menu">
+    {% for menu_item in menu -%}
+      {% set item_classes = 'section-menu__item' ~ menu_item.submenu|length ? 'section-menu__item--has-children' %}
+      <li class="{{ item_classes }}">
+        {%
+          set link_classes = [
+            'section-menu__link'
+          ]|merge(menu_item.options.attributes.class ?: [])
+        %}
+        <a class="{{ link_classes|join(' ')|trim }}" href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+        {% if menu_item.submenu|length %}
+          <i class="section-menu__trigger fa fa-chevron-right"></i>
+          {{ _self.sectionMenu(menu_item.submenu) }}
+        {% endif %}
+      </li>
+    {%- endfor %}
+  </ul>
+{%- endmacro %}

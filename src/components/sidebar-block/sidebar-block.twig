@@ -1,0 +1,9 @@
+{{ attach_library('vanderbilt_d8/sidebar-block') }}
+<section class="col-sm-4 sidebar sidebar-block">
+  {% for item in items %}
+  <article class="sidebar-block__item">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.desc }}</p>
+  </article>
+  {% endfor %}
+</section>

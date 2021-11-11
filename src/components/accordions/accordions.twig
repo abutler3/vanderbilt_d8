@@ -1,0 +1,18 @@
+{{ attach_library('vanderbilt_d8/accordions') }}
+<div class="container-fluid">
+  <ul class="mc__accordion">
+    <li class="mc__accordion__item row">
+      <input class="mc__accordion__checkbox" type="checkbox" id="{{title|replace({' ':''})}}" value="Resources for employees">
+      <label class="mc__accordion__button" for="{{title|replace({' ':''})}}"><span class="mc__accordion__button__label" onclick="">{{title}}</span></label>
+        <div class="mc__accordion__content">
+          <div class="mc__accordion__content__inner">
+            <div class="col-xs-12">
+              <div class="mc__box__content">
+                {{body}}
+              </div>
+            </div>
+          </div><!--//.mc__accordion__content__inner-->
+        </div><!--//.mc__accordion__content-->
+      </li><!--//.mc__accordion__item-->
+  </ul><!--//.mc__accordion-->
+</div>

@@ -1,0 +1,28 @@
+// Blog Categories Block
+//
+// This is the blog categories block. It lists terms from the
+// blog categories vocabulary, and only appears on blog and blog post
+// content type pages.
+//
+// Markup: blog-categories.twig
+//
+// Style guide: Components.Blog Categories
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.item-list .blog-categories__items,
+.blog-categories__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0 0 $padding-xsm;
+    padding: 0;
+  }
+}
+
+.blog-categories__icon {
+  margin-right: $padding-xsm;
+}

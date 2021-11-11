@@ -1,0 +1,63 @@
+// Site Search
+//
+// This is the site-search component. It resides within the site
+// flyout menu.
+//
+// Markup: site-search.twig
+//
+// Style guide: Components.site-search
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.mc__search__form {
+  display: block;
+  float: left;
+  clear: none;
+  position: relative;
+  top: 17px;
+  width: 80%;
+}
+
+.mc__search__input {
+  border-radius: 7px;
+  display: inline-block;
+  vertical-align: middle !important; // sass-lint:disable-line no-important
+  width: 260px;
+  max-width: 80%;
+
+  @include breakpoint($bp-l-tiny-dwn) {
+    width: 230px;
+    max-width: 80%;
+  }
+
+  &.form-control {
+    margin: 0;
+    box-shadow: $shadow-md;
+
+    &:focus {
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+
+    &.tt-input {
+      margin: 0 0 5px;
+    }
+  }
+}
+
+.mc__search__btn,
+.mc__search__btn.btn.btn-default {
+  background: $color-menu-bright-green;
+  border: 1px solid $color-charcoal;
+  color: $color-white;
+  display: inline-block;
+  height: 30px;
+  margin: 0;
+  width: 44px;
+  vertical-align: middle;
+  padding: 6px 12px;
+}
+
+.mc__search__btn span {
+  top: 0;
+}

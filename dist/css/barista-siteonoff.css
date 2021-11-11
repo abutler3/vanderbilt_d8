@@ -1,0 +1,9 @@
+#siteonoff {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  background: #a81818;
+  color: #ffffff; }
+  #siteonoff a {
+    color: #e3eae9 !important;
+    font-weight: bold; }

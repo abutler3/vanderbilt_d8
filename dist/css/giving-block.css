@@ -1,0 +1,57 @@
+.giving-block__link {
+  display: block;
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 0;
+  overflow: hidden; }
+  .giving-block__link:hover, .giving-block__link:focus {
+    text-decoration: none;
+    color: #ffffff; }
+    .giving-block__link:hover .giving-block__bg-image, .giving-block__link:focus .giving-block__bg-image {
+      transform: scale(1.2); }
+
+.giving-block__bg-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/giving.jpg") 0 0 no-repeat;
+  background-size: cover;
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  .giving-block__bg-image::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000000;
+    opacity: 0.3;
+    z-index: 10; }
+
+.giving-block__heading,
+.giving-block__subheading {
+  position: relative;
+  z-index: 20; }
+
+.giving-block__heading {
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+  font-size: 26px;
+  font-weight: 300;
+  text-align: center; }
+
+#kss-node .giving-block h2 {
+  color: #ffffff;
+  text-align: center; }
+
+.giving-block__subheading {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300; }

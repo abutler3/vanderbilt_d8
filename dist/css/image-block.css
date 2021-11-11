@@ -1,0 +1,15 @@
+.image-block__content {
+  background: #f9f9f9;
+  text-align: center; }
+  .image-block__content img {
+    width: 100%; }
+
+.block-title-wrapper {
+  background: #ececec;
+  padding: 2rem; }
+  .block-title-wrapper h1 {
+    color: #02535a;
+    font-weight: 400;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 0; }

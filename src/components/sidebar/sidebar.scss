@@ -1,0 +1,172 @@
+// Sidebar Quick Links
+//
+// This is the sidebar component.
+//
+// Markup: sidebar.twig
+//
+// Style guide: Components.Sidebar
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.sidebar {
+  padding-top: $padding-lg;
+
+  @include breakpoint($bp-xsm) {
+    padding-top: 0;
+  }
+
+  &.block {
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $color-smoke;
+    padding-bottom: 34px !important; // sass-lint:disable-line no-important
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    clear: both;
+
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 0 !important; // sass-lint:disable-line no-important
+      margin-bottom: 0;
+    }
+  }
+
+  .list-item {
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $color-smoke;
+    padding-bottom: 29px !important; // sass-lint:disable-line no-important
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .container-img,
+  .active img,
+  .rss-img {
+    display: none;
+
+    @include breakpoint($bp-xxsm) {
+      display: block;
+      width: 25%;
+      max-width: 75px;
+      padding: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .placeholder-img {
+    display: list-item;
+    width: auto;
+    height: initial;
+    text-align: center;
+    line-height: 75px;
+    overflow: hidden;
+    position: relative;
+    background-color: $color-menu-gray;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .block-inner {
+    background: $color-dust;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .block-title-wrapper {
+    background: $color-smoke;
+
+    h1 {
+      margin-top: 0;
+      color: $color-peacock;
+      font-size: 1.8rem;
+      font-weight: $font-weight-regular;
+      line-height: 1.25;
+      margin: 0;
+
+      @include breakpoint($bp-sm) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .barista-list-title {
+    font-size: 14px;
+    line-height: 1.428571429;
+    font-weight: normal;
+    color: $color-pacific;
+    margin: 0;
+  }
+
+  .read-more-link,
+  .read-more-link-inverted {
+    text-align: right;
+    padding: 2rem;
+    margin-top: 0;
+  }
+
+  .col-xs-12 {
+    padding: 0;
+  }
+
+  .col-xs-10 {
+    padding-right: 0;
+    width: 100%;
+
+    @include breakpoint($bp-xxsm) {
+      width: 75%;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .sidebar-block__item {
+    padding: 10px 0;
+
+    &:last-child p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sidebar__heading {
+  color: $color-menu-slate;
+  margin-top: 0;
+  line-height: 1.2;
+  font-size: 21px;
+  font-weight: $font-weight-bold;
+}
+
+.sidebar__list {
+  list-style: none;
+  padding: 0 0 0 4px;
+}
+
+.sidebar__list--item {
+
+  a {
+    display: block;
+    color: $color-peacock;
+    text-decoration: none;
+    font-weight: normal;
+    padding: $padding-sm 0;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

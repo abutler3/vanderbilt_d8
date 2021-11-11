@@ -1,0 +1,61 @@
+{
+  "affix": true,
+  "toggle_id": "mc__navbar__show__hide--kss",
+  "hero_banner": {
+    "type": "hero-banner",
+    "effect": "slide",
+    "hero_banner": "Conducting research and treatment studies that focus on the brain and disorders of memory, mood and aging.",
+    "slides": [
+      {
+        "image": "<img src=\"https://placehold.it/618x350/02a5db/ffffff?text=[SLIDE ONE]\" alt=\"placeholder\" />"
+      },
+      {
+        "image": "<img src=\"https://placehold.it/618x350/6ab86c/ffffff?text=[SLIDE TWO]\" alt=\"placeholder\" />"
+      },
+      {
+        "image": "<img src=\"https://placehold.it/618x350/354a58/ffffff?text=[SLIDE THREE]\" alt=\"placeholder\" />"
+      },
+      {
+        "image": "<img src=\"https://placehold.it/618x350/a48850/ffffff?text=[SLIDE FOUR]\" alt=\"placeholder\" />"
+      }
+    ],
+    "loop": "true",
+    "nav": "true",
+    "pager": "true",
+  },
+  "blog_posts_block_title": "Recent Blog Posts",
+  "use_thumbnails": true,
+  "more_posts": {
+    "url": "#",
+    "text": "Read More"
+  },
+  "posts": [
+    {
+      "sticky": "sticky",
+      "url": "#",
+      "image": "<img src=\"http://placehold.it/80x80\" alt=\"placholder image\" />",
+      "title": "Vivamus Sagittis Lacus Vel",
+      "dateline": "April 10, 2017"
+    },
+    {
+      "sticky": "not-sticky",
+      "url": "#",
+      "title": "Tristique Ullamcorper Risus Ligula Vehicula",
+      "dateline": "April 2, 2017"
+    },
+    {
+      "sticky": "not-sticky",
+      "url": "#",
+      "image": "<img src=\"http://placehold.it/80x80\" alt=\"placholder image\" />",
+      "title": "Lorem Fermentum Condimentum Fringilla Mollis",
+      "dateline": "March 16, 2017"
+    },
+    {
+      "sticky": "not-sticky",
+      "external_url": "#",
+      "image": "<img src=\"http://placehold.it/80x80\" alt=\"placholder image\" />",
+      "title": "Lorem Commodo Consectetur Sollicitudin",
+      "dateline": "March 4, 2017"
+    }
+  ]
+}

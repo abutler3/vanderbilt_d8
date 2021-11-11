@@ -1,0 +1,48 @@
+.flip-container {
+  height: 167px;
+  margin: 0 auto;
+  perspective: 1000px;
+  width: 115px; }
+  @media (min-width: 30em) {
+    .flip-container {
+      height: 182px;
+      width: 130px; } }
+  @media (min-width: 768px) {
+    .flip-container {
+      height: 192px;
+      width: 140px; } }
+  @media (min-width: 75em) {
+    .flip-container {
+      height: 202px;
+      width: 150px; } }
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg); }
+  .flip-container .flipper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.6s; }
+  .flip-container .flip--back,
+  .flip-container .flip--front {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    height: 172px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 120px; }
+    @media (min-width: 768px) {
+      .flip-container .flip--back,
+      .flip-container .flip--front {
+        height: 192px;
+        width: 140px; } }
+    @media (min-width: 75em) {
+      .flip-container .flip--back,
+      .flip-container .flip--front {
+        height: 202px;
+        width: 150px; } }
+  .flip-container .flip--back {
+    transform: rotateY(180deg); }
+  .flip-container .flip--front {
+    transform: rotateY(0deg);
+    z-index: 2; }

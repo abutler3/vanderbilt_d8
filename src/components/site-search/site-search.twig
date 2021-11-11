@@ -1,0 +1,9 @@
+{{ attach_library('vanderbilt_d8/site-search') }}
+<form class="mc__search__form" action="https://www.vumc.org/search/home" role="search" id="mc__search">
+  <input id="mcSearchInput" class="mc__search__input form-control" type="text" name="stq" placeholder="Search">
+  <input type="hidden" name="site_url" value="{{ swifttype_base_path }}">
+  <input type="hidden" name="full_url" value=vumc.org/{{ swifttype_base_path }}>
+  <button class="mc__search__btn btn btn-default" type="submit">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  </button>
+</form>

@@ -1,0 +1,101 @@
+// Type
+//
+// Markup:
+// <h3>Base</h3>
+// <h4>font-stack-base</h4>
+// <div style="font: 700 20px/1.5 'Open Sans';"> Open Sans Bold </div>
+// <div style="font: italic 700 20px/1.5 'Open Sans';"> Open Sans Bold Italic </div>
+// <div style="font: 400 20px/1.5 'Open Sans';"> Open Sans Regular </div>
+// <div style="font: italic 400 20px/1.5 'Open Sans';"> Open Sans Regular Italic </div>
+// <div class="break"></div>
+// <h3>Secondary</h3>
+// <h4>font-stack-secondary</h4>
+// <div style="font: 500 20px/1.5 'Roboto';"> Roboto Medium </div>
+// <div style="font: italic 500 20px/1.5 'Roboto';"> Roboto Medium Italic </div>
+// <div style="font: 400 20px/1.5 'Roboto';"> Roboto Regular </div>
+// <div style="font: italic 400 20px/1.5 'Roboto';"> Roboto Regular Italic </div>
+// <div style="font: 300 20px/1.5 'Roboto';"> Roboto Light </div>
+// <div style="font: italic 300 20px/1.5 'Roboto';"> Roboto Light Italic </div>
+// <div style="font: 100 20px/1.5 'Roboto';"> Roboto Thin </div>
+// <div style="font: italic 100 20px/1.5 'Roboto';"> Roboto Thin Italic </div>
+// <div class="break"></div>
+// <div id="sitename">Site name style</div>
+// <h1 id="pagetitle">Page title style</h1>
+// <h2 id="the_body">Page title style</h2>
+//
+// Weight: 999
+//
+// Style guide: General.type
+
+$font-family-sans: 'Arial', sans-serif;
+$font-family-serif: 'Georia', serif;
+$font-family-base: 'Open Sans', $font-family-sans;
+$font-family-secondary: 'Roboto', $font-family-sans;
+$font-family-fontawesome: 'FontAwesome';
+
+@mixin font-stack-base {
+  font-family: $font-family-base;
+}
+
+@mixin font-stack-secondary {
+  font-family: $font-family-secondary;
+}
+
+// Mixins for various header/title/body text treatments
+// as defined by VUMC standards.
+@mixin vumc-header {
+  font-family: $font-family-secondary;
+  font-size: 32px;
+  line-height: 1;
+}
+
+@mixin vumc-subheader-text {
+  font-family: $font-family-secondary;
+  font-size: 17px;
+  line-height: 1.12;
+  padding: 38px 0 19px;
+}
+
+@mixin vumc-section-title {
+  font-family: $font-family-secondary;
+  font-size: 22px;
+  line-height: 1.09;
+  padding-bottom: 10px;
+  font-weight: $font-weight-regular;
+}
+
+@mixin paragraph-title {
+  font-family: $font-family-base;
+  font-size: 14px;
+  line-height: 1.36;
+  padding: 38px 0 19px;
+}
+
+@mixin paragraph-text {
+  font-family: $font-family-base;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: $font-weight-regular;
+}
+
+@mixin paragraph-text-sm {
+  font-family: $font-family-base;
+  font-size: 11px;
+  line-height: 1.27;
+}
+
+@mixin vumc-subheader {
+  margin: 40px 0 10px;
+  color: $color-peacock;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: $font-weight-bold;
+}
+
+$font-weight-bold: 700;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-thin: 100;
+$font-italic: italic;

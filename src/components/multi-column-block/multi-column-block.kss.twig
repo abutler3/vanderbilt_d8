@@ -1,0 +1,7 @@
+{%
+  include '@vanderbilt_d8/multi-column-block/multi-column-block.twig' with {
+    'title': title,
+    'column_class': column_class,
+    'columns': [columns[0].column, columns[1].column, columns[2].column]
+  } only
+%}

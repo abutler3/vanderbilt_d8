@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override to display a person's address when the data is remote.
+ */
+#}
+
+<div class="person__address-container">
+  <i class="fa fa-fw fa-building-o" aria-label="Address"></i>
+  {% if address.Street %}
+    <div>{{ address.Street|nl2br }}</div>
+  {% endif %}
+  <div>
+    {% if address.City and address.State %}
+      {{ address.City }}, {{ address.State  }}, {{ address.Zip }}
+    {% elseif address.State %}
+      {{ address.State }}, {{ address.Zip }}
+    {% else %}
+      {{ address.Zip }}
+    {% endif %}
+  </div>
+</div>

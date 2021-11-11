@@ -1,0 +1,26 @@
+// Three Column Layout.
+//
+// This layout is applied by adding the parent class to the region.
+// It will create a layout using flexbox.
+// The children will occupy an equal space for how many there are.
+// The intended use is for the multicolumn block that has up to three
+// children.
+//
+// Markup: l-three-col.kss.twig
+//
+// Style guide: Layouts.l-three-col
+@import '../../global/utils/init';
+
+.l-three-col {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    padding: 0 15px;
+  }
+
+  @include breakpoint($bp-md) {
+    flex-direction: row;
+  }
+}
+

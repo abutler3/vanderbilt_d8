@@ -1,0 +1,73 @@
+// Flipper
+//
+// Styles related to the 2D transform flip.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.flip-container {
+  height: $person-grid-item--height - 35px;
+  margin: 0 auto;
+  perspective: 1000px;
+  width: $person-grid-item--width - 35px;
+
+  @include breakpoint($bp-xxsm) {
+    height: $person-grid-item--height - 20px;
+    width: $person-grid-item--width - 20px;
+  }
+
+  @include breakpoint($bp-xsm) {
+    height: $person-grid-item--height - 10px;
+    width: $person-grid-item--width - 10px;
+  }
+
+  @include breakpoint($bp-lg) {
+    height: $person-grid-item--height;
+    width: $person-grid-item--width;
+  }
+
+  &:hover,
+  &.hover {
+
+    .flipper {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .flipper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.6s;
+  }
+
+  .flip--back,
+  .flip--front {
+    backface-visibility: hidden;
+    height: $person-grid-item--height - 30px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: $person-grid-item--width - 30px;
+
+    @include breakpoint($bp-xsm) {
+      height: $person-grid-item--height - 10px;
+      width: $person-grid-item--width - 10px;
+    }
+
+    @include breakpoint($bp-lg) {
+      height: $person-grid-item--height;
+      width: $person-grid-item--width;
+    }
+  }
+
+  .flip--back {
+    transform: rotateY(180deg);
+  }
+
+  .flip--front {
+    // For firefox 31.
+    transform: rotateY(0deg);
+    z-index: 2;
+  }
+}

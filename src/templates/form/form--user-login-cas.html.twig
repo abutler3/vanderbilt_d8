@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{%
+  set classes = [
+    'edit-cas-identifier'
+  ]
+%}
+
+{{ attach_library('vanderbilt_d8/login-block') }}
+<form{{ attributes.addClass(classes) }}>
+  {{ children }}
+</form>

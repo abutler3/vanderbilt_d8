@@ -1,0 +1,105 @@
+// Accordions
+//
+// Markup: accordions.twig
+//
+// Style guide: Components.accordions
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.field--name-field-collapsible-section {
+  padding-bottom: $padding-md;
+}
+
+// ul required to override default styling.
+ul.mc__accordion {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mc__accordion__item {
+  background: $color-white;
+  list-style: none;
+  margin-left: -15px;
+}
+
+.mc__accordion__button {
+  background: $color-white;
+  border-bottom: 1px solid $color-smoke;
+  color: $color-peacock;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 11px 0;
+  width: 100%;
+
+  &:hover {
+    color: $color-pacific;
+  }
+}
+
+.mc__accordion__button__label {
+  font-family: $font-family-secondary;
+  font-size: 17px;
+  font-weight: 300;
+  display: inline-block;
+  height: 100%;
+  max-width: calc(100% - 30px);
+  position: relative;
+
+  &::after {
+    border-top: 2px solid $color-menu-dk-green;
+    border-right: 2px solid $color-menu-dk-green;
+    content: '';
+    display: block;
+    margin: auto;
+    position: absolute;
+    right: -15px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    height: 0;
+    padding: 8px 0 0;
+    white-space: nowrap;
+    text-indent: 101%;
+    font-size: 0;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.mc__accordion__content {
+  max-height: 0;
+  opacity: 0;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s linear;
+  backface-visibility: hidden;
+  transform: scale(1);
+}
+
+.mc__accordion__content--box-buttons {
+  background: $color-stormy;
+}
+
+.mc__accordion__content__inner {
+  clear: both;
+  display: block;
+  float: left;
+  padding: 11px 0 3px;
+  width: 100%;
+}
+
+.mc__accordion__checkbox {
+  display: none;
+}
+
+input[type='checkbox'].mc__accordion__checkbox:checked+label+.mc__accordion__content {
+  border-bottom: 1px solid $color-smoke;
+  max-height: 9999px;
+  opacity: 1;
+}
+
+input[type='checkbox'].mc__accordion__checkbox:checked+label>.mc__accordion__button__label::after {
+  transform: rotate(135deg);
+}

@@ -1,0 +1,44 @@
+{{ attach_library('vanderbilt_d8/pager') }}
+
+<section class="pager">
+  <ul class="pager__items">
+    {% for item in items %}
+      {# sets current class variable #}
+      {% if item.current == true %}
+        {% set current = 'pager-current' %}
+      {% endif %}
+
+      {# Assigns first/last item classes. #}
+      {% if loop.first %}
+        <li class="pager__item pager__item--first">
+          <a href="#" title="Go to first page">
+            <span aria-hidden="true">« first</span>
+          </a>
+        </li>
+        <li class="pager__item pager__item--previous">
+          <a href="#" title="Go to previous page" rel="prev">
+            <span aria-hidden="true">‹ previous</span>
+          </a>
+        </li>
+      {% endif %}
+
+      <li class="pager__item {{ current|default('') }}">
+        <a href="{{ item.url }}">{{ item.page }}</a>
+      </li>
+
+      {% if loop.last %}
+        <li class="pager__item pager__item--ellipsis" role="presentation">…</li>
+        <li class="pager__item pager__item--next">
+          <a href="#" title="Go to next page" rel="next">
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+        <li class="pager__item pager__item--last">
+          <a href="#" title="Go to last page">
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>

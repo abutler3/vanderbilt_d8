@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display Text Block Output.
+ */
+#}
+{% set modifier_class = classes|join(' ') %}
+{%
+  include '@vanderbilt_d8/text-block/text-block.twig' with {
+    'title': title,
+    'body': body,
+    'modifier_class': modifier_class
+  } only
+%}

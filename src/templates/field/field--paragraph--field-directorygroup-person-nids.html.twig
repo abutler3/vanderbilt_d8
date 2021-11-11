@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Theme override for the directory listing fields.
+ * Removed the containing divs, as the content need to be
+ * part of a list.
+ * @see template_preprocess_field()
+ */
+#}
+
+{% for item in items %}
+  {{ item.content }}
+{% endfor %}

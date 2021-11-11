@@ -1,0 +1,133 @@
+// Barista Section Menu
+//
+// Markup: barista-section-menu.twig
+//
+// Style guide: Components.barista-section-menu
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.barista-section-menu__title {
+  border-bottom: 1px solid $color-menu-lt-gray;
+  color: $color-peacock;
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  margin: 0;
+  padding-bottom: 1rem;
+
+  a {
+    color: $color-peacock;
+
+    &:hover {
+      color: $color-peacock;
+      text-decoration: none;
+    }
+  }
+}
+
+.section-menu {
+  list-style: none;
+  // Indent all ul elements.
+  margin: 0 0 0 1rem;
+  padding: 0;
+}
+
+.section-menu__item {
+  position: relative;
+
+  &.active {
+
+    > .section-menu__link {
+      background: $color-menu-dk-dust;
+      color: $color-peacock;
+      text-decoration: none;
+    }
+  }
+}
+
+.section-menu__item--has-children {
+
+  // Accordion is open.
+  &.is-open,
+  &.is-open.active-trail.active,
+  &.active-trail:not(.active) {
+
+    > .section-menu__trigger {
+      transform: rotate(90deg);
+    }
+
+    > .section-menu {
+      max-height: 9999px;
+      overflow: visible;
+    }
+  }
+
+  // Accordion is closed.
+  &.is-closed,
+  &.active-trail.active,
+  &.is-closed.active-trail:not(.active) {
+
+    > .section-menu__trigger {
+      transform: rotate(0deg);
+    }
+
+    > .section-menu {
+      max-height: 0;
+      overflow: hidden;
+    }
+  }
+
+  > .section-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition;
+  }
+}
+
+.section-menu__link {
+  background-color: $color-white;
+  border-bottom: 1px solid $color-menu-lt-gray;
+  color: $color-peacock;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: $font-weight-bold;
+  padding: 1rem;
+  text-decoration: none;
+  transition: background-color $transition, color $transition;
+
+  &:hover {
+    background: $color-menu-dk-dust;
+    color: $color-peacock;
+    text-decoration: none;
+  }
+
+  // Resetting styles applied by font awesome class.
+  // @TODO: update patch to leave off .fa class.
+  // @SEE: patches/inaccessible-menu-overrides.patch (line 68)
+  &.fa {
+    @include font-stack-secondary;
+    display: block;
+  }
+
+  &.fa-lock::before {
+    display: inline-block;
+    font-family: $font-family-fontawesome;
+    margin-right: 5px;
+  }
+}
+
+.section-menu__trigger {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  height: 4rem;
+  justify-content: center;
+  position: absolute;
+  right: -1rem;
+  transition: transform $transition;
+  top: 0;
+  width: 4rem;
+  z-index: $zi-lowest;
+}

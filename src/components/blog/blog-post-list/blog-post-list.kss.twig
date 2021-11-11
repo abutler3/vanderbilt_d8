@@ -1,0 +1,49 @@
+{% for item in items %}
+  <article class="blog-post__wrapper--teaser">
+    <header>
+      <h2 class="blog-post__title--teaser">
+        {% if item.external_url %}
+          <a href="{{ item.external_url }}" target="_blank" rel="external">{{ item.title }}</a>
+        {% else %}
+          <a href="{{ item.url }}" rel="bookmark">{{ item.title }}</a>
+        {% endif %}
+      </h2>
+    </header>
+    <div>
+      <div class="blog-post__meta-wrapper">
+        <div class="blog-post__meta-item blog-post__author">
+          <i class="fa fa-user"></i> {{ item.author }}
+        </div>
+        <div class="blog-post__meta-item blog-post__date">
+          <i class="fa fa-calendar"></i> {{ item.date }}
+        </div>
+        <div class="blog-post__meta-item blog-post__categories">
+          <i class="fa fa-bookmark"></i> Posted in {{ item.categories }}
+        </div>
+      </div>
+      {% if item.external_url %}
+        <a class="blog-post__external-link" href="{{ item.external_url }}">{{ item.external_url }}</a>
+      {% endif %}
+      <div class="row row--default blog-post__content-wrapper">
+        {% if item.image %}
+          <div class="blog-post__image col-xs-12 col-sm-3">
+            {{ item.image }}
+          </div>
+        {% endif %}
+        {% if item.image %}
+          {% set teaser_class = 'blog-post__text col-xs-12 col-sm-9' %}
+        {% else %}
+          {% set teaser_class = 'blog-post__text col-xs-12' %}
+        {% endif %}
+        <div class="{{ teaser_class }}">
+          {{ item.body }}
+        </div>
+      </div>
+      {% if item.tags %}
+        <div class="blog-post__meta-item blog-post__tags">
+          <i class="fa fa-tag"></i> {{ item.tags }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endfor %}

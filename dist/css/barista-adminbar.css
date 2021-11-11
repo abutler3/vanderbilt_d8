@@ -1,0 +1,135 @@
+.barista-adminbar {
+  display: none; }
+  @media (min-width: 768px) {
+    .barista-adminbar {
+      display: block; } }
+
+.toolbar-vertical.toolbar-tray-open #toolbar-administration {
+  z-index: 1100; }
+
+body.toolbar-tray-open.toolbar-vertical.toolbar-fixed {
+  margin-left: 0; }
+
+body.not-power-user {
+  padding-top: 97px; }
+  @media (min-width: 768px) {
+    body.not-power-user {
+      padding-top: 110px; } }
+  body.not-power-user .mc__site__header__wrap {
+    background: #ffffff; }
+
+.navbar-fixed-top {
+  z-index: 1; }
+
+.navbar {
+  min-height: inherit; }
+
+.barista-adminbar .navbar-inverse .navbar-nav > li > a {
+  color: #ffffff; 
+  padding: 10px 16px; }
+
+.barista-adminbar .navbar-inverse .navbar-text {
+  color: #ffffff;
+  margin: 0;
+  padding-top: 10px; }
+
+.navbar-fixed-top .navbar-right {
+  padding-right: 15px; }
+
+.button-barista-dropdown {
+  line-height: 30px; }
+
+.barista-adminbar .dropdown-menu {
+  min-width: 320px; }
+
+.barista-adminbar .dropdown-menu > li > a {
+  white-space: normal; }
+
+.barista-adminbar .barista-graphic-dropdown {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  line-height: 1.2;
+  min-width: 300px; }
+
+.barista-adminbar small {
+  font-size: 10px; }
+
+body #admin-menu {
+  background: #696969; }
+
+body #admin-menu-wrapper {
+  padding-bottom: 1px; }
+
+.toolbar-tray a {
+  padding-left: 1em;
+  padding-right: 1em; }
+
+@media (min-width: 768px) {
+  .navbar-text {
+    display: none; }
+  .navbar-collapse .nav > li > a {
+    padding: 10px 12px; } }
+
+@media (min-width: 64em) {
+  .navbar-text {
+    display: block; } }
+
+
+.toolbar-vertical .barista-adminbar > .navbar-fixed-top,
+.toolbar-horizontal .barista-adminbar > .navbar-fixed-top {
+  top: 39px; 
+z-index: 1; }
+.toolbar-horizontal.toolbar-tray-open .barista-adminbar > .navbar-fixed-top {
+  top: 79px; 
+z-index: 3; }
+
+.navbar-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  border-width: 1px 0 0;
+  left: 0;
+  border-width: 1px 0 0; 
+  z-index: 2000; 
+  width: 100%; 
+  padding: 8px;
+  height: 30px; }
+
+.navbar-bottom {
+  margin-bottom: 0px; }
+
+.navbar-header-bottom {
+  width: 100px;
+  /* padding: 0px; */
+  /* margin-right: 0px !important; */
+  float: left; }
+.navbar-right-bottom {
+/*  float: right !important;*/
+  /*margin-right: -1px;*/ }
+
+ul.nav.navbar-nav.navbar-right-bottom {
+  list-style-type: none;
+  margin: -9.5px -15px;
+}
+.not-power-user .mc__site__header {
+/*      top: 45px; } }*/
+      top: 0px; }
+
+div.navbar-header-bottom ul.nav.navbar-nav {
+  margin: 7.5px -15px;
+}
+
+.navbar-right-bottom li.pull-left p.navbar-text {
+    color: #ffffff;
+    margin: 3px;
+    padding-top: 0px;
+}
+
+.navbar-right-bottom li.pull-left-link {
+  margin: 5px;
+}
+
+a.barista-adminbar-btn.barista-adminbar-btn-mini {
+  margin-left: 8px;
+}

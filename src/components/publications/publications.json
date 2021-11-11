@@ -1,0 +1,47 @@
+{
+  "bibliography_title": "Department Publications",
+  "bibliography_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempus metus sem, a feugiat sem scelerisque in. Nulla tristique, augue ut iaculis viverra, urna ex fringilla elit, non vehicula lorem dolor sed justo. Donec ac tempus leo. Donec gravida risus id sapien mollis eleifend. Sed ipsum mauris, tristique a mi a, aliquam tristique neque. Nullam venenatis vitae mi ac porttitor. Suspendisse quam lacus, posuere sed feugiat at, volutpat vel nulla.",
+  "publications": [
+    {
+      "grouping_text": "2017",
+      "publications": [
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/680/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Milam RA, Fonseca RB.  <b>Case 240: Meckel Diverticulitis.</b> Radiology. 2017 Apr;283(1). 303-307.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/28318437\">28318437 [PubMed]</a>.</span></div>"
+        },
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/672/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Spalluto LB, Arleo EK, Macura KJ, Rumack CM.  <b>35 Years of Experience From the American Association for Women Radiologists: Increasing the Visibility of Women in Radiology.</b> Journal of the American College of Radiology : JACR. 2017 Mar;14(3). 426-430.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/28040406\">28040406 [PubMed]</a>.</span></div>"
+        },
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/673/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Roach MK, Andreotti RF.  <b><a href=\"/radiology/publication/normal-female-pelvis\">The Normal Female Pelvis.</a></b> Clinical obstetrics and gynecology. 2017 Mar;60(1). 3-10.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/28005593\">28005593 [PubMed]</a>.</span></div>"
+
+        }
+      ]
+    },
+    {
+      "grouping_text": "2016",
+      "publications": [
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/642/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Barskiy DA, Salnikov OG, Shchepin RV, Feldman MA, Coffey AM, Kovtunov KV, Koptyug IV, Chekmenev EY.  <b><a href=\"/radiology/publication/nmr-slic-sensing-hydrogenation-reactions-using-parahydrogen-low-magnetic-fields\">NMR SLIC Sensing of Hydrogenation Reactions Using Parahydrogen in Low Magnetic Fields.</a></b> The journal of physical chemistry. C, Nanomaterials and interfaces. 2016 Dec 29;120(51). 29098-29106.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/28066517\">28066517 [PubMed]</a>.</span><span class=\"barista-digital-reference\"> PMCID: <a href=\"http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5204359\">PMC5204359</a>.</span>"
+        },
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/671/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Arlinghaus LR, Dortch RD, Whisenant JG, Kang H, Abramson RG, Yankeelov TE.  <b><a href=\"/radiology/publication/quantitative-magnetization-transfer-imaging-breast-30-t-reproducibility-healthy-volun\">Quantitative Magnetization Transfer Imaging of the Breast at 3.0 T: Reproducibility in Healthy Volunteers.</a></b> Tomography : a journal for imaging research. 2016 Dec;2(4). 260-266.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/28090588\">28090588 [PubMed]</a>.</span><span class=\"barista-digital-reference\"> PMCID: <a href=\"http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5228602\">PMC5228602</a>.</span> NIHMSID: NIHMS839199."
+        },
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/614/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Milam RA, Fonseca RB.  <b>Case 240.</b> Radiology. 2016 Dec;281(3). 967-968.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/27870626\">27870626 [PubMed]</a>.</span>"
+
+        }
+      ]
+    },
+    {
+      "grouping_text": "2015",
+      "publications": [
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/558/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Rozenshtein A, Mullins ME, Deitte LA, Deloney LA, Mohammed TL, Sclamberg JS, Robbin M.  <b>\"What Program Directors Think\" II: Results of the 2013 and 2014 Annual Surveys of the Association of Program Directors in Radiology.</b> Academic radiology. 2015 Jun;22(6). 787-93.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/25805171\">25805171 [PubMed]</a>.</span></div>"
+        },
+        {
+          "publication": "<span class=\"inline-administrator-links\"><a class=\"btn btn--tab\" href=\"/radiology/node/583/edit\"><i class=\"fa fa-pencil\"></i> Edit</a></span><i class=\"publication-no-image-icon fa fa-fw fa-file-text\"></i><div class=\"media-body\">Franklin AD, Lorinc AN, Shotwell MS, Greene EB, Wushensky CA.  <b><a href=\"/radiology/publication/evaluation-skin-epidural-and-subarachnoid-space-distance-young-children-using-magnetic\">Evaluation of the skin to epidural and subarachnoid space distance in young children using magnetic resonance imaging.</a></b> Regional anesthesia and pain medicine. 40(3). 245-8.<span class=\"barista-digital-reference\"> PMID: <a href=\"http://www.ncbi.nlm.nih.gov/pubmed/25899953\">25899953 [PubMed]</a>.</span></div>"
+        }
+      ]
+    }
+  ]
+}

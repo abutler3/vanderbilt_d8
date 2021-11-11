@@ -1,0 +1,75 @@
+// Styling specific to detail view of person
+// content type.
+
+.person-page__container {
+  @include clearfix;
+}
+
+.person-page__header-row {
+  margin-bottom: 2em;
+}
+
+.person-page__header {
+  margin-bottom: $padding-md;
+}
+
+.person-page__photo-container {
+  max-width: 300px;
+
+  @include breakpoint($bp-xsm) {
+    margin-bottom: 2em;
+    max-width: initial;
+  }
+}
+
+// h1 required to override default
+// page title styling.
+h1.person-page__page-title {
+  @include vumc-section-title;
+  color: $color-pacific;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: none;
+}
+
+.person-page__contact-details {
+  .person__address {
+    .person__address-container {
+      padding-left: 0;
+
+      .fa,
+      .field--name-field-address-type {
+        display: none;
+      }
+    }
+  }
+
+  .person__phone {
+    margin-bottom: 0;
+
+    .fa-phone {
+      display: none;
+    }
+
+    .paragraph--type--phone-numbers {
+      .field--name-field-type {
+        display: none;
+      }
+    }
+  }
+}
+
+.person__content-section {
+  .person__content-section-title {
+    border-bottom: 1px solid $color-ash;
+    color: $color-peacock;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.person-page__more-info-link .field {
+  display: inline-block;
+}

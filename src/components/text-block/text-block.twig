@@ -1,0 +1,13 @@
+{{ attach_library('vanderbilt_d8/block') }}
+<div class="block {{ modifier_class }}">
+  {% if title %}
+    <h2 class="block__title">
+      {{ title }}
+    </h2>
+  {% endif %}
+  {% if body %}
+    <div class="block__body">
+      {{ body|raw }}
+    </div>
+  {% endif %}
+</div>

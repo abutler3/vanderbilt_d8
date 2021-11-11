@@ -1,0 +1,28 @@
+// Default styling for embedded media.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Legacy media embed wrapper from
+// WYSIWYG toolbar.
+.media_embed { // sass-lint:disable-line class-name-format
+  position: relative;
+  // 16:9 ratio plus 60px for file name field above.
+  padding-top: calc(56.25% + 60px);
+  width: 100%;
+
+  @include breakpoint($bp-xsm) {
+    // 16:9 ration based on 500px fixed width,
+    // plus 60px for file name field above.
+    padding-top: 341px;
+    width: 500px;
+  }
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

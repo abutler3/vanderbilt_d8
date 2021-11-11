@@ -1,0 +1,44 @@
+// Sidebar Header
+//
+// This is the sidebar-header component.
+//
+// Markup: sidebar-header.twig
+//
+// Style guide: Components.Sidebar header
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.sidebar-header {
+  margin-bottom: $padding-md;
+  border-bottom: 1px solid $color-slate;
+  width: 100%;
+}
+
+.sidebar.sidebar-header {
+  /* overrides original sidebar's styles. */
+  padding: 0 !important; // sass-lint:disable-line no-important
+  padding-bottom: $padding-md !important; // sass-lint:disable-line no-important
+  background: none;
+
+  &:last-child {
+    border: 0;
+  }
+
+
+  .sidebar__heading {
+    background: $color-smoke;
+    padding: $padding-md;
+    margin-bottom: 0;
+
+    a {
+      color: $color-peacock;
+      font-weight: normal;
+    }
+  }
+
+  .sidebar__list {
+    padding: $padding-sm $padding-sm $padding-md $padding-md;
+    background: $color-dust;
+  }
+}

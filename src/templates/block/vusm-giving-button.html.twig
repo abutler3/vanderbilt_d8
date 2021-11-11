@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display VUSM Giving Button.
+ */
+#}
+{%
+  include '@vanderbilt_d8/giving-block/giving-block.twig' with {
+    'link': link,
+    'heading': 'Because of You'|t,
+    'subheading': 'Giving to Vanderbilt'|t,
+  } only
+%}

@@ -1,0 +1,36 @@
+{{ attach_library('vanderbilt_d8/publications') }}
+
+<article class="node node--type-publication-list-page node--view-mode-full">
+  <div class="node__content">
+    {% if bibliography_title %}
+      <h2 class="publications__bibli-title">{{ bibliography_title }}</h2>
+    {% endif %}
+
+    {% if bibliography_description %}
+      <div class="clearfix text-formatted">{{ bibliography_description }}</div>
+    {% endif %}
+
+    {% if publications %}
+      <div class="publications__bibli-publications">
+        {# Loop through all publications and output grouped content. #}
+        {% for group in publications %}
+          {% if group.grouping_text %}
+            <h3 class="publications__grouping-label">{{ group.grouping_text }}</h3>
+          {% endif %}
+          {% if group.publications %}
+            <div class="publications__publications">
+              <ul class="publications__publications-list">
+                {% for publication in group.publications %}
+                  <li class="publications__publications-listing">
+                    {{ publication.publication }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</article>

@@ -1,0 +1,22 @@
+.sidebar-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #cacaca;
+  width: 100%; }
+
+.sidebar.sidebar-header {
+  /* overrides original sidebar's styles. */
+  padding: 0 !important;
+  padding-bottom: 2rem !important;
+  background: none; }
+  .sidebar.sidebar-header:last-child {
+    border: 0; }
+  .sidebar.sidebar-header .sidebar__heading {
+    background: #ececec;
+    padding: 2rem;
+    margin-bottom: 0; }
+    .sidebar.sidebar-header .sidebar__heading a {
+      color: #02535a;
+      font-weight: normal; }
+  .sidebar.sidebar-header .sidebar__list {
+    padding: 1rem 1rem 2rem 2rem;
+    background: #f9f9f9; }

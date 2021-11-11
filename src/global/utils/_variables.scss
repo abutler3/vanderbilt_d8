@@ -1,0 +1,46 @@
+//=======================================================
+// Variables
+//=======================================================
+
+// Also see src/bootstrap/bootstrap/_variables-custom.scss
+// for z-index value vars that range from 1000 - 1070.
+$zi-highest: 50;
+$zi-high: 40;
+$zi-medium: 30;
+$zi-low: 20;
+$zi-lowest: 10;
+$zi-ground: 0;
+$zi-below-ground: -1;
+
+$asset-path: '../assets';
+
+$border-rd-sm: 4px;
+$border-rd-md: 12px;
+$border-rd-lg: 32px;
+
+$border-thin: 1px solid rgba(136, 139, 141, 0.25);
+$border-regular: 2px solid rgba(136, 139, 141, 0.5);
+$border-bold: 2px solid rgba(136, 139, 141, 0.75);
+$border-sidebar-top: 1px solid rgba(0, 0, 0, 0.1);
+$border-sidebar-bottom: 1px solid hsla(60, 2%, 83%, 0.3);
+
+$padding-xsm: 0.5rem;
+$padding-sm: 1rem;
+$padding-md: 2rem;
+$padding-md-lg: 3rem;
+$padding-lg: 4rem;
+$padding-xl: 6rem;
+$padding-xxl: 8rem;
+$padding-xxxl: 10rem;
+
+$shadow-xsm: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+$shadow-sm: 0 0 2px rgba(0, 0, 0, 0.5);
+$shadow-md: inset 1px 2px 4px rgba(1, 1, 1, 0.3);;
+$shadow-lg: 0 4px 2px rgba(136, 139, 141, 0.5);
+
+$transition: 0.3s ease-in-out;
+
+$person-grid-item--height: 202px;
+$person-grid-item--width: 150px;
+
+$person-list-image--width: 128px;

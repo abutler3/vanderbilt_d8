@@ -1,0 +1,58 @@
+// Styling specific to grid views of person
+// listings on person directory pages.
+
+.node--view-mode-photo-grid-names {
+  width: 100%;
+}
+
+.person-grid__item-wrapper.photo-grid-names {
+  background-color: $color-menu-dk-dust;
+  margin: 0 auto;
+  max-width: 150px;
+}
+
+.person-grid__item-wrapper.photo-grid {
+  margin: 0 auto;
+  max-width: 150px;
+}
+
+.person-grid__image {
+
+  a {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.person-grid__placeholder-image {
+  background-color: $color-menu-gray;
+  // Matching aspect ratio of
+  // barista_person_photo_grid_thumbnail image style.
+  padding-top: 140.5%;
+  width: 100%;
+}
+
+.person-grid__content {
+  background-color: $color-menu-dk-dust;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  padding: $padding-sm;
+}
+
+// <h3> required to override
+// default body text styling.
+h3.person-grid__name {
+  margin: 0 0 0.5rem;
+  font-size: inherit;
+  font-weight: $font-weight-bold !important; // sass-lint:disable-line no-important
+  line-height: inherit;
+  word-break: break-word;
+}
+
+.person-grid__title {
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}

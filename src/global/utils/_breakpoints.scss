@@ -1,0 +1,19 @@
+//===========================
+// Breakpoints
+//===========================
+
+// Vanderbilt Medical Center
+// Legacy breakpoints.
+$bp-l-tiny-dwn: max-width 375px;
+$bp-l-xxsm-dwn: max-width 420px;
+
+// Standards.
+$bp-xxsm: 30em; // 420px
+$bp-smaller: 45em; // 700px+-
+$bp-xsm: 768px; // match with Bootstrap
+$bp-sm: 55em; // 770px
+$bp-md: 64em; // 896px
+$bp-lg: 75em; // 1050px
+
+// Menu.
+$bp-inline-menu-mobile: 31.375em; // 500px

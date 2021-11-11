@@ -1,0 +1,136 @@
+body {
+  color: #333333; }
+
+b,
+strong {
+  font-weight: 700; }
+
+a {
+  color: #027da7;
+  /*text-decoration: none;*/ }
+  a:hover, a:active {
+    color: #014C65; }
+
+p {
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400; }
+
+.hrDiv,
+hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(213, 213, 211, 0.3);
+  clear: both;
+  display: block;
+  height: 0;
+  margin: 12px 0 8px;
+  overflow: hidden;
+  padding: 0;
+  width: 100%; }
+
+img {
+  height: auto !important;
+  max-width: 100%; }
+
+.node h1, .block__body h1 {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 32px;
+  color: #02535A;
+/*  padding: 0 10px 15px;*/
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.node h2, .block__body h2 {
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 40px 0 10px;
+  color: #02535A;
+}
+.node h3, .block__body h3 {
+  font-family: "Open Sans", "Arial" ,sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 40px 0 10px;
+  color: #02535A;
+}
+
+.node h4,
+.node h5,
+.node h6,
+.block__body h4,
+.block__body h5,
+.block__body h6 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 10px 0; }
+
+.node h1,
+.node h2,
+.block__body h1,
+.block__body h2 {
+  text-transform: uppercase; }
+
+.node * + h1,
+.node * + h2,
+.block__body * + h1,
+.block__body * + h2 {
+  margin-top: 40px; }
+
+.node * + h3,
+.node * + h4,
+.node * + h5,
+.node * + h6,
+.block__body * + h3,
+.block__body * + h4,
+.block__body * + h5,
+.block__body * + h6 {
+  margin-top: 20px; }
+
+.node ul,
+.node ol,
+.block__body ul,
+.block__body ol {
+  margin: 0 0 15px 20px;
+  padding: 0; 
+  font-size: 16px;}
+
+.node p,
+.block__body p {
+  margin-bottom: 15px; }
+
+video {
+  height: auto !important;
+  max-width: 100% !important; }
+
+nav a {
+  text-decoration: none !important;
+}
+
+main a {
+  color: #23527c;
+  text-decoration: underline;
+}
+
+main a:hover {
+  color: #014C65;
+  text-decoration: none;
+}
+
+.region-content article:first-child {
+  margin-top: 30px;
+}
+
+.block__body li {
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+.region-sidebar-second h2.block__title {
+  font-size: 18px;
+  padding-left: 0;
+  padding-top: 10px;
+}

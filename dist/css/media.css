@@ -1,0 +1,14 @@
+.media_embed {
+  position: relative;
+  padding-top: calc(56.25% + 60px);
+  width: 100%; }
+  @media (min-width: 768px) {
+    .media_embed {
+      padding-top: 341px;
+      width: 500px; } }
+  .media_embed iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%; }

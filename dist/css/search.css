@@ -1,0 +1,52 @@
+.search__results .tabs.primary {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 2rem;
+  text-align: inherit; }
+  @media (min-width: 768px) {
+    .search__results .tabs.primary {
+      text-align: center; } }
+
+.search__results .tabs > li {
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 20; }
+
+.search__results .tabs a {
+  padding: 1rem 2rem;
+  background: none;
+  margin-bottom: 1px; }
+  .search__results .tabs a:hover, .search__results .tabs a:focus {
+    background: #eeeeee;
+    border-bottom: 0; }
+
+.search__results .tabs > li > a {
+  background-color: #f9f9f9; }
+  .search__results .tabs > li > a:hover, .search__results .tabs > li > a:active {
+    text-decoration: underline; }
+
+.search__results .tabs > li.is-active a,
+.search__results .tabs > li.is-active a:hover,
+.search__results .tabs > li.is-active a:focus {
+  background-color: #02535a;
+  color: #ffffff; }
+
+.search__results .tabs > li + li {
+  margin-right: 2px; }
+
+.barista-search-form {
+  text-align: center; }
+  .barista-search-form .form-item-search {
+    display: inline-block;
+    max-width: 80%; }
+  .barista-search-form .button {
+    max-width: 15%;
+    display: inline-block;
+    text-indent: -999999px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent url("../assets/search.svg") 50% 50% no-repeat;
+    background-size: 24px;
+    margin-left: 0.5rem; }

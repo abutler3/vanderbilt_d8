@@ -1,0 +1,65 @@
+// Multi-column Block
+//
+// This is the multi-column block, which displays up to three
+// other blocks (Text Blocks, Slideshow Blocks, etc.), in a row.
+//
+// Markup: multi-column-block.kss.twig
+//
+// Style guide: Components.multi-column-block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.multi-column-block {
+
+  padding: 0;
+
+  .l-main__content & {
+    border: 0;
+  }
+}
+
+// <h2> required to override
+// default body text styling.
+h2.multi-column-block__title {
+  padding: $padding-md-lg 0 0;
+}
+
+.multi-column-block__body {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint($bp-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+  }
+}
+
+.multi-column-block__block {
+
+  @include breakpoint($bp-md) {
+    flex: 1 1 100%;
+
+    .multi-column-block__content--2-col &,
+    .multi-column-block__content--3-col & {
+      padding: 0 10px;
+
+      &:first-child > .block {
+        margin: 0 10px 0 -10px;
+      }
+
+      &:last-child > .block {
+        margin: 0 -10px 0 10px;
+      }
+    }
+
+    .multi-column-block__content--2-col & {
+      flex: 1 1 50%;
+    }
+
+    .multi-column-block__content--3-col & {
+      flex: 1 1 33%;
+    }
+  }
+}

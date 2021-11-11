@@ -1,0 +1,384 @@
+// Style Guide Theme
+//
+// This is the theme styling component for the style guide
+//
+// Markup: style-guide-theme.twig
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// KSS node changes
+// sass-lint:disable-all
+#kss-node {
+
+  .kss-header > .mc__sprite--logo-header {
+    margin: 10px auto 20px;
+  }
+
+  .kss-menu-full-width {
+    @include button;
+    background: $color-pacific;
+    margin-top: $padding-md;
+
+    &:hover,
+    &:focus {
+      background: $color-pacific;
+    }
+  }
+
+  // Main content
+  .kss-section {
+    margin-bottom: $padding-md-lg;
+    padding-bottom: $padding-md;
+    border-bottom: 1px solid $color-silver;
+
+    &:first-child,
+    &:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: $padding-sm;
+    }
+  }
+
+  .kss-depth-2 {
+    margin: 0;
+    border: 0;
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+
+  .kss-modifier {
+    border-top: 0;
+  }
+
+  .kss-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+    position: relative;
+    max-width: 1440px;
+  }
+
+  .kss-content {
+    padding-left: $padding-xsm;
+    transition: all 0.5s ease-in-out;
+    margin: 0 $padding-md 0 325px;
+  }
+
+  .kss-sidebar-collapsed + .kss-content {
+    transition: all 0.5s ease-in-out;
+    margin: 0 $padding-md 0 5rem;
+  }
+
+  .kss-modifier-original .kss-modifier-example {
+    padding: $padding-sm 0;
+  }
+
+  .kss-overview code,
+  .kss-description code,
+  .kss-description pre {
+    padding: 2px 6px;
+    background: $color-smoke;
+    border-radius: $border-rd-sm;
+  }
+
+  .kss-description {
+
+    blockquote {
+      margin-bottom: $padding-md;
+    }
+
+    h3 {
+      font-weight: normal;
+      font-style: normal;
+      margin: 20px 0 0;
+    }
+  }
+
+  .kss-markup pre {
+    border-radius: 0 $border-rd-sm $border-rd-sm 0;
+    border: 2px solid $color-smoke;
+    border-left: 5px solid $color-pacific;
+  }
+
+  // Sidebar
+  .kss-sidebar.kss-fixed,
+  .kss-sidebar {
+    height: 100% !important;
+    background: $color-smoke;
+    padding: ($padding-md + $padding-xsm) $padding-md;
+    width: 275px;
+    box-shadow: $shadow-sm;
+    float: left;
+    position: fixed;
+    z-index: 1;
+
+    .kss-nav {
+      padding: $padding-xsm 0;
+      margin: $padding-xsm (-$padding-xsm);
+      max-height: calc(125vh - 44px - 68px - 30px);
+      overflow-y: auto;
+    }
+
+    .kss-sidebar-inner {
+      text-decoration: none;
+      padding-top: 0;
+      margin-top: -$padding-sm;
+    }
+  }
+
+  .kss-menu > .kss-menu-item {
+    padding: $padding-xsm;
+    border-bottom: 1px solid $color-silver;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .kss-menu,
+  .kss-menu-child,
+  .kss-menu > .kss-menu-item > a {
+    border-bottom: 0;
+
+    li {
+      list-style: none;
+    }
+
+    > .kss-menu-item > a > .kss-name {
+      text-align: left;
+      color: $color-charcoal;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-charcoal;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .kss-menu-child {
+    padding: 0;
+  }
+
+  .kss-style h1 > a,
+  .kss-style h2 > a,
+  .kss-style h3 > a,
+  .kss-menu > .kss-menu-item > a > .kss-ref,
+  .kss-menu-child > .kss-menu-item > a > .kss-ref,
+  .kss-overview a,
+  .kss-description a {
+    text-align: left;
+    color: $color-pacific;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-pacific;
+      text-decoration: underline;
+    }
+  }
+
+  .kss-doc-title {
+    text-align: left;
+    color: $color-charcoal;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .kss-depth-1 .kss-title,
+  .kss-overview > h1:first-child {
+    font-weight: 100;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .kss-header {
+    background: transparent;
+
+    .site-logo {
+      margin: 0 auto;
+      width: 175px;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .kss-overview h1,
+  .kss-overview h2,
+  .kss-overview h3,
+  .kss-overview h4,
+  .kss-overview h5,
+  .kss-overview h6 {
+    font-weight: normal;
+  }
+
+  .kss-overview h1 {
+    margin: 0 0 30px;
+    padding-bottom: 10px;
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+
+  // Styling for component helper wrappers used
+  // when display of component requires positioning
+  // overrides.
+  .kss__component-wrapper {
+    position: relative;
+  }
+}
+
+// Sidebar toggle settings
+.kss-sidebar,
+.nav-btn {
+  transition: all 0.5s ease-in-out;
+  overflow: visible !important; // needed to override default KSS node styling
+}
+
+.kss-sidebar {
+  width: 200px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.no-js .nav-btn {
+  display: none;
+}
+
+.nav-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('#{$asset-path}/chevron_left_round_red.png') no-repeat;
+  right: 10px;
+  top: 13px;
+  background-size: 32px;
+  border: 0;
+  box-shadow: none;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+.kss-menu {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  visibility: visible;
+}
+
+.kss-sidebar-collapsed {
+  transform: translateX(-82%);
+
+  .kss-menu {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .kss-nav {
+    overflow-y: hidden !important;
+  }
+}
+
+.kss-sidebar-collapsed .nav-btn {
+  transform: translateX(100%);
+  background: url('#{$asset-path}/chevron_right_round_red.png') no-repeat;
+  background-size: 32px;
+  right: 40px;
+  top: 13px;
+}
+
+
+.kss-skip-link {
+  background: $color-pacific;
+  border: 3px solid $color-pacific;
+  color: $color-white;
+  display: inline-block;
+  left: 0;
+  list-style: none;
+  opacity: 1;
+  padding: 0.8rem;
+  pointer-events: none;
+  position: fixed;
+  text-decoration: underline;
+  top: -100px;
+  transition: top 0.3s ease-in-out;
+  z-index: 99;
+
+  &:focus,
+  &:active {
+    color: $color-white;
+    opacity: 1;
+    top: 0;
+  }
+}
+
+// Misc changes
+body {
+  @include font-stack-base;
+  color: $color-charcoal;
+}
+
+.break {
+  margin: $padding-md-lg 0;
+  border-bottom: 1px solid $color-smoke;
+  clear: both;
+  float: left;
+  width: 100%;
+}
+
+.markup {
+  margin: 1.5rem 0;
+  border-bottom: 1px solid $color-smoke;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap; // *
+  width: 1px;
+  // *
+  // ensures that words don't get
+  // combined together by ATs
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.js-show-markup {
+  @include button;
+  background: $color-pacific;
+  margin: $padding-xsm 0;
+
+  &:hover,
+  &:focus {
+    background: $color-pacific;
+  }
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+// sass-lint:enable-all

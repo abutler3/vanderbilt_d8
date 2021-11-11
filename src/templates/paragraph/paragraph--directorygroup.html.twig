@@ -1,0 +1,87 @@
+{#
+/**
+ * @file
+ * vanderbilt_d8 theme implementation to display a directorygroup paragraph.
+#}
+
+{{ attach_library('vanderbilt_d8/directory') }}
+
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'directory',
+    layout ? 'directory-layout--' ~ layout|clean_class,
+  ]
+%}
+{% block paragraph %}
+  {% if remote_persons %}
+    {% set persons = remote_persons|merge(persons) %}
+  {% endif %}
+
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_directorygroup_title|render|trim is not empty %}
+      <h2 class="directory__group-title">{{ content.field_directorygroup_title }}</h2>
+    {% endif %}
+    <ul class="directory__items">
+      {% for person in persons %}
+        <li{{ attributes.addClass('directory__item') }}>
+          {% if layout == 'list' %}
+
+            {% set suffix = person.suffix[0]['#context']['value'] %}
+            {% set suffix = suffix is not null or suffix is not empty ? ', ' ~ suffix %}
+            {% set person_name_and_suffix = person.name ~ suffix %}
+
+            {%
+              include "@vanderbilt_d8/person/person--list.twig" with {
+                "use_placeholder_images": use_placeholder_images,
+                "photo": person.photo|render|trim is not empty ? person.photo,
+                "link": person.link,
+                "name": person_name_and_suffix,
+                "email": person.email,
+                "suffix": person.suffix|render|trim is not empty ? person.suffix,
+                "title": person.title,
+                "phone": person.phone|render|trim is not empty ? person.phone,
+                "address": person.address|render|trim is not empty ? person.address,
+                "brief_description": person.brief_description|render|trim is not empty ? person.brief_description,
+                "bio": person.bio|render|trim is not empty ? person.bio,
+                "cv_link": person.cv_link|render|trim is not empty ? person.cv_link,
+                "research": person.research|render|trim is not empty ? person.research,
+                "clinical": person.clinical|render|trim is not empty ? person.clinical,
+                "patient_link": person.patient_link|render|trim is not empty ? person.patient_link,
+                "lab_link": person.lab_link|render|trim is not empty ? person.lab_link,
+                "postdoc_positions": person.postdoc_positions|render|trim is not empty ? person.postdoc_positions,
+                "publications": person.publications,
+                "external_link": person.external_link|render|trim is not empty ? person.external_link,
+                "modifier_class": 'list'
+              } only
+            %}
+          {% elseif layout == 'photo_grid' %}
+            {%
+              include "@vanderbilt_d8/person/person--photo-grid.twig" with {
+                "modifier_class": 'photo-grid',
+                "photo": person.photo|render|trim is not empty ? person.photo,
+                "name": person.name,
+                "title": person.title[0],
+                "link": person.link,
+                "email": person.email,
+              } only
+            %}
+          {% elseif layout == 'photo_grid_name' %}
+            {%
+              include "@vanderbilt_d8/person/person--photo-grid-names.twig" with {
+                "modifier_class": 'photo-grid-names',
+                "photo": person.photo|render|trim is not empty ? person.photo,
+                "name": person.name,
+                "title": person.title[0],
+                "link": person.link,
+                "email": person.email,
+              } only
+            %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock paragraph %}

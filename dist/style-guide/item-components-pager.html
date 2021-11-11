@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Style Guide</title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" href="kss-assets/kss.css">
+  <link rel="stylesheet" href="../all/all.css">
+
+</head>
+  <body id="kss-node">
+
+      <a href="#kss-main-content" class="kss-skip-link">
+      Jump to main content
+    </a>
+
+    <div class="kss-wrapper">
+
+      <div class="kss-sidebar">
+
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <a class="mc__sprite mc__sprite--logo-header" href="/themes/custom/vanderbilt_d8/dist/style-guide/" alt="Vanderbilt University Medical Center logo"><h1>Vanderbilt University Medical Center</h1></a>
+            <h1 class="kss-doc-title visuallyhidden">Style Guide</h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+                              <li class="kss-menu-item">
+                    <a href="section-components.html"><span class="kss-ref">1</span><span class="kss-name">Components</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-general.html"><span class="kss-ref">2</span><span class="kss-name">General</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-layouts.html"><span class="kss-ref">3</span><span class="kss-name">Layouts</span></a>
+                                  </li>
+                              <li class="kss-menu-item">
+                    <a href="section-pages.html"><span class="kss-ref">4</span><span class="kss-name">Pages</span></a>
+                                  </li>
+                            <li><button class="kss-menu-full-width js-full-width" title="Remove navigation and padding to show what a component looks like at full page width.">Remove Navigation</button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="kss-content">
+        <article role="main" class="kss-article">
+        
+          
+                                  <div id="kssref-components-pager" class="kss-section kss-depth-2">
+              <div class="kss-style">
+                                <h2 class="kss-title kss-title--level-2">
+                  <a class="kss-title__permalink" href="#kssref-components-pager">
+                    Pager
+                  </a>
+                </h2>
+
+                                  <div class="kss-description">
+                    <p>This is the pager component.</p>
+
+                  </div>
+                
+                              </div>
+
+                              <div class="kss-modifier-block">
+
+                  <div class="kss-modifier kss-modifier-original">
+                    <div class="kss-modifier-example">
+                      
+
+<section class="pager">
+  <ul class="pager__items">
+          
+      
+      
+              <li class="pager__item pager__item--first">
+          <a href="#" title="Go to first page">
+            <span aria-hidden="true">« first</span>
+          </a>
+        </li>
+        <li class="pager__item pager__item--previous">
+          <a href="#" title="Go to previous page" rel="prev">
+            <span aria-hidden="true">‹ previous</span>
+          </a>
+        </li>
+      
+      <li class="pager__item ">
+        <a href="#">1</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">2</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">3</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">4</a>
+      </li>
+
+                
+                    
+      
+      
+      <li class="pager__item pager-current">
+        <a href="#">5</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">6</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">7</a>
+      </li>
+
+                
+      
+      
+      
+      <li class="pager__item ">
+        <a href="#">8</a>
+      </li>
+
+              <li class="pager__item pager__item--ellipsis" role="presentation">…</li>
+        <li class="pager__item pager__item--next">
+          <a href="#" title="Go to next page" rel="next">
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+        <li class="pager__item pager__item--last">
+          <a href="#" title="Go to last page">
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+            </ul>
+</section>
+
+                    </div>
+                  </div>
+
+                                                      <div class="kss-markup">
+                    <button class="js-show-markup">Show Markup Example</button>
+                    <template>
+                      <pre><code data-language="html">{{ attach_library(&#039;vanderbilt_d8/pager&#039;) }}
+
+&lt;section class=&quot;pager&quot;&gt;
+  &lt;ul class=&quot;pager__items&quot;&gt;
+    {% for item in items %}
+      {# sets current class variable #}
+      {% if item.current == true %}
+        {% set current = &#039;pager-current&#039; %}
+      {% endif %}
+
+      {# Assigns first/last item classes. #}
+      {% if loop.first %}
+        &lt;li class=&quot;pager__item pager__item--first&quot;&gt;
+          &lt;a href=&quot;#&quot; title=&quot;Go to first page&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;« first&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;pager__item pager__item--previous&quot;&gt;
+          &lt;a href=&quot;#&quot; title=&quot;Go to previous page&quot; rel=&quot;prev&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;‹ previous&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+      {% endif %}
+
+      &lt;li class=&quot;pager__item {{ current|default(&#039;&#039;) }}&quot;&gt;
+        &lt;a href=&quot;{{ item.url }}&quot;&gt;{{ item.page }}&lt;/a&gt;
+      &lt;/li&gt;
+
+      {% if loop.last %}
+        &lt;li class=&quot;pager__item pager__item--ellipsis&quot; role=&quot;presentation&quot;&gt;…&lt;/li&gt;
+        &lt;li class=&quot;pager__item pager__item--next&quot;&gt;
+          &lt;a href=&quot;#&quot; title=&quot;Go to next page&quot; rel=&quot;next&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;next ›&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;pager__item pager__item--last&quot;&gt;
+          &lt;a href=&quot;#&quot; title=&quot;Go to last page&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;last »&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+      {% endif %}
+    {% endfor %}
+  &lt;/ul&gt;
+&lt;/section&gt;
+</code></pre>
+                    </template>
+                  </div>
+                                  </div>
+
+                                          </div>
+                          </article>
+      </div>
+
+    </div>
+  
+<!-- SCRIPTS -->
+<!-- Fake drupalSettings -->
+<script type="application/json" data-drupal-selector="drupal-settings-json">
+  {}
+</script>
+<!-- / Fake drupalSettings -->
+<script src="/core/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/core/assets/vendor/jquery-once/jquery.once.min.js"></script>
+<script src="/core/assets/vendor/domready/ready.min.js"></script>
+<script src="/core/misc/drupalSettingsLoader.js"></script>
+<script src="/core/misc/drupal.js"></script>
+<script src="/core/misc/drupal.init.js"></script>
+<script src="kss-assets/kss.js"></script>
+<script src="kss-assets/rainbow.min.js"></script>
+<script src="kss-assets/main.js"></script>
+<script src="../bootstrap/js/dropdown.js"></script>
+<script src="../bootstrap/js/modal.js"></script>
+<script src="../bootstrap/js/affix.js"></script>
+<script src="../js/jquery.flexslider-min.js"></script>
+<script src="../js/menus.js"></script>
+<script src="../js/site-search.js"></script>
+<script src="../js/slideshow.js"></script>
+
+
+<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

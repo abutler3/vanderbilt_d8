@@ -1,0 +1,90 @@
+# Generated on 2017-04-13 using generator-mc-d8-theme 1.3.3
+
+# Drupal's .info.yml files allow themers to easily specify some of the static
+# properties of your theme. Properties such as its name, libraries of style
+# sheets and javascripts, and block regions.
+#
+# Drupal 8 stores a cache of the data in this .info.yml files. If you modify any
+# lines in this file, you MUST refresh Drupal 8's cache. You can do this with
+# the "drush cr" command or by simply visiting the Appearance page at
+# admin/appearance.
+
+name: Vanderbilt D8
+type: theme
+description: Drupal 8 theme for Vanderbilt
+package: Other
+core_version_requirement: ^8 || ^9
+# Classy vs. Stable as a base theme: https://www.lullabot.com/articles/a-tale-of-two-base-themes-in-drupal-8-core
+base theme: classy
+
+# This section controls the libraries for your theme. For full documentation,
+# see https://www.drupal.org/node/2216195
+
+# The "libraries-override:" section will allow you to:
+# - Replace an entire library.
+# - Remove an entire library.
+# - Replace an asset in a library with another asset.
+# - Remove an asset from a library.
+# libraries-override:
+#   system/base:
+#     css:
+#       component:
+#         # Replace one library with another.
+#         /core/themes/stable/css/system/components/ajax-progress.module.css: components/ajax-progress/ajax-progress.module.css
+#         # Remove an entire library.
+#         /core/themes/stable/css/system/components/fieldgroup.module.css: false
+
+#   views/views.module:
+#     css:
+#       component:
+#         /core/themes/stable/css/views/views.module.css: false
+
+
+# The "libraries-extend:" section will allow you to add your own JS or CSS to
+# existing libraries.
+# libraries-extend:
+
+
+# The "libraries:" section will add a library to _all_ pages.
+libraries:
+  - vanderbilt_d8/global
+  - vanderbilt_d8/fonts
+  # Example adding the webfonts library to every page.
+  # See vanderbilt_d8.libraries.yml for more info.
+  #- vanderbilt_d8/webfonts
+
+libraries-override:
+  barista_siteonoff/barista_siteonoff:
+    css:
+      theme:
+        barista_siteonoff.css:  dist/css/barista-siteonoff.css
+  miniorange_saml/miniorange_saml.admin:
+    css:
+      layout:
+        css/miniorange_saml.module.css: dist/css/miniorange_saml_module.css
+#  barista_adminbar/barista_adminbar:
+#    vanderbilt_d8/barista-adminbar
+
+# This section is used by the contrib module, Component Libraries. It allows you
+# to reference .twig files in your sass/ directory by using the Twig namespace:
+# @vanderbilt_d8
+# See https://www.drupal.org/project/components for more information.
+component-libraries:
+  vanderbilt_d8:
+    paths:
+      - src/components
+      - src/layout
+      - src/templates
+
+# This section lists the regions defined in the theme (our base theme) default
+# page.html.twig and maintenance-page.html.twig files. The name before
+# the semi-colon is the machine name of the region. The text after the
+# semi-colon is the region's description used on the admin/structure/block page.
+regions:
+  featured: Featured
+  help: Help
+  sidebar_first: Sidebar First
+  sidebar_second: Sidebar Second
+  content: Content
+  content_bottom: Content Bottom
+  footer: Footer

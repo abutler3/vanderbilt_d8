@@ -1,0 +1,37 @@
+{
+  "title": "Popular Tags",
+  "terms": {
+    "Arthritis": {
+      "weight": "2",
+      "url": "http://bing.com"
+    },
+    "dual energy CT": {
+      "weight": "3",
+      "url": "http://bing.com"
+    },
+    "HPOA": {
+      "weight": "1",
+      "url": "http://bing.com"
+    },
+    "MRI": {
+      "weight": "8",
+      "url": "http://bing.com"
+    },
+    "neuropathic arthropathy": {
+      "weight": "1",
+      "url": "http://bing.com"
+    },
+    "neuropathy": {
+      "weight": "4",
+      "url": "http://bing.com"
+    },
+    "peripheral nerves": {
+      "weight": "5",
+      "url": "http://bing.com"
+    },
+    "therapeutic": {
+      "weight": "2",
+      "url": "http://bing.com"
+    }
+  }
+}

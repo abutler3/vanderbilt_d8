@@ -1,0 +1,18 @@
+.big-module a:link,
+.big-module a:visited,
+.medium-module a:link,
+.medium-module a:visited,
+.small-module a:link,
+.small-module a:visited {
+  color: #014C65;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer; }
+
+.sectioncontent p {
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0 0 15px;
+  line-height: 1.6em !important; }

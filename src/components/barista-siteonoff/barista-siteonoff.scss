@@ -1,0 +1,15 @@
+// Import site utilities.
+@import '../../global/utils/init';
+
+#siteonoff { // sass-lint:disable-line no-ids
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  background: #a81818;
+  color: $color-white;
+
+  a {
+    color: $color-frozen !important; // sass-lint:disable-line no-important
+    font-weight: bold;
+  }
+}

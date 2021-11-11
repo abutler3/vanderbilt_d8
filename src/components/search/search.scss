@@ -1,0 +1,81 @@
+// Import site utilities.
+@import '../../global/utils/init';
+
+// parent selector allows for targetting primary tabs theming
+// without affecting tabs in other pages of the site.
+.search__results {
+
+  .tabs.primary {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid $color-menu-lt-gray;
+    margin-bottom: 2rem;
+    text-align: inherit;
+
+    @include breakpoint($bp-xsm) {
+      text-align: center;
+    }
+  }
+
+  // Overrides global tab styles.
+  .tabs > li {
+    margin-bottom: -1px;
+    position: relative;
+    z-index: $zi-low;
+  }
+
+  .tabs a {
+    padding: $padding-sm $padding-md;
+    background: none;
+    margin-bottom: 1px;
+
+    &:hover,
+    &:focus {
+      background: $color-mercury;
+      border-bottom: 0;
+    }
+  }
+
+  // Overrides global tab styles.
+  .tabs > li > a {
+    background-color: $color-dust;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  .tabs > li.is-active a,
+  .tabs > li.is-active a:hover,
+  .tabs > li.is-active a:focus {
+    background-color: $color-peacock;
+    color: $color-white;
+  }
+
+  .tabs > li + li {
+    margin-right: 2px;
+  }
+}
+
+// Targets form and its elements.
+.barista-search-form {
+  text-align: center;
+
+  .form-item-search {
+    display: inline-block;
+    max-width: 80%;
+  }
+
+  .button {
+    max-width: 15%;
+    display: inline-block;
+    text-indent: -999999px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent url('../assets/search.svg') 50% 50% no-repeat;
+    background-size: 24px;
+    margin-left: 0.5rem;
+  }
+}

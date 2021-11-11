@@ -1,0 +1,157 @@
+// Adminmenu Adjustment
+//
+// These are styles to adjust top of page with placement of admin menu.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// sass-lint:disable no-important, no-ids
+
+// Adds top padding to body to account for header's height.  Padding takes
+// under consideration whether admin toolbar is present and/or open.
+body {
+
+  &.toolbar-vertical,
+  &.toolbar-horizontal  {
+    padding-top: 137px !important;
+
+    @include breakpoint($bp-xsm) {
+      top: 192px;
+    }
+  }
+
+  &.toolbar-horizontal.toolbar-tray-open {
+    padding-top: 177px !important;
+  }
+}
+
+.mc__site__header {
+
+  // Accounts for admin toolbar being present.
+  .toolbar-vertical &,
+  .toolbar-horizontal & {
+    top: 35px;
+    z-index: 1;
+
+    @include breakpoint($bp-xsm) {
+      top: 84px;
+    }
+
+    @include breakpoint($bp-md) {
+      top: 84px;
+    }
+  }
+
+  // Accounts for admin toolbar being present and open.
+  .toolbar-horizontal.toolbar-tray-open & {
+    top: 124px;
+  }
+
+  // Accounts for admin toolbar being present and open in
+  // smaller viewports.
+  .toolbar-vertical.toolbar-tray-open & {
+    z-index: $zindex-navbar - 501;
+  }
+}
+
+// Removes box shadow on admin toolbar for better integration of
+// of site header.
+.toolbar {
+
+  .toolbar-tray-horizontal,
+  .toolbar-bar {
+    box-shadow: none;
+  }
+}
+
+.mc__site__subheader {
+
+  // Accounts for admin toolbar being present.
+  .toolbar-vertical &,
+  .toolbar-horizontal & {
+    top: 105px;
+
+    @include breakpoint($bp-xsm) {
+      top: 150px;
+    }
+  }
+
+  // Accounts for admin toolbar being present and open.
+  .toolbar-horizontal.toolbar-tray-open & {
+    top: 190px;
+  }
+}
+
+// Barista toolbar positioning
+.barista-adminbar > .navbar-fixed-top {
+  // Setting z-index to ensure bar is above page content;
+  // including flyout menu.
+  z-index: $zi-lowest;
+
+  // Accounts for admin toolbar being present.
+  .toolbar-vertical &,
+  .toolbar-horizontal & {
+    top: 39px;
+  }
+
+  // Accounts for admin toolbar being present and open.
+  .toolbar-horizontal.toolbar-tray-open & {
+    top: 79px;
+  }
+}
+
+// If user is logged in, update layout
+.user-logged-in {
+
+  &.toolbar-fixed input[type='checkbox'].mc__navbar__checkbox:checked + label + .mc__navbar {
+    height: calc(100% - 85px);
+    top: 38px;
+    z-index: 999;
+
+    @include breakpoint($bp-xsm) {
+      margin-top: 44px;
+    }
+  }
+
+  // Accounts for admin toolbar being present and open.
+  &.toolbar-horizontal.toolbar-tray-open input[type='checkbox'].mc__navbar__checkbox:checked + label + .mc__navbar {
+    height: calc(100% - 125px);
+    top: 78px;
+
+    @include breakpoint($bp-xsm) {
+      top: 44px;
+    }
+
+    @include breakpoint($bp-sm) {
+      top: 78px;
+    }
+  }
+
+  // Accounts for admin toolbar being present and open in
+  // smaller viewports.
+  &.toolbar-vertical.toolbar-tray-open input[type='checkbox'].mc__navbar__checkbox:checked + label + .mc__navbar {
+    z-index: $zindex-navbar - 501;
+
+    @include breakpoint($bp-sm) {
+      top: 38px;
+    }
+  }
+
+  #site-canvas {
+    /* adds top margin if user is logged in */
+    @include breakpoint($bp-xsm) {
+      margin-top: 45px;
+    }
+  }
+
+  /* Removes margin if user is not adming */
+  &.not-power-user #site-canvas {
+    margin-top: 0;
+  }
+}
+
+@media all and(max-width: $bp-xsm) {
+  .is-active.toolbar-tray-vertical {
+    margin-top: 35px !important;
+  }
+}

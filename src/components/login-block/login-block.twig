@@ -1,0 +1,36 @@
+<div class="panel panel-default user-login-well">
+  <div class="panel-heading"><h3><i class="fa fa-lock"></i> Log in</h3></div>
+    <div class="panel-body">
+      <form action="/bhave-lab/lab-protocols" method="post" id="user-login" accept-charset="UTF-8">
+        <div>
+        <div id="edit-cas-login-redirection-message" class="form-item form-type-item" style="display: block;">
+You will be redirected to the secure VUNetID login page. To log in without a VUNetID, click "Cancel VUNetID login" to proceed.
+        </div>
+        <div class="form-item form-type-checkbox form-item-cas-identifier" style="display: none;">
+          <input type="checkbox" id="edit-cas-identifier" name="cas_identifier" value="1" checked="checked" class="form-checkbox">
+          <label class="option" for="edit-cas-identifier">Log in</label>
+          <div class="description">You will be redirected to the secure VUNetID login page. To log in without a VUNetID, click "Cancel VUNetID login" to proceed.</div>
+          </div>
+          <div class="form-item form-type-textfield form-item-name" style="display: none;">
+            <label for="edit-name">Username (not your VUNetID) <span class="form-required" title="This field is required.">*</span></label>
+            <input type="text" id="edit-name" name="name" value="" size="60" maxlength="60" class="form-text required">
+          </div>
+          <div class="form-item form-type-password form-item-pass" style="display: none;">
+            <label for="edit-pass">Password <span class="form-required" title="This field is required.">*</span></label>
+            <input type="password" id="edit-pass" name="pass" size="60" maxlength="128" class="form-text required">
+          </div>
+          <input type="hidden" name="form_build_id" value="form-Vk9GLfr97ihwRAwwL9vlSWVONeLJHfJST0ew1Y7QGcI">
+          <input type="hidden" name="form_id" value="user_login">
+          <input type="hidden" name="cas.return_to" value="node/30">
+          <div class="form-actions form-wrapper" id="edit-actions">
+            <input type="submit" id="edit-submit" name="op" value="Log in" class="btn btn-primary"><div class="item-list">
+            <ul class="cas-links">
+              <li class="cas-link first" style="display: none;"><a href="/bhave-lab/%23">Log in</a></li>
+              <li class="uncas-link last" style="display: block;"><a href="/bhave-lab/%23">Cancel VUNetID login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

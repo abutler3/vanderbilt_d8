@@ -1,0 +1,14 @@
+<div class="kss__component-wrapper" style="min-height: 125px;">
+  {#
+    @SEE
+    header.twig file for full markup requirements.
+  #}
+  {%
+    include "@vanderbilt_d8/header/header.twig" with {
+      'affix': affix,
+      'subhead_alert': subhead_alert,
+      'search': search,
+      'menus': menus
+    } only
+  %}
+</div>

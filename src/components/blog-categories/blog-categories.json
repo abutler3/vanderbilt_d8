@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "url": "#",
+      "category": "Category One",
+      "icon": "bookmark"
+    },
+    {
+      "url": "#",
+      "category": "Category Two",
+      "icon": "bookmark"
+    },
+    {
+      "url": "#",
+      "category": "Category Three",
+      "icon": "bookmark"
+    }
+  ]
+}

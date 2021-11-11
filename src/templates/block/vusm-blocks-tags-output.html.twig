@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display Tag List/Cloud Output.
+ */
+#}
+{% set modifier_class = classes|join(' ') %}
+
+{# Pass array from preprocess to theme component. #}
+{%
+  include "@vanderbilt_d8/tag-list/tag-list.twig" with {
+    'title': title,
+    'modifier_class': modifier_class,
+    'tag_format': tag_format,
+    'terms': terms
+  } only
+%}

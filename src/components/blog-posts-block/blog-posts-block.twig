@@ -1,0 +1,92 @@
+{#
+/**
+ * @TODO
+ * Integrate vusm-blocks-recent-blog-posts-output.html.twig with this file.
+ */
+#}
+{{ attach_library('vanderbilt_d8/blog-posts-block') }}
+<div class="block blog-posts-block {{ modifier_class }}">
+  {% if blog_posts_block_title %}
+    <h2 class="block__title blog-posts-block__title">
+      {{ blog_posts_block_title }}
+    </h2>
+  {% endif %}
+  <div class="block__body blog-posts-block__body">
+    {% if featured_posts is not empty %}
+      <div class="blog-posts-block__items--featured flexslider">
+        <ul class="blog-posts-block__list slides">
+          {% for featured_post in featured_posts %}
+            <li class="blog-posts-block__list-item slide">
+              <div class="blog-posts-block__content">
+                {% if featured_post.external_url %}
+                  <h3 class="blog-posts-block__item-title">
+                    <a href="{{ featured_post.external_url }}">{{ featured_post.title }}</a>
+                  </h3>
+                {% else %}
+                  <h3 class="blog-posts-block__item-title">
+                    <a href="{{ featured_post.url }}">{{ featured_post.title }}</a>
+                  </h3>
+                {% endif %}
+                {% if not hide_date %}
+                  <div class="blog-posts-block__date">
+                    {{ featured_post.dateline }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="blog-posts-block__image">
+                {% if featured_post.image %}
+                  {{ featured_post.img }}
+                {% else %}
+                  <span class="placeholder-img"><i class="icon-v"></i></span>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if posts is not empty %}
+      <div class="blog-posts-block__items">
+        <ul class="blog-posts-block__list">
+          {% for post in posts %}
+            {% if post.external_url %}
+              {% set full_post_url = post.external_url %}
+            {% else %}
+              {% set full_post_url = post.url %}
+            {% endif %}
+            <li class="blog-posts-block__list-item {{ post.sticky }}">
+              {% if use_thumbnails %}
+                <div class="blog-posts-block__image">
+                  <a href="{{ full_post_url }}"{{ post.external_url ? ' rel="external"' }}>
+                    {% if post.image %}
+                      {{ post.image }}
+                    {% else %}
+                      <span class="blog-posts-block__placeholder-img"></span>
+                    {% endif %}
+                  </a>
+                </div>
+              {% endif %}
+              <div class="blog-posts-block__content">
+                <h3 class="blog-posts-block__item-title">
+                  <a href="{{ full_post_url }}"{{ post.external_url ? ' rel="external"' }}>{{ post.title }}</a>
+                </h3>
+                {% if not hide_date %}
+                  <div class="blog-posts-block__date">
+                    <i class="fa fa-calendar"></i> {{ post.dateline }}
+                  </div>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if more_posts %}
+      <div class="blog-posts-block__more-link">
+        <a href="{{ more_posts.url }}">
+          {{ more_posts.text }} <i class='fa fa-chevron-right'></i>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

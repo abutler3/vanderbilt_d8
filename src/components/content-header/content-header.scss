@@ -1,0 +1,110 @@
+// Content Header
+//
+// The Content Header provides the page title, the parent links
+// and the top level menu items from provided menu.
+//
+// Markup: content-header.twig
+//
+// Style guide: Components.content-header
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.content-header {
+  padding: $padding-sm;
+
+  &.col-sm-12 {
+    + * {
+      clear: both;
+    }
+  }
+}
+
+// Page title.
+.content-header__page-title {
+  margin-bottom: $padding-sm;
+}
+
+.site-title {
+  color: $color-peacock;
+  font-family: $font-family-secondary;
+  font-size: 3.65rem;
+  font-weight: $font-weight-light;
+  line-height: 1.2;
+  margin-top: 0;
+  padding-bottom: 10px;
+}
+
+.site-title__link {
+  color: $color-peacock;
+
+  &:hover {
+    color: $color-peacock;
+    text-decoration: none;
+  }
+}
+
+.content-header__parent-links {
+  margin-top: -$padding-sm;
+  margin-bottom: $padding-md;
+}
+
+// Parent links.
+.parent-links {
+  display: inline-block;
+  font-size: 12px;
+  font-family: $font-family-secondary;
+  font-weight: $font-weight-light;
+  letter-spacing: 0.04em;
+  list-style: none;
+  margin: $padding-sm 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.parent-links__item {
+  display: inline-block;
+  margin: 0 $padding-sm $padding-sm 0;
+}
+
+.parent-links__link {
+  background: $color-smoke;
+  color: $color-peacock;
+  line-height: 1;
+  padding: $padding-xsm $padding-sm;
+}
+
+// Patient Links.
+// Note that the style of the Patient Links should match the
+// menu in the Content Header compontent.
+.content-header__patient-link {
+  display: none;
+  float: right;
+  text-align: right;
+  width: 14rem;
+
+  @include breakpoint($bp-xsm) {
+    display: block;
+  }
+}
+
+.patient-link {
+  color: $color-tundora;
+  font-family: $font-family-secondary;
+  font-size: 1.8rem;
+  font-weight: $font-weight-light;
+}
+
+.patient-link__link {
+  color: $color-tundora;
+  display: block;
+  font-weight: $font-weight-light;
+  padding: $padding-xsm $padding-sm;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: $color-tundora;
+    text-decoration: none;
+  }
+}

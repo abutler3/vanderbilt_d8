@@ -1,0 +1,11 @@
+.l-three-col {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .l-three-col > div {
+    padding: 0 15px; }
+  @media (min-width: 64em) {
+    .l-three-col {
+      -ms-flex-direction: row;
+      flex-direction: row; } }

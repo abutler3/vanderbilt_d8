@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display Tag List/Cloud Output.
+ */
+#}
+{{ attach_library('vanderbilt_d8/tag-list') }}
+<div class="block tag-list {{ modifier_class }}">
+  {% if title %}
+    <h2 class="block__title tag-list__title">
+      {{ title }}
+    </h2>
+  {% endif %}
+  <div class="block__body tag-list__body tag-list__body--{{ tag_format }}">
+    <ul class="tag-list__list">
+      {% for key, value in terms %}
+        <li class="tag-list__term tag-list__term-weight--{{ value.weight > 5 ? '5' : value.weight }}">
+        {% if tag_format == 'list' %}
+          <i class="fa fa-tag tag-list__term-icon"></i>
+        {% endif %}
+          <a class="tag-list__term-link" href="{{ value.url }}">{{ key }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

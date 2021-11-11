@@ -1,0 +1,168 @@
+{
+  "search": {
+    "form_action": "#",
+    "search_placeholder": "Search"
+  },
+  "menus": [
+    {
+      "menu_type": "standard",
+      "menu_tree": [
+        {
+          "text": "Top level menu item",
+          "url": "#",
+          "submenu": [
+            {
+              "text": "Second level menu item",
+              "url": "#",
+              "submenu": [
+                {
+                  "text": "Third level menu item",
+                  "url": "#",
+                  "submenu": [
+                    {
+                      "text": "Fourth level menu item",
+                      "url": "#",
+                      "submenu": [
+                        {
+                          "text": "Fifth level menu item",
+                          "url": "#"
+                        },
+                        {
+                          "text": "Fifth level menu item",
+                          "url": "#"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Fourth level menu item",
+                      "url": "#"
+                    },
+                    {
+                      "text": "Fourth level menu item",
+                      "url": "#",
+                      "submenu": [
+                        {
+                          "text": "Fifth level menu item",
+                          "url": "#"
+                        },
+                        {
+                          "text": "Fifth level menu item",
+                          "url": "#"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Fourth level menu item",
+                      "url": "#"
+                    }
+                  ]
+                },
+                {
+                  "text": "Third level menu item",
+                  "url": "#"
+                }
+              ]
+            },
+            {
+              "text": "Second level menu item",
+              "url": "#"
+            },
+            {
+              "text": "Second level menu item",
+              "url": "#",
+              "submenu": [
+                {
+                  "text": "Section Link three",
+                  "url": "#"
+                },
+                {
+                  "text": "Section Link Four",
+                  "url": "#"
+                }
+              ]
+            },
+            {
+              "text": "Second level menu item",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "text": "Second menu item",
+          "url": "#",
+          "submenu": [
+            {
+              "text": "Third level menu item",
+              "url": "#",
+              "submenu": [
+                {
+                  "text": "Fourth level menu item",
+                  "url": "#"
+                },
+                {
+                  "text": "Fourth level menu item",
+                  "url": "#"
+                }
+              ]
+            },
+            {
+              "text": "Third level menu item",
+              "url": "#"
+            },
+            {
+              "text": "Third level menu item",
+              "url": "#",
+              "submenu": [
+                {
+                  "text": "Fourth level menu item",
+                  "url": "#"
+                },
+                {
+                  "text": "Fourth level menu item",
+                  "url": "#"
+                }
+              ]
+            },
+            {
+              "text": "Third level menu item",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "menu_type": "static-colored"
+    },
+    {
+      "menu_type": "standard",
+      "menu_tree": [
+        {
+          "text": "Vanderbilt University Medical Center",
+          "submenu": [
+            {
+              "text": "Monroe Carell Jr. Children's Hospital at Vanderbilt",
+              "url": "http://www.childrenshospital.vanderbilt.org"
+            },
+            {
+              "text": "Vanderbilt University",
+              "url": "http://www.vanderbilt.edu"
+            },
+            {
+              "text": "Research",
+              "url": "http://research.vanderbilt.edu"
+            },
+            {
+              "text": "For Patients and Visitors",
+              "url": "http://www.vanderbilthealth.com"
+            },
+            {
+              "text": "Resources for Employees and Researchers",
+              "url": "https://www.vumc.org/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

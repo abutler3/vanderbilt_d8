@@ -1,0 +1,114 @@
+// Login Block
+//
+// Markup: login-block.twig
+//
+// Style guide: Components.login-block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.js-login-hidden {
+  display: none;
+}
+
+.login-block__vunet-not-use {
+
+  .form-actions {
+    display: inline;
+  }
+}
+
+.user-login-well,
+.login-block {
+  max-width: 400px;
+  margin: 0 auto 70px;
+
+  h3 {
+    margin-top: 10px;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    @include button;
+    padding: 5px 12px;
+    float: left;
+  }
+
+  .btn-no-bg {
+    @include button;
+    background-color: transparent;
+    color: $color-menu-steel;
+    border: 0;
+    padding: 6px 12px;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+      text-decoration: underline;
+      color: $color-menu-steel;
+      border: 0;
+      box-shadow: none;
+    }
+  }
+
+  input {
+    display: inline-block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: $color-charcoal;
+    vertical-align: middle;
+    background-color: $color-white;
+    background-image: none;
+    border: 1px solid $color-slate;
+    border-radius: $border-rd-sm;
+    box-shadow: $shadow-xsm;
+    transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+    max-width: 100%;
+  }
+}
+
+#user-login { // sass-lint:disable-line no-ids
+
+  .item-list {
+    display: inline-block;
+
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      margin: 0.25rem;
+    }
+
+    a {
+      display: inline-block;
+      margin-bottom: 0;
+      font-weight: normal;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 14px;
+      user-select: none;
+      color: $color-menu-steel;
+      background-color: $color-white;
+    }
+  }
+}
+
+.path-user {
+
+  #block-vanderbilt-d8-page-title, // sass-lint:disable-line no-ids
+  .content-header__menu {
+    display: none;
+  }
+}

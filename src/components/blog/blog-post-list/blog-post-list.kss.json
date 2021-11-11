@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "title": "Mattis Dapibus Tristique Justo Amet",
+      "external_url": "http://www.vanderbilt.edu",
+      "author": "Mollis Vestibulum",
+      "date": "March 1, 2017",
+      "categories": "<a href=\"#\">Pharetra</a>, <a href=\"#\">Euismod Justo</a>, <a href=\"#\">Nullam</a>",
+      "image": "<img src=\"http://placehold.it/245x220\" alt=\"placeholder image\">",
+      "body": "<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod.<p>",
+      "tags": "<a href=\"#\">Ultricies</a>, <a href=\"#\">Commodo</a>, <a href=\"#\">Euismod Ultricies</a>"
+    },
+    {
+      "title": "Sem Egestas Mattis Inceptos Porta",
+      "url": "#",
+      "author": "Ornare Adipiscing",
+      "date": "February 24, 2017",
+      "image": "<img src=\"http://placehold.it/245x140\" alt=\"placeholder image\">",
+      "body": "<p>Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.<p>",
+      "tags": "<a href=\"#\">Nibh</a>, <a href=\"#\">Inceptos Fermentum Venenatis</a>"
+    }
+  ]
+}

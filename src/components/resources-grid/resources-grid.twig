@@ -1,0 +1,13 @@
+{{ attach_library('vanderbilt_d8/resources-grid') }}
+
+<section class="resources-grid">
+  {% for item in items %}
+    {%
+      include '@vanderbilt_d8/card/card.twig' with {
+        'image': item.image,
+        'title': item.title,
+        'classes': 'card__item resources-grid__item col-md-4',
+      } only
+    %}
+  {% endfor %}
+</section>

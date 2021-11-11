@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override to display the blog categories custom block.
+ *
+ * @see barista_posts custom module (src/Plugin/Block/BlogCategoriesBlock.php).
+ */
+#}
+{{ attach_library('vanderbilt_d8/blog-categories') }}
+<div{{ attributes.addClass('block', 'blog-categories') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('block__title', 'blog-categories__title') }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="block__body blog-categories__body">
+      {{ content }}
+    </div>
+  {% endblock %}
+</div>

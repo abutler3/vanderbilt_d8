@@ -1,0 +1,18 @@
+.icon__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem; }
+  .icon__item i {
+    -ms-flex: 0 0 30px;
+    flex: 0 0 30px; }
+  .icon__item p {
+    margin-bottom: 0; }
+  .icon__item.icon__item--no-icon {
+    padding-left: 30px;
+    margin-bottom: 0.5rem; }
+    .icon__item.icon__item--no-icon + .icon__item--no-icon {
+      margin-bottom: 1rem; }

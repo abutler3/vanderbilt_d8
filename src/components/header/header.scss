@@ -1,0 +1,95 @@
+// Header
+//
+// This is the site-wide header component. When rendered in the
+// Drupal environment it will appear fixed at the top of the screen.
+//
+// Markup: header.kss.twig
+//
+// Style guide: Components.header
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.mc__site__header__wrap {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  // Header must be above Content/Footer containers in order to
+  // ensure Flyout menu is above contexutal links.
+  z-index: 1;
+}
+
+.mc__site__header {
+  background: $color-white;
+  border-bottom: 1px solid $color-ash;
+  min-height: 70px;
+  padding: 13px 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  box-shadow: 0 0 0 0 rgba($color-black, 0);
+  transition: box-shadow 0.2s ease-in-out;
+  // z-index: $zindex-popover;
+  z-index: $zi-low;
+
+  @include breakpoint($bp-xsm) {
+    min-height: 66px;
+  }
+
+  // .affix class added via Bootstrap affix.js.
+  &.affix {
+    box-shadow: 0 8px 8px -4px rgba($color-charcoal, 0.4);
+    position: fixed;
+  }
+
+  .not-power-user & {
+    top: 0;
+
+    @include breakpoint($bp-xsm) {
+      top: 45px;
+    }
+  }
+}
+
+.mc__site__header__logo {
+  cursor: pointer;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.mc__site__subheader {
+  background: $color-white;
+  border-bottom: 1px solid $color-ash;
+  color: $color-peacock;
+  font-size: 11px;
+  padding: 0;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  text-align: right;
+  z-index: 0;
+}
+
+.mc__subheader__link {
+  color: $color-peacock;
+  display: block;
+  font-size: 11px;
+  padding: 8px 13px;
+  text-decoration: none;
+}
+
+.mc__subheader__link--button,
+.mc__subheader__link--button:focus,
+.mc__subheader__link--button:hover {
+  background: $color-peacock;
+  color: $color-white;
+}

@@ -1,0 +1,7 @@
+.l-main__featured {
+  margin: 0 -20px; }
+
+.l-main__content {
+  padding-bottom: 3rem; }
+  .l-main__content.with-sidebar {
+    padding-bottom: 0; }

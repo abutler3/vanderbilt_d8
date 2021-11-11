@@ -1,0 +1,280 @@
+// Slideshow Mixins
+//
+// These mixins isolate the various styles for the
+// various slideshow variant styles. The segmentation
+// is an attempt to reduce theme regressions.
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Pager Dots on Slideshows that have captions.
+@mixin slideshow-pager-dots--has-captions {
+  .flex-control-nav {
+    bottom: 0;
+    box-sizing: content-box;
+    height: 1.1rem;
+    padding: 1rem 1rem 0;
+    position: relative;
+    z-index: $zi-low;
+
+    a {
+      background: $color-dusty-gray;
+      box-shadow: none;
+      height: 1.1rem;
+      opacity: 0.5;
+      width: 1.1rem;
+
+      &.flex-active {
+        border: 0;
+        opacity: 0.95;
+      }
+    }
+  }
+}
+
+// Pager Dots on Slideshows that do not have captions.
+@mixin slideshow-pager-dots--no-captions {
+  .flex-control-nav {
+
+    a {
+      background: $color-white;
+      box-shadow: none;
+      height: 1.1rem;
+      opacity: 0.5;
+      width: 1.1rem;
+
+      &:hover {
+        background: $color-white;
+      }
+
+      &.flex-active {
+        background: $color-white;
+        border: 0;
+        opacity: 0.95;
+
+        &:hover {
+          background: $color-white;
+        }
+      }
+    }
+  }
+}
+
+// Next/Prev arrows on Slideshows that have captions.
+@mixin slideshow-next-prev--has-captions {
+  .flex-direction-nav {
+
+    a {
+      bottom: 1.65rem;
+      top: auto;
+
+      // Sidebar slider placement.
+      .slideshow-region--sidebar & {
+        bottom: 0.5rem;
+      }
+    }
+  }
+
+  .flex-prev,
+  .flex-next {
+    height: 2rem;
+    width: 2rem;
+    z-index: $zi-medium;
+
+    &::before {
+      color: $color-menu-dk-gray;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+// Next/Prev arrows on Slideshows that do not have captions.
+@mixin slideshow-next-prevs--no-captions {
+  .flex-prev,
+  .flex-next {
+
+    &::before {
+      color: $color-white;
+    }
+  }
+}
+
+// Homepage slider.
+@mixin slideshow--homepage {
+  color: $color-white;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include breakpoint($bp-smaller $bp-md) {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+  }
+
+  &.nocaptions,
+  &.hascaptions {
+    background-color: $color-peacock;
+  }
+
+  .wrapper-hero-caption {
+    bottom: 0;
+    display: none;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 100%;
+
+    @include breakpoint($bp-md) {
+      display: block;
+    }
+
+    a {
+      color: $color-white;
+    }
+  }
+
+  .hero-caption {
+
+    &::after {
+      // Value of Font Awesome $fa-var-caret-right: "\f0da";
+      $fa-var-caret-right: '\f0da' !default;
+      content: $fa-var-caret-right;
+      font-family: 'FontAwesome';
+      position: absolute;
+      right: 0.75rem;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .slideshow__slide-caption {
+    display: block;
+    padding: 1rem;
+
+    @include breakpoint($bp-smaller) {
+      padding-bottom: 0;
+    }
+
+    @include breakpoint($bp-md) {
+      display: none;
+    }
+
+    &::before {
+      // Value of Font Awesome $fa-var-caret-up: "\f0d8";
+      $fa-var-caret-up: '\f0d8' !default;
+      content: $fa-var-caret-up;
+      display: inline-block;
+      font-family: 'FontAwesome';
+      line-height: 14px;
+      padding-bottom: 2px;
+      padding-right: 10px;
+      position: relative;
+      text-align: center;
+      vertical-align: text-bottom;
+      width: 15px;
+    }
+
+    a {
+      color: $color-white;
+    }
+  }
+
+  .slideshow__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @include breakpoint($bp-smaller) {
+      width: 50%;
+    }
+
+    @include breakpoint($bp-sm) {
+      width: calc(100% - 360px);
+    }
+  }
+
+  .slideshow__hero-banner {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    @include breakpoint($bp-smaller) {
+      width: 50%;
+    }
+
+    @include breakpoint($bp-sm) {
+      width: 360px;
+    }
+
+    .background {
+      display: none;
+
+      @include breakpoint($bp-smaller) {
+        display: list-item;
+        height: 100%;
+        opacity: 0.1;
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      @include breakpoint($bp-sm) {
+        background-size: 125%;
+      }
+    }
+  }
+
+  .hero-text {
+    position: absolute;
+  }
+
+  .slideshow__hero-banner-title {
+    @include font-stack-base;
+    color: $color-white;
+    font-size: 1.8rem;
+    font-weight: $font-weight-regular;
+    line-height: 1.5;
+    margin: 0;
+    max-height: 100%;
+    overflow: auto;
+    padding: 3rem;
+    width: 100%;
+
+    @include breakpoint($bp-smaller) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .flex-control-nav {
+    display: none;
+
+    @include breakpoint($bp-md) {
+      display: block;
+    }
+  }
+
+  .flex-direction-nav {
+
+    a {
+      z-index: $zi-below-ground;
+    }
+  }
+
+  .flexslider:hover {
+
+    .flex-direction-nav {
+      a {
+        z-index: $zi-low;
+      }
+    }
+  }
+}

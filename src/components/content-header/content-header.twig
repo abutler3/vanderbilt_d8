@@ -1,0 +1,45 @@
+{{ attach_library('vanderbilt_d8/content-header') }}
+{% spaceless %}
+  <div class="content-header" role="banner">
+
+    {% if page_title.text %}
+
+      {% if page_title.font_size_adjustment %}
+        {% set font_size_adjustment = ' style="font-size: ' ~ page_title.font_size_adjustment ~ ';"' %}
+      {% endif %}
+
+      <div class="content-header__page-title">
+        <span class="site-title">
+          {% if page_title.url %}
+            <a href="{{ page_title.url }}" class="site-title__link"{{ font_size_adjustment|default('')|raw }}>{{ page_title.text }}</a>
+          {% else %}
+            {{ page_title.text }}
+          {% endif %}
+        </span>
+      </div>
+    {% endif %}
+
+    {% if parent_links %}
+      <nav class="content-header__parent-links">
+        <ul class="parent-links">
+          {% for link in parent_links %}
+            <li class="parent-links__item">
+              <a href="{{ link.url }}" class="parent-links__link">{{ link.text }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+
+    {% if menus %}
+      <nav class="content-header__menu" role="navigation">
+        {# Load Menu System. #}
+        {%
+          include "@vanderbilt_d8/menus/menus.twig" with {
+            'menus': menus
+          } only
+        %}
+      </nav>
+    {% endif %}
+  </div>
+{% endspaceless %}

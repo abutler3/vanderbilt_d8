@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Theme override to display a person teaser used on the grid layout.
+ *
+ * @see template_preprocess_node()
+ *
+ * NOTE: This formats Person node values for use in the person detail component.
+ * The custom/barista-person-detail.html.twig display uses the same component.
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'person-page',
+  ]
+%}
+
+{# Normalize the node to be used with the same template as custom/barista-person-detail.html.twig #}
+
+<div{{ attributes.addClass(classes) }}>
+  {% include "@vanderbilt_d8/person/person--detail.twig" with {
+    'label': label,
+    'content': {
+      'title_dept': content.field_title|render|trim is not empty ? content.field_title,
+      'photo': content.field_barista_person_photo|render|trim is not empty ? content.field_barista_person_photo,
+      'address': content.field_address|render|trim is not empty ? content.field_address,
+      'phone_numbers': content.field_phone_numbers|render|trim is not empty ? content.field_phone_numbers,
+      'email': content.field_email|render|trim is not empty ? content.field_email.0['#context'].value,
+      'more_info_link': content.field_more_information_link|render|trim is not empty ? content.field_more_information_link,
+      'field_cv': content.field_cv|render|trim is not empty ? content.field_cv,
+      'body': content.body|render|trim is not empty ? content.body,
+      'brief_description': content.field_brief_description|render|trim is not empty ? content.field_brief_description,
+      'clinical_interest': content.field_clinical_interest|render|trim is not empty ? content.field_clinical_interest,
+      'website_for_patients': content.field_website_for_patients|render|trim is not empty ? content.field_website_for_patients,
+      'research_description': content.field_research_description|render|trim is not empty ? content.field_research_description,
+      'lab_website': content.field_lab_website|render|trim is not empty ? content.field_lab_website,
+      'postdoctoral_positions': content.field_postdoctoral_positions|render|trim is not empty ? content.field_postdoctoral_positions,
+      'publications': []
+    }
+  } only %}
+</div>

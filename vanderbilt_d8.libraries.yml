@@ -1,0 +1,380 @@
+# These lines define the vanderbilt_d8/global library.
+global:
+  css:
+    # The SMACSS category, "base", is loaded before other categories. Drupal 8
+    # loads stylesheets based on the SMACSS ordering of:
+    # base, layout, component, state, theme
+    base:
+      dist/bootstrap/bootstrap-base.css: {}
+      dist/css/font-awesome.css: {}
+      dist/css/vumc-misc.css: {}
+      dist/css/sprites.css: {}
+      dist/css/base.css: {}
+      dist/css/media.css: {}
+      dist/css/messages.css: {}
+    layout:
+      dist/css/l-main.css: {}
+    component:
+      dist/bootstrap/bootstrap-labels.css: {}
+  js:
+    dist/js/list_custom.js: {}
+
+# Example external library.
+# webfonts:
+#   version: 1.x
+#   js:
+#     https://fast.fonts.net/example.js: { type: external, attributes: { async: true }}
+fonts:
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,300,400,500': { type: external, minified: true }
+
+# Attach each library by using attach_library() within the components twig template.
+# More info: https://www.drupal.org/node/2456753
+
+# Example component library.
+# site-logo:
+#   css:
+#     component:
+#       dist/css/site-logo.css: {}
+#   # If this library had JavaScript you could specify it like this:
+#   js:
+#     js/script.js: {}
+#   # If this library had dependencies on other libraries, you could specify it like this:
+#   dependencies:
+#     - vanderbilt_d8/clearfix
+#     - vanderbilt_d8/visually-hidden
+
+a-z-directory:
+  css:
+    component:
+      dist/css/a-z-directory.css: {}
+  js:
+    dist/bootstrap/js/tab.js: {}
+    dist/js/a-z-directory.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - vanderbilt_d8/bootstrap-navs
+
+accordions:
+  css:
+    component:
+      dist/css/accordions.css: {}
+
+admin-menu-adjustment:
+  css:
+    component:
+      dist/css/admin-menu-adjustment.css: {}
+
+barista-adminbar:
+  css:
+    component:
+      dist/css/barista-adminbar.css: {}
+  dependencies:
+    - vanderbilt_d8/bootstrap-navs
+
+barista-publications:
+  css:
+    component:
+      dist/css/barista_publications.css: {}
+
+barista-section-menu:
+  css:
+    component:
+      dist/css/barista-section-menu.css: {}
+  js:
+    dist/js/barista-section-menu.js: {}
+  dependencies:
+    - vanderbilt_d8/block
+    - core/jquery
+
+barista-search:
+  css:
+    component:
+      dist/css/barista-search.css: {}
+
+block:
+  css:
+    component:
+      dist/css/block.css: {}
+
+blog:
+  css:
+    component:
+      dist/css/blog.css: {}
+      dist/css/blog-post.css: {}
+  dependencies:
+    - vanderbilt_d8/pager
+
+blog-posts-block:
+  css:
+    component:
+      dist/css/blog-posts-block.css: {}
+  dependencies:
+    - vanderbilt_d8/block
+    - vanderbilt_d8/slideshow
+
+blog-categories:
+  css:
+    component:
+      dist/css/blog-categories.css: {}
+  dependencies:
+    - vanderbilt_d8/block
+
+bootstrap-affix:
+  js:
+    dist/bootstrap/js/affix.js: {}
+  dependencies:
+    - core/jquery
+
+bootstrap-dropdowns:
+  css:
+    component:
+      dist/bootstrap/bootstrap-dropdowns.css: {}
+  js:
+    dist/bootstrap/js/dropdown.js: {}
+  dependencies:
+    - core/jquery
+
+bootstrap-jumbotron:
+  css:
+    component:
+      dist/bootstrap/bootstrap-jumbotron.css: {}
+
+bootstrap-list-group:
+  css:
+    component:
+      dist/bootstrap/bootstrap-list-group.css: {}
+
+bootstrap-modals:
+  css:
+    component:
+      dist/bootstrap/bootstrap-modals.css: {}
+  js:
+    dist/bootstrap/js/modal.js: {}
+  dependencies:
+    - core/jquery
+
+bootstrap-navbar:
+  css:
+    component:
+      dist/bootstrap/bootstrap-navbar.css: {}
+
+bootstrap-navs:
+  css:
+    component:
+      dist/bootstrap/bootstrap-navs.css: {}
+  dependencies:
+    - vanderbilt_d8/bootstrap-dropdowns
+
+bootstrap-panels:
+  css:
+    component:
+      dist/bootstrap/bootstrap-panels.css: {}
+
+buttons:
+  css:
+    component:
+      dist/css/buttons.css: {}
+
+card:
+  css:
+    component:
+      dist/css/card.css: {}
+
+content-header:
+  css:
+    component:
+      dist/css/content-header.css: {}
+  dependencies:
+    - vanderbilt_d8/menus
+
+directory:
+  css:
+    component:
+      dist/css/directory.css: {}
+
+flexslider:
+  css:
+    component:
+      dist/css/flexslider.css: {}
+  js:
+    dist/js/jquery.flexslider-min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+flyout-menu:
+  css:
+    component:
+      dist/css/flyout-menu.css: {}
+  dependencies:
+    - vanderbilt_d8/menus
+
+forms:
+  css:
+    component:
+      dist/css/forms.css: {}
+
+footer:
+  css:
+    component:
+      dist/css/footer.css: {}
+
+giving-block:
+  css:
+    component:
+      dist/css/giving-block.css: {}
+  dependencies:
+    - vanderbilt_d8/block
+
+header:
+  css:
+    component:
+      dist/css/header.css: {}
+      dist/css/header_main.css: {}
+  dependencies:
+    - vanderbilt_d8/bootstrap-affix
+    - vanderbilt_d8/flyout-menu
+    - vanderbilt_d8/admin-menu-adjustment
+
+icon-blocks:
+  css:
+    component:
+      dist/css/icon-blocks.css: {}
+
+image-block:
+  css:
+    component:
+      dist/css/image-block.css: {}
+
+login-block:
+  css:
+    component:
+      dist/css/login-block.css: {}
+  js:
+    dist/js/login-block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - vanderbilt_d8/buttons
+    - vanderbilt_d8/bootstrap-panels
+
+l-three-col:
+  css:
+    component:
+      dist/css/l-three-col.css: {}
+
+menus:
+  css:
+    component:
+      dist/css/menus.css: {}
+  js:
+    dist/js/menus.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupalSettings
+    - vanderbilt_d8/bootstrap-dropdowns
+
+multi-column-block:
+  css:
+    component:
+      dist/css/multi-column-block.css: {}
+  dependencies:
+    - vanderbilt_d8/block
+
+pager:
+  css:
+    component:
+      dist/css/pager.css: {}
+
+person:
+  css:
+    component:
+      dist/css/person.css: {}
+      dist/css/flipper.css: {}
+
+primary-tabs:
+  css:
+    component:
+      dist/css/primary-tabs.css: {}
+
+publications:
+  css:
+    component:
+      dist/css/publications.css: {}
+  dependencies:
+    - vanderbilt_d8/buttons
+
+resources-grid:
+  css:
+    component:
+      dist/css/resources-grid.css: {}
+  dependencies:
+    - vanderbilt_d8/card
+
+rss-block:
+  css:
+    component:
+      dist/css/rss-block.css: {}
+  js:
+    dist/js/rss-block.js: {}
+  dependencies:
+    - vanderbilt_d8/block
+    - core/jquery
+    - core/drupal
+
+search:
+  css:
+    component:
+      dist/css/search.css: {}
+
+sidebar:
+  css:
+    component:
+      dist/css/sidebar.css: {}
+
+sidebar-block:
+  css:
+    component:
+      dist/css/sidebar-block.css: {}
+
+sidebar-header:
+  css:
+    component:
+      dist/css/sidebar-header.css: {}
+  dependencies:
+    - vanderbilt_d8/sidebar
+
+site-search:
+  css:
+    component:
+      dist/css/site-search.css: {}
+  js:
+    dist/js/site-search.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+slideshow:
+  css:
+    component:
+      dist/css/slideshow.css: {}
+  js:
+    dist/js/slideshow.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - vanderbilt_d8/flexslider
+    - vanderbilt_d8/block
+
+tag-list:
+  css:
+    component:
+      dist/css/tag-list.css: {}
+  dependencies:
+    - vanderbilt_d8/block

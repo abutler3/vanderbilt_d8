@@ -1,0 +1,162 @@
+// Person List
+//
+// This is the person component displayed as a "List".
+//
+// Markup: person--list.twig
+//
+// Style guide: Components.Person List
+
+// Person Photo Grid
+//
+// This is the person component displayed as "Photo Grid".
+//
+// Markup: person--photo-grid.twig
+//
+// Style guide: Components.Person Photo Grid
+
+// Person Photo Grid with Names
+//
+// This is the person component displayed as "Photo Grid with names".
+//
+// Markup: person--photo-grid-names.kss.twig
+//
+// Style guide: Components.Person Photo Grid Names
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Import person list styling.
+@import 'person-list';
+
+// Import person grid styling.
+@import 'person-grid';
+
+// Import person detail styling.
+@import 'person-detail';
+
+.person__content-section {
+  margin-bottom: $padding-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.person__content-section-title {
+  font-weight: $font-weight-bold;
+  margin: 0 0 $padding-sm;
+}
+
+.person__content-item {
+  margin-bottom: $padding-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.person__phone {
+  word-break: break-word;
+
+  a {
+    display: inline-block;
+    color: $color-peacock !important; // sass-lint:disable-line no-important
+    font-weight: $font-weight-bold;
+    font-size: 1.8rem;
+  }
+
+  .paragraph--type--phone-numbers {
+    display: flex;
+
+    .field {
+      margin-right: $padding-xsm;
+    }
+
+    .field--name-field-type {
+      font-weight: $font-weight-bold;
+    }
+
+    .field--name-field-type::after {
+      content: ':';
+    }
+  }
+}
+
+.person__address {
+
+  & > .field {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  & > .field > .field__item {
+    padding: 0 $padding-lg $padding-sm 0;
+  }
+
+  & > .field > .field__item:last-child {
+    padding-right: 0;
+  }
+
+  .person__address-container {
+    padding-left: 20px;
+    position: relative;
+
+    .fa {
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 2px;
+    }
+
+    .field--name-field-address-type {
+      font-weight: $font-weight-bold;
+      white-space: nowrap;
+    }
+
+    .field--name-field-room {
+      @include clearfix;
+
+      div {
+        float: left;
+      }
+
+      .field__label {
+        font-weight: $font-weight-regular;
+      }
+    }
+
+    .field--name-field-city {
+      display: inline-block;
+      margin-right: $padding-xsm;
+
+      &::after {
+        content: ',';
+      }
+    }
+
+    .field--name-field-state {
+      display: inline-block;
+    }
+  }
+}
+
+.person__titles-title,
+.person__titles-dept {
+  display: inline;
+
+  .field {
+    display: inline;
+  }
+}
+
+.person__titles-title.with-dept {
+
+  &::after {
+    content: ',';
+    margin-left: -3px;
+  }
+}
+
+.field--name-field-postdoctoral-positions .field__label {
+  margin: $padding-md 0 $padding-sm;
+}

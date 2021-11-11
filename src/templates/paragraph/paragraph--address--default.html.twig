@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display an address paragraph type.
+ *
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'person__address-container'
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    <i class="fa fa-fw fa-building-o" aria-label="Address"></i>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

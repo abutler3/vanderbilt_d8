@@ -1,0 +1,134 @@
+// Misc overrides for base VUMC theme
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Legacy selectors
+// sass-lint:disable-all
+.container {
+  width: 100%;
+}
+
+.row {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+// Row variant for use when Bootstrap's
+// default margin inset needs to be used.
+// Include this with .row class (.row .row--default)
+.row--default {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.mc__site__wrap {
+  display: block;
+  margin: 0 auto;
+  max-width: 1170px;
+  width: 100%;
+}
+
+.mc__remove__space {
+  margin: 0;
+  padding: 0;
+}
+
+.mc__link {
+  color: $color-pacific;
+  text-decoration: none;
+}
+
+.mc__body {
+  background: $color-frozen;
+  padding: 97px 0 0;
+}
+
+#site-wrapper {
+  @include clearfix;
+  background-color: $color-ice;
+  max-width: 1170px;
+  position: relative;
+  // Set base z-index less than header, but more than footer, to ensure
+  // Flyout menu is above contextual links.
+  z-index: 0;
+}
+
+#site-canvas {
+  background-color: $color-white;
+  float: left;
+  max-width: 1170px;
+  padding: 20px;
+  width: 100%;
+}
+
+#sitename,
+.header-site {
+  @include vumc-header;
+  font-weight: $font-weight-light;
+  display: block;
+  color: $color-peacock;
+
+  a {
+    color: $color-peacock;
+    font-weight: $font-weight-light;
+
+    &:hover,
+    &:focus {
+      color: $color-peacock;
+      text-decoration: none;
+    }
+  }
+}
+
+.page-title {
+  color: $color-peacock;
+  font-family: $font-family-secondary;
+  font-size: 2.8rem;
+  font-weight: $font-weight-regular;
+  line-height: 1.1;
+  padding-bottom: 10px;
+
+  &.hidden-title {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.banner {
+  padding: 0 1.5rem;
+}
+
+.small-module {
+  margin: 0 0 25px;
+  width: auto;
+  border: 1px solid $color-menu-stone;
+  line-height: 20px;
+  padding: 10px;
+}
+
+.read-more-link,
+.read-more-link-inverted {
+  text-align: right;
+  margin-top: 1.4rem;
+}
+
+.element-invisible {
+  margin: 0;
+  padding: 0;
+  width: 1px;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px,1px,1px,1px);
+  overflow: hidden;
+  height: 1px;
+}
+
+// Legacy WYSIWYG styling for center-justified text.
+.rtecenter {
+  text-align: center;
+}
+
+// sass-lint:enable-all

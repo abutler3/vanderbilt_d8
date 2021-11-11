@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display 'recent_blog_posts' block_content entities.
+ */
+#}
+{{ attach_library('vanderbilt_d8/blog-posts-block') }}
+<div class="block blog-posts-block {{ classes|join(' ') }}">
+  {% if title %}
+    <h2 class="block__title blog-posts-block__title">
+      {{ title }}
+    </h2>
+  {% endif %}
+  <div class="block__body blog-posts-block__body">
+    {% if featured_posts is not empty %}
+      <div class="blog-posts-block__items--featured flexslider">
+        <ul class="blog-posts-block__list slides">
+          {% for featured_post in featured_posts %}
+            <li class="blog-posts-block__list-item slide">
+              <div class="blog-posts-block__content">
+                {% if featured_post.field_barista_posts_external_url is not empty %}
+                  <h3 class="blog-posts-block__item-title">
+                    {{ link(featured_post.label, featured_post.field_barista_posts_external_url.uri, {'rel' : 'external'}) }}
+                  </h3>
+                {% else %}
+                  <h3 class="blog-posts-block__item-title">
+                    <a href="{{ path('entity.node.canonical', {'node': featured_post.id}) }}">{{ featured_post.label }}</a>
+                  </h3>
+                {% endif %}
+                {% if not hide_date %}
+                  <div class="blog-posts-block__date">
+                    {{ featured_post.created.value | date('F j, Y') }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="blog-posts-block__image">
+                {% if featured_post.field_barista_posts_image is not empty %}
+                  <img src="{{ featured_post.field_barista_posts_image.entity.uri.value | image_style('barista_posts_featured') }}" data-retina-src="{{ featured_post.field_barista_posts_full_image.entity.uri.value | image_style('barista_posts_featured_2x') }}" alt="{{ featured_post.field_barista_posts_image.alt }}" />
+                {% else %}
+                  <span class="placeholder-img"></i></span>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if posts is not empty %}
+      <div class="blog-posts-block__items">
+        <ul class="blog-posts-block__list {{ has_featured }}">
+          {% for post in posts %}
+            {% set sticky = (post.id in sticky_post_ids) ? 'sticky' : 'not-sticky' %}
+            {% if post.field_barista_posts_external_url is not empty %}
+              {% set full_post_url = post.field_barista_posts_external_url.uri %}
+            {% else %}
+              {% set full_post_url = path('entity.node.canonical', {'node': post.id}) %}
+            {% endif %}
+            <li class="blog-posts-block__list-item {{ has_image }} {{ sticky }}">
+              {% if use_thumbnails %}
+                <div class="blog-posts-block__image">
+                  <a href="{{ full_post_url }}" {{ (post.field_barista_posts_external_url is not empty) ? 'rel="external"' }}>
+                    {% if post.field_barista_posts_image is not empty %}
+                      <img src="{{ post.field_barista_posts_image.entity.uri.value | image_style('barista_posts_small_thumbnail') }}" data-retina-src="{{ post.field_barista_posts_full_image.entity.uri.value | image_style('barista_posts_small_thumbnail_2x') }}" alt="{{ post.field_barista_posts_image.alt }}" />
+                    {% else %}
+                      <span class="blog-posts-block__placeholder-img"></span>
+                    {% endif %}
+                  </a>
+                </div>
+              {% endif %}
+              <div class="blog-posts-block__content">
+                <h3 class="blog-posts-block__item-title">
+                  <a href="{{ full_post_url }}" {{ (post.field_barista_posts_external_url is not empty) ? 'rel="external"' }}>{{ post.label }}</a>
+                </h3>
+                {% if not hide_date %}
+                  <div class="blog-posts-block__date">
+                    <i class="fa fa-calendar"></i> {{ post.created.value | date('F j, Y') }}
+                  </div>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if entity.field_barista_block_more_posts is not empty %}
+      <div class="blog-posts-block__more-link">
+        <a href="{{ entity.field_barista_block_more_posts.uri }}">
+          {{ entity.field_barista_block_more_posts.title }} <i class='fa fa-chevron-right'></i>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,388 @@
+// Menus
+//
+// This is the site-wide menus component. All menus in site are contained
+// and controlled within twig macros in the menu-macros.twig file.
+//
+// Markup: menus.twig
+//
+// Style guide: Components.menus
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.mc__nav__menu {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.mc__nav__link,
+.mc__navbar__trigger {
+  border-bottom: 1px solid $color-menu-steel;
+  display: block;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.2px;
+  line-height: 40px;
+  padding: 0 15px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.mc__nav__link {
+  color: $color-white;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease-in-out; // sass-lint:disable-line no-transition-all
+
+  &:focus,
+  &:hover {
+    background: $color-smoke;
+    color: $color-charcoal;
+    text-decoration: none;
+  }
+
+  // Resetting styles applied by font awesome class.
+  // @TODO: update patch to leave off .fa class.
+  // @SEE: patches/inaccessible-menu-overrides.patch (line 68)
+  &.fa {
+    @include font-stack-secondary;
+    display: block;
+  }
+
+  &.fa-lock::before {
+    display: inline-block;
+    font-family: $font-family-fontawesome;
+    margin-right: 5px;
+  }
+}
+
+.mc__navbar__trigger {
+  background: $color-menu-dust;
+  border-bottom: 1px solid $color-menu-lt-gray;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  transition: all 0.3s ease-in-out; // sass-lint:disable-line no-transition-all
+
+  &::after {
+    border-top: 2px solid $color-menu-dk-green;
+    border-right: 2px solid $color-menu-dk-green;
+    bottom: 0;
+    content: '';
+    display: block;
+    font-size: 0;
+    height: 0;
+    margin: auto;
+    padding: 8px 0 0;
+    position: absolute;
+    right: 20px;
+    text-indent: 101%;
+    top: 0;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-in-out; // sass-lint:disable-line no-transition-all
+    white-space: nowrap;
+    width: 10px;
+  }
+}
+
+// Standard accordion menu.
+.menu-type--standard {
+
+  .mc__nav__submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .mc__nav__menu__item {
+
+    // Class is toggled, via JavaScript, to trigger accordion.
+    &.is-open {
+
+      // Rotate direct child icon.
+      > .mc__navbar__trigger {
+        &::after {
+          transform: rotate(135deg);
+        }
+      }
+
+      // Expand direct child menu container.
+      > .mc__nav__submenu {
+        max-height: 9999px;
+      }
+    }
+  }
+
+  // Top menu items that have no submenu should be
+  // the same size as accordion triggers.
+  .mc__nav__menu__item--1 {
+    &.no-submenu {
+      .mc__nav__link {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .mc__nav__link {
+    border-bottom: 1px solid $color-menu-lt-gray;
+    color: $color-charcoal;
+    font-size: 12px;
+    font-weight: $font-weight-regular;
+
+    &.is-active {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .mc__navbar__trigger {
+    font-size: 12px;
+
+    // Top level accordion triggers are larger in size.
+    &.mc__navbar__trigger--1 {
+      font-size: 15px;
+    }
+  }
+
+  // Indention of menu items.
+  .no-submenu .mc__nav__link--1,
+  .mc__nav__link--1,
+  .no-submenu .mc__nav__link--2,
+  .mc__navbar__trigger--2 {
+    padding-left: 15px;
+  }
+
+  .mc__nav__link--2,
+  .no-submenu .mc__nav__link--3,
+  .mc__navbar__trigger--3 {
+    padding-left: 30px;
+  }
+
+  .mc__nav__link--3,
+  .no-submenu .mc__nav__link--4,
+  .mc__navbar__trigger--4 {
+    padding-left: 45px;
+  }
+
+  .mc__nav__link--4,
+  .no-submenu .mc__nav__link--5,
+  .mc__navbar__trigger--5 {
+    padding-left: 60px;
+  }
+
+  .mc__nav__link--5,
+  .no-submenu .mc__nav__link--6,
+  .mc__navbar__trigger--6 {
+    padding-left: 75px;
+  }
+
+  .mc__nav__link--6,
+  .no-submenu .mc__nav__link--7,
+  .mc__navbar__trigger--7 {
+    padding-left: 90px;
+  }
+}
+
+// Static colored menu.
+.menu-type--static-colored {
+
+  .mc__nav__items__static {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mc__nav__item {
+    background: $color-menu-dk-gray;
+
+    &:nth-child(1n) {
+      background: $color-menu-gold;
+    }
+
+    &:nth-child(2n) {
+      background: $color-menu-purple;
+    }
+
+    &:nth-child(3n) {
+      background: $color-menu-orange;
+    }
+
+    &:nth-child(4n) {
+      background: $color-menu-slate;
+    }
+
+    &:nth-child(5n) {
+      background: $color-menu-dk-orange;
+    }
+
+    &:nth-child(6n) {
+      background: $color-menu-pale-green;
+    }
+
+    &:nth-child(7n) {
+      background: $color-menu-blue;
+    }
+
+    &:nth-child(8n) {
+      background: $color-menu-yellow;
+    }
+  }
+}
+
+// Standard inline menu.
+.standard-inline-menu__menu {
+  color: $color-tundora;
+  font-family: $font-family-secondary;
+  font-size: 1.4rem;
+  font-weight: $font-weight-light;
+  padding: 0;
+
+  &.menu-level--1 {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    text-align: center;
+
+    @include breakpoint ($bp-inline-menu-mobile) {
+      text-align: left;
+    }
+  }
+}
+
+.standard-inline-menu__item {
+  list-style: none;
+
+  &.item-level--1 {
+    display: inline-block;
+    margin: 0.3rem;
+  }
+
+  &.dropdown {
+    display: inline-block;
+    position: static;
+
+    @include breakpoint ($bp-inline-menu-mobile) {
+      position: relative;
+      top: auto;
+    }
+  }
+}
+
+.standard-inline-menu__link {
+  color: $color-tundora;
+  display: inline-block;
+  font-weight: $font-weight-light;
+
+  &:hover,
+  &:focus {
+    color: $color-tundora;
+    text-decoration: none;
+  }
+
+  &.is-active {
+    font-weight: $font-weight-medium;
+  }
+
+  // Top level menu link.
+  .item-level--1 > & {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  // When hovering on top level list item.
+  .item-level--1:hover > &,
+  .open > & {
+    border-color: $color-menu-stone;
+  }
+
+  .dropdown > & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 0.5rem;
+  }
+
+  // Resetting styles applied by font awesome class.
+  // @TODO: update patch to leave off .fa class.
+  // @SEE: patches/inaccessible-menu-overrides.patch (line 68)
+  &.fa {
+    @include font-stack-secondary;
+    line-height: 1.42857;
+  }
+
+  &.fa-lock::before {
+    display: inline-block;
+    font-family: $font-family-fontawesome;
+    margin-right: 5px;
+  }
+}
+
+.standard-inline-menu__dropdown-toggle {
+  border: 1px solid transparent;
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  color: $color-tundora;
+  display: inline-block;
+  padding: 0.5rem;
+
+  &:hover,
+  &:focus {
+    background-color: $color-mercury;
+    color: $color-tundora;
+    text-decoration: none;
+  }
+
+  .item-level--1:hover > &,
+  .open > & {
+    border-color: $color-menu-stone;
+  }
+
+  .fa {
+    font-size: 1.2rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 1rem;
+
+    &::before {
+
+      .open & {
+        // Value of Font Awesome $fa-var-close: "\f00d";
+        $fa-var-close: '\f00d' !default;
+        content: $fa-var-close;
+      }
+    }
+  }
+}
+
+.standard-inline-menu__dropdown-menu {
+  background-color: rgba($color-white, 0.94);
+  margin: 0;
+  width: 100%;
+
+  @include breakpoint ($bp-inline-menu-mobile) {
+    width: 25rem;
+  }
+
+  .open > & {
+
+    @include breakpoint (max-width $bp-inline-menu-mobile) {
+      top: auto;
+    }
+  }
+
+  .standard-inline-menu__link {
+    display: block;
+    padding: 0.7rem 2rem;
+
+    &:hover {
+      background-color: rgba($color-ash, 0.5);
+    }
+  }
+
+  ul ul {
+    margin-left: 0.7rem;
+    padding: 0.5rem 0;
+  }
+}

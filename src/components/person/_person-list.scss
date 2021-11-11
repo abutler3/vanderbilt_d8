@@ -1,0 +1,61 @@
+// Styling specific to list view of person
+// listings on person directory pages.
+
+.person-list__item-wrapper {
+  border-bottom: 1px solid $color-smoke;
+  margin-bottom: $padding-md;
+  padding-bottom: $padding-md;
+
+  @include breakpoint($bp-xsm) {
+    display: flex;
+  }
+}
+
+.person-list__image {
+  margin: 1.5rem 0;
+
+  @include breakpoint($bp-xsm) {
+    width: $person-list-image--width;
+  }
+
+  img {
+    margin: 0 auto;
+    width: $person-list-image--width;
+  }
+}
+
+.person-list__image-placeholder {
+  background-color: $color-menu-gray;
+  height: 180px;
+  width: $person-list-image--width;
+}
+
+.person-list__content {
+
+  @include breakpoint($bp-xsm) {
+
+    .with-image & {
+      padding-left: $padding-md;
+      max-width: calc(100% - #{$person-list-image--width});
+    }
+  }
+}
+
+.person-list__name {
+  // Important is needed to override styleguide styles.
+  color: $color-peacock !important; // sass-lint:disable-line no-important
+  font-weight: $font-weight-bold !important; // sass-lint:disable-line no-important
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.person-list__title {
+  font-weight: $font-weight-regular;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+.person-list__more-info-link .field {
+  display: inline-block;
+}

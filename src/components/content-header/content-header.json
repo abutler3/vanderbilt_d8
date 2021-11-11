@@ -1,0 +1,74 @@
+{
+  "page_title": {
+    "text": "Center for Cognitive Medicine",
+    "url": "#",
+    "font_size_adjustment": "100%"
+  },
+  "parent_links": [
+    {
+      "text": "Department of Biochemistry",
+      "url": "#"
+    },
+    {
+      "text": "Department of Biochemistry of Biochemistry",
+      "url": "#"
+    }
+  ],
+  "menus": [
+    {
+      "menu_type": "standard-inline",
+      "menu_tree": [
+        {
+          "url": "#",
+          "text": "Home",
+          "active": true
+        },
+        {
+          "url": "#",
+          "text": "Personnel"
+        },
+        {
+          "url": "#",
+          "text": "Posters &amp; Publications"
+        },
+        {
+          "url": "#",
+          "text": "Resources"
+        },
+        {
+          "url": "#",
+          "text": "News"
+        },
+        {
+          "url": "#",
+          "text": "Functional Brain Imaging Research",
+          "submenu": [
+            {
+              "url": "#",
+              "text": "fMRI (functional Magnetic Resonance Imaging)"
+            },
+            {
+              "url": "#",
+              "text": "Item 2"
+            },
+            {
+              "url": "#",
+              "text": "Item 2"
+            }
+          ]
+        },
+        {
+          "url": "#",
+          "text": "Intranet",
+          "options": {
+            "attributes": {
+              "class": {
+                "classes": "fa-lock"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

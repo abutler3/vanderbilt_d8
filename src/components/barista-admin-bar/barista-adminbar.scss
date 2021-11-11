@@ -1,0 +1,125 @@
+// @File
+// Legacy styling for custom admin bar.
+// @TODO:
+// Update markup/styling to match standards.
+// @See:
+// Related template:
+// /modules/custom/barista_adminbar/templates
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Hides Barista Adminbar on mobile.
+.barista-adminbar {
+  display: none;
+
+  @include breakpoint($bp-xsm) {
+    display: block;
+  }
+}
+
+// If Drupal's admin bar is open vertically, it should
+// cover all other toolbars.
+.toolbar-vertical.toolbar-tray-open {
+  #toolbar-administration { // sass-lint:disable-line no-ids
+    z-index: 1100;
+  }
+}
+
+// Overrides admin toolbar rule.
+body.toolbar-tray-open.toolbar-vertical.toolbar-fixed {
+  margin-left: 0;
+}
+
+// When logged in user is not admin, only custom toolbar should be available.
+// Padding and margin for main content needs to be adjusted to ensure toolbar
+// does not block site's header.
+body.not-power-user {
+  padding-top: 97px;
+
+  @include breakpoint($bp-xsm) {
+    padding-top: 110px;
+  }
+
+  .mc__site__header__wrap {
+    background: $color-white;
+  }
+}
+
+.navbar-fixed-top {
+  z-index: 1;
+}
+
+.navbar {
+  min-height: inherit;
+}
+
+.barista-adminbar .navbar-inverse .navbar-nav > li > a {
+  color: $color-white;
+}
+
+.barista-adminbar .navbar-inverse .navbar-text {
+  color: $color-white;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.navbar-fixed-top .navbar-right {
+  padding-right: 15px;
+}
+
+.button-barista-dropdown {
+  line-height: 30px;
+}
+
+.barista-adminbar .dropdown-menu {
+  min-width: 320px;
+}
+
+.barista-adminbar .dropdown-menu > li > a {
+  white-space: normal;
+}
+
+.barista-adminbar .barista-graphic-dropdown {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  line-height: 1.2;
+  min-width: 300px;
+}
+
+.barista-adminbar small {
+  font-size: 10px;
+}
+
+// Accomodate standard admin menu when present with the barista adminbar.
+body #admin-menu { // sass-lint:disable-line no-ids
+  background: $color-menu-dk-gray;
+}
+
+body #admin-menu-wrapper { // sass-lint:disable-line no-ids
+  padding-bottom: 1px;
+}
+
+// Overrides padding between links for Drupal's admin toolbar
+// to avoid collapsing of navbar on tablet view.
+.toolbar-tray a {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+@include breakpoint($bp-xsm) {
+  .navbar-text {
+    display: none;
+  }
+
+  .navbar-collapse .nav > li > a {
+    padding: 10px 12px;
+  }
+}
+
+@include breakpoint($bp-md) {
+  .navbar-text {
+    display: block;
+  }
+}

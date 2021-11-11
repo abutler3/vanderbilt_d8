@@ -1,0 +1,94 @@
+// Import site utilities.
+@import '../../global/utils/init';
+
+.a-z-directory {
+  display: inline-block;
+  text-align: inherit;
+  width: 100%;
+  border-bottom: 1px solid $color-menu-lt-gray;
+
+  // Overrides bootstrap.
+  li {
+    float: none;
+    display: inline-block;
+  }
+
+  @include breakpoint($bp-xsm) {
+    text-align: center;
+  }
+}
+
+.a-z-directory__content {
+
+  .well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: $color-menu-dust;
+    border: 1px solid $color-mercury;
+    box-shadow: inset 0 1px 1px rgba($color-black, 0.05);
+  }
+}
+
+.a-z-directory__subheading2,
+.a-z-directory__subheading3,
+.directory-letter,
+.a-z-directory__suggestions {
+  @include vumc-subheader;
+}
+
+.directory-letter {
+  font-size: 20px;
+  margin: 0;
+}
+
+.a-z-directory__suggestions {
+  margin: 50px 0 40px;
+  text-align: center;
+
+  a {
+    font-weight: 300;
+  }
+}
+
+// overriding bootstrap
+.nav-pills > li > a {
+  background-color: $color-dust;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: $color-peacock;
+}
+
+.nav-pills > li + li {
+  margin-right: 2px;
+}
+
+.two-column-wrap {
+
+  @include breakpoint($bp-xsm) {
+    column-count: 2;
+    column-gap: 20px;
+
+    &.has-alphabet-dividers {
+      column-count: 2;
+      column-gap: 20px;
+      margin-top: 40px;
+    }
+  }
+
+  .listing {
+    line-height: 2.2;
+  }
+}
+
+.directory-letter-group {
+  margin-bottom: 10px;
+}

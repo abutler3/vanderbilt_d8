@@ -1,0 +1,39 @@
+// Card
+//
+// This is the card component.
+//
+// Markup: card.twig
+//
+// Style guide: Components.Card
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.card {
+  position: relative;
+  max-width: 990px;
+}
+
+.card__image {
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.card__title {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  /* padding added by boostrap */
+  left: 15px;
+  right: 15px;
+  padding: $padding-md;
+  background: rgba($color-smoke, 0.9);
+
+  @include breakpoint($bp-md) {
+    /* removes left/right padding */
+    left: 0;
+    right: 0;
+  }
+}

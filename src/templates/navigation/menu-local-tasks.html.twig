@@ -1,0 +1,11 @@
+{{ attach_library('vanderbilt_d8/primary-tabs') }}
+{{ attach_library('vanderbilt_d8/bootstrap-navs') }}
+
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  {{ primary }}
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  {{ secondary }}
+{% endif %}

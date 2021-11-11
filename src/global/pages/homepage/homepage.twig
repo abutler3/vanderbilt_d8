@@ -1,0 +1,56 @@
+{#
+
+#}
+{% set news_image = "<img src='../assets/image.jpg' alt='Alt text'>" %}
+{% set subhead_alert_text = "Patients and Visitors go to <span class='mc__link'>VanderbiltHealth.com</span>" %}
+{% include "@vanderbilt_d8/header/header.twig" with {
+  "affix": affix,
+  "toggle_id": toggle_id,
+  "menu_data": {
+    form_action: "#",
+    search_base_path: search_base_path,
+    "swifttype_base_path": swifttype_base_path,
+    search_placeholder: "Search"
+  }
+} only %}
+<div id="site-wrapper" class="center-block">
+  <div id="site-canvas" class="center-block">
+    {% include "@vanderbilt_d8/content-header/content-header.twig" %}
+
+      <div class="row">
+        <div class="col-sm-12 slideshow__wrapper">
+          {% include "@vanderbilt_d8/slideshow/slideshow.twig" with {
+            "type": hero_banner.type,
+            "effect": hero_banner.effect,
+            "hero_banner": hero_banner.hero_banner,
+            "slides": hero_banner.slides,
+            "loop": hero_banner.loop,
+            "nav": hero_banner.nav,
+            "pager": hero_banner.pager
+          } only %}
+        </div>
+      </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-8 section-main-content">
+            <p>Vanderbilt's Center for Cognitive Medicine conducts research and clinical activities that focus on disorders of cognition (memory, thinking, and learning). A major focus is on the aging brain, including normal cognitive aging and menopause. The Center also studies late-life cognitive disorders, including Mild Cognitive Impairment (MCI), Alzheimer's disease, memory impairment is adults with Down Syndrome, and late-life depression.</p><br>
+            {% include "@vanderbilt_d8/image-block/image-block.twig" with {
+              "title": "Investigational New Drug for Alzheimer’s Scheduled for 1st Study in Humans",
+              "image": news_image|raw
+            } only %}
+          </div>
+          <div class="col-sm-4 sidebar">
+            {% include "@vanderbilt_d8/blog-posts-block/blog-posts-block.twig" %}
+            {% include "@vanderbilt_d8/image-block/image-block.twig" with {
+              "title": "Sidebar Title",
+              "image": news_image|raw
+            } only %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "@vanderbilt_d8/footer/footer.twig" %}

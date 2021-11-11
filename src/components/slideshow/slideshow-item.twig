@@ -1,0 +1,31 @@
+<li class="slideshow__slide slideshow__slide--{{ style }}" data-{{ style == 'thumbnailgallery' ? 'target' : 'thumb' }}="{{ image_uri }}">
+  <figure>
+
+    {% if image_uri %}
+      <div class="slideshow__image-wrapper">
+        {% if more_info_uri %}
+          <a href="{{ more_info_uri  }}">
+            <img src="{{ image_uri }}" alt="{{ img_alt }}" data-retina-src="{{ image_uri_retina }}" />
+          </a>
+        {% else %}
+          {% if type == 'thumbnailgallery' %}
+            <img src="{{ image_uri }}" alt="{{ img_alt }} thumbnail" />
+          {% else %}
+            <img src="{{ image_uri }}" alt="{{ img_alt }}" data-retina-src="{{ image_uri_retina }}" />
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if caption_output %}
+      <figcaption class="slideshow__slide-caption">
+        {% if more_info_uri %}
+          <a href="{{ more_info_uri }}">{{ caption_output }}</a>
+        {% else %}
+          {{ caption_output }}
+        {% endif %}
+      </figcaption>
+    {% endif %}
+
+  </figure>
+</li>

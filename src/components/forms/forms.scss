@@ -1,0 +1,174 @@
+// Forms
+//
+// Markup: forms.twig
+//
+// Style guide: Components.forms
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.form-type-radio .option {
+  vertical-align: middle;
+  float: none;
+  font-weight: normal;
+}
+
+.form-type-radio input {
+  margin-top: 2px;
+  margin-left: 1px;
+  margin-right: 0.5rem;
+  float: left;
+}
+
+.form-item.webform-component {
+  margin: 30px 0;
+}
+
+.form-submit {
+  @include button;
+}
+
+.chosen-container-single .chosen-single,
+input[type='text'],
+input[type='email'],
+input[type='phone'],
+input[type='number'],
+input[type='url'],
+input[type='file'],
+input,
+button,
+select,
+textarea {
+  display: inline-block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: $color-charcoal;
+  vertical-align: middle;
+  background-color: $color-white;
+  background-image: none;
+  border: 1px solid $color-slate;
+  border-radius: $border-rd-sm;
+  transition:
+  border-color ease-in-out 0.15s,
+  box-shadow ease-in-out 0.15s;
+
+  .form-item & {
+    margin: 0;
+  }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='phone'],
+input[type='number'],
+input[type='url'],
+input[type='file'],
+select,
+.chosen-container,
+.select2-container,
+textarea,
+.form-textarea-wrapper textarea {
+  box-shadow: $shadow-xsm;
+  width: 100%;
+
+  .container-inline & {
+    width: auto;
+  }
+}
+
+.text-format-wrapper {
+  width: 100%;
+}
+
+// Chosen module is enabled. It needs overrides.
+.chosen-container-single .chosen-single {
+  display: block;
+
+  div b {
+    margin-top: 6px;
+  }
+}
+
+.form-item .description {
+  color: $color-silver;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.marker {
+  color: #f00f00; // one-off color
+}
+
+.form-checkboxes .form-item,
+.form-radios .form-item {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-item,
+.form-actions {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+// This is a contrib module class.
+.webform-options-display-two-columns {
+  width: 100%;
+}
+
+legend {
+  border-bottom: 0;
+  padding: $padding-md 0 0;
+  margin: $padding-sm 0 2px;
+}
+
+label {
+  margin-bottom: $padding-xsm;
+  display: block;
+}
+
+.chosen-container.chosen-with-drop .chosen-drop {
+  overflow: inherit;
+  position: relative;
+}
+
+fieldset.form-composite {
+  margin: 1rem 0;
+}
+
+.form-item input[type='radio'] {
+  float: none;
+  height: auto;
+  margin: 4px 5px 0 0;
+}
+
+form[class*='webform'] {
+
+  .ui-button {
+    @include font-stack-base;
+    background: $color-peacock;
+    border-color: $color-peacock;
+    border-radius: 5px;
+    color: $color-white;
+    margin: 0 0.5rem 0 0;
+  }
+
+  .ui-button.ui-state-active {
+    background-color: $color-menu-bright-green;
+  }
+
+  table {
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color-dust;
+  }
+
+  td {
+    padding: 0.5rem;
+  }
+}
+

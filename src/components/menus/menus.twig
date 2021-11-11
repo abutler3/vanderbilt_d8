@@ -1,0 +1,31 @@
+{{ attach_library('vanderbilt_d8/menus') }}
+
+{# Import menu macros. #}
+{% import "@vanderbilt_d8/menus/menu-macros.twig" as menuTypes %}
+
+{% spaceless %}
+  {# Loop through all menus and output respective style. #}
+  {% for menu in menus %}
+
+    {% set menu_type_class = (menu.menu_type) ? 'menu-type--' ~ menu.menu_type : '' %}
+
+    <div class="menu__wrapper {{ menu_type_class }}">
+
+      {% if menu.menu_type == 'standard-inline' %}
+
+        {{ menuTypes.standardInlineMenu(menu.menu_tree) }}
+
+      {% elseif menu.menu_type == 'section-menu' %}
+
+        {{ menuTypes.sectionMenu(menu.menu_tree) }}
+
+      {% else %}
+
+        {{ menuTypes.standardAccordionMenu(menu.menu_tree) }}
+
+      {% endif %}
+
+    </div>
+
+  {% endfor %}
+{% endspaceless %}

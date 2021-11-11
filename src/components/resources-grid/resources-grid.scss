@@ -1,0 +1,21 @@
+// Resources Grid
+//
+// This is the resources-grid component.
+//
+// Markup: resources-grid.twig
+//
+// Style guide: Components.Resources-grid
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.resources-grid__item {
+  margin: 3rem 0;
+
+  @include breakpoint($bp-md) {
+    .card__title {
+      left: 15px;
+      right: 15px;
+    }
+  }
+}

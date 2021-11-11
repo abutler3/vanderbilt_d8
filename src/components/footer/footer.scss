@@ -1,0 +1,220 @@
+// Footer
+//
+// Markup: footer.twig
+//
+// Style guide: Components.footer
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Legacy selectors
+// sass-lint:disable-all
+.footer {
+  font-family: $font-family-base;
+  font-weight: 400;
+  background-color: $color-ice;
+  padding: 40px 40px 30px;
+
+  a {
+    color: $color-charcoal;
+    font-weight: $font-weight-regular;
+  }
+
+  .mainphone {
+    font-size: 14px;
+    margin: 14px 0;
+  }
+}
+
+.footer_links {
+  font-size: 11px;
+  color: $color-charcoal;
+  padding: 40px 0 30px;
+}
+
+.footer_address {
+  border-left: 0;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: left;
+
+  @include breakpoint($bp-md) {
+    border-left: 1px solid $color-charcoal;
+  }
+}
+
+.footer_legal,
+.footer_legal p {
+  font-style: italic;
+  font-size: 11px;
+  color: $color-charcoal;
+  margin: 0 0 30px;
+
+  &:last-child {
+    margin: 0 0 20px;
+  }
+}
+
+.mc__site__footer__wrap {
+  background: $color-ice;
+  margin: 0 auto;
+  padding: 70px 0 50px;
+  position: relative;
+}
+
+.mc__site__footer__fixed {
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: relative;
+  right: 0;
+  width: 100%;
+  // Set base z-index to ensure Flyout menu is above contexutal links.
+  z-index: -1;
+}
+
+.mc__site__footer--nonbranded {
+  background: $color-white;
+  font-size: 11px;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.mc__footer__nonbranded__logo {
+  margin: 0 auto;
+  padding: 15px 0 0;
+}
+
+.mc__site__footer__wrap--links {
+  border-bottom: 1px solid $color-gallery;
+  margin-bottom: 40px !important; // sass-lint:disable-line no-important
+  padding-bottom: 40px;
+}
+
+.mc__site__footer__wrap--info {
+  font-size: 13px;
+}
+
+.mc__footer__nav__container {
+  padding: 0;
+}
+
+.mc__footer__nav__container--space {
+  margin: 0 0 50px;
+}
+
+.mc__footer__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mc__site__footer {
+  color: $color-charcoal;
+  font-size: 0.85em;
+  letter-spacing: 0.01em;
+  padding: 0 20px;
+}
+
+.mc__footer__link {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.mc__footer__link a {
+  color: $color-charcoal;
+}
+
+.mc__footer__link a:hover {
+  color: $color-pacific;
+}
+
+.mc__footer__social__nav {
+  display: block;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+
+  @include breakpoint($bp-md) {
+    text-align: left;
+  }
+}
+
+.mc__footer__link--header {
+  font-weight: 700;
+}
+
+.mc__footer__social__item {
+  color: $color-white;
+  display: inline-block;
+  margin: 0 26px 5px 0;
+  padding: 0;
+  height: 30px;
+}
+
+.mc__footer__social__item:last-child {
+  margin: 0;
+}
+
+.mc__footer__social__item a {
+  color: $color-charcoal;
+}
+
+.mc__footer__social__icon {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mc__footer__social__icon:hover {
+  opacity: 0.8;
+}
+
+.mc__footer__social__icon.mc__sprite {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mc__footer__address {
+  display: block;
+  float: left;
+  clear: both;
+  padding-bottom: 20px;
+}
+
+.mc__footer__address a {
+  color: $color-charcoal;
+}
+
+.mc__footer__address a:hover {
+  color: $color-pacific;
+}
+
+.mc__footer__trademarks {
+  padding-top: 30px;
+}
+
+.mc__footer__mission__statement {
+  margin: 0 0 30px;
+}
+
+.vh__vhan__footer__logo {
+  clear: none;
+  display: block;
+  float: left;
+  max-width: 200px;
+}
+
+@media (max-width: 992px) {
+  .mc__footer__address {
+    display: block;
+    float: left;
+    clear: both;
+    padding-bottom: 20px;
+  }
+
+  .mc__footer__copyright {
+    padding-top: 20px;
+  }
+}
+
+// sass-lint:enable-all

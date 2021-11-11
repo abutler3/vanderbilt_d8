@@ -1,0 +1,35 @@
+<p>Hero slideshow with banner:</p>
+{% include "@vanderbilt_d8/slideshow/slideshow.twig" with {
+  "type": hero_banner.type,
+  "effect": hero_banner.effect,
+  "hero_banner": hero_banner.hero_banner,
+  "slides": hero_banner.slides,
+  "loop": hero_banner.loop,
+  "nav": hero_banner.nav,
+  "pager": hero_banner.pager
+} only %}
+<hr />
+<p>Hero slideshow with image captions:</p>
+{% include "@vanderbilt_d8/slideshow/slideshow.twig" with {
+  "type": standard_captions.type,
+  "effect": standard_captions.effect,
+  "slides": standard_captions.slides,
+  "loop": standard_captions.loop,
+  "nav": standard_captions.nav,
+  "pager": standard_captions.pager
+} only %}
+<hr />
+<p>Standard Slideshow:</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      {% include "@vanderbilt_d8/slideshow/slideshow.twig" with {
+        "type": standard.type,
+        "effect": standard.effect,
+        "slides": standard.slides,
+        "loop": standard.loop,
+        "nav": standard.nav,
+        "pager": standard.pager
+      } only %}
+    </div>
+</div>

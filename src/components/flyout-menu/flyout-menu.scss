@@ -1,0 +1,107 @@
+// Flyout Menu
+//
+// This is the site-wide flyout main menu component. It includes the
+// set of trigger icons, the search functionality, a dynamic
+// section-based menu, a series of static utility links, and a
+// static Vanderbilt University Medical Center menu.
+//
+// _Click on the icon below to trigger the display of the menu from the
+// right side of the screen._
+//
+// Markup: flyout-menu.kss.twig
+//
+// Style guide: Components.flyout-menu
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.mc__navbar {
+  box-shadow: -4px 4px 8px 0 rgba($color-black, 0.4);
+  background: $color-white;
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+  right: -200%;
+  top: 0;
+  transition: right 0.3s ease-in-out;
+  width: 420px;
+  // See src/bootstrap/bootstrap/_variables-custom.scss
+  // for z-index values.
+  z-index: $zindex-popover;
+
+  @include breakpoint($bp-l-xxsm-dwn) {
+    width: 100%;
+  }
+
+  .user-logged-in & {
+    top: 39px;
+
+    @include breakpoint($bp-xsm) {
+      top: inherit;
+    }
+  }
+}
+
+.mc__navbar__search {
+  @include clearfix;
+}
+
+.mc__navbar__checkbox {
+  display: none;
+}
+
+.mc__navbar__checkbox__label {
+  cursor: pointer;
+}
+
+.mc__navbar__checkbox__label--menu-icon {
+  color: $color-peacock;
+  display: block;
+  font-size: 13px;
+  height: 20px;
+  line-height: 20px;
+  min-width: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 0;
+
+  span {
+    clear: none;
+    display: inline-block;
+    float: right;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+  }
+
+  .mc__sprite--hamburger-icon {
+    margin: 0 15px 0 0;
+  }
+}
+
+.mc__navbar__checkbox__label--close-icon {
+  color: $color-peacock;
+  cursor: pointer;
+  font-size: 33px;
+  display: block;
+  height: 70px;
+  width: 60px;
+  line-height: 70px;
+  text-align: center;
+  float: left;
+  clear: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mc__navbar__checkbox__label--close-icon:hover {
+  color: $color-menu-gray;
+}
+
+input[type='checkbox'].mc__navbar__checkbox:checked+label+.mc__navbar {
+  display: block;
+  right: 0;
+}

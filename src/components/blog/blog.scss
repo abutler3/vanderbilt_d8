@@ -1,0 +1,24 @@
+// @File
+// Styling for blog content type (barista_post_blog).
+// @See:
+// Related module:
+// /modules/custom/barista_posts
+// Related template files:
+// node--barista-post-blog.html.twig
+
+.blog__description {
+  margin-bottom: 3rem;
+}
+
+.blog__rss-link {
+  padding-bottom: 14px;
+  text-align: center;
+
+  a {
+    background-image: none;
+    display: inline-block;
+    height: auto;
+    text-indent: 0;
+    width: auto;
+  }
+}

@@ -1,0 +1,265 @@
+{{ attach_library('vanderbilt_d8/header') }}
+{% if crane_main_header %}
+<div class="mc__site__wrap mc__site__header__wrap header__wrapper">
+  <div class="container-fluid">
+    <div class="header-container"><div class="module__uCahImzsepiMhVv7LBNgz module__1nKii7fYCsdPGWV6eEE0fj module__2SJHmMQqaR6VY-Sm7Uu9uv">
+      <div class="module__1BJ9NnLJca4H-haVz52jFp">
+        <div class="module__2UisNpHfH9YWnrSm8vSlMv module__2ztLVk8XWokPVw2s7UymSC module__2SJHmMQqaR6VY-Sm7Uu9uv module__39Zge6qcpdInhSOkpxGlqQ">
+          <nav role="navigation">
+            <div class="module__1qy2ngsjOcCEaYSfFNwIbg module__DkjwEnCc0-JllP7KBr_4e data-tracker-deskTopNavQuickLinksMenu">
+              <div class="data-tracker-deskTopNavQuickLinksMenu module__2SP6GuoF7JqnErl3UV2o2- module__1e_Woyk-X4FbFgy_RAnE2p module__2SJHmMQqaR6VY-Sm7Uu9uv">
+              </div>
+              <div class="data-tracker-deskTopNavSecondaryMenu module__2SP6GuoF7JqnErl3UV2o2- module__1e_Woyk-X4FbFgy_RAnE2p module__2SJHmMQqaR6VY-Sm7Uu9uv">
+                <ul class="module__2OVctmilRV7mRRuOsvYZDn">
+                  {% for menu_item in crane_secondary %}
+                    <li class="module__1si8HgSda94Zwa0vlSamim module__w9J0fJxX9rPFBuCot0fr ">
+                      <a href="{{ menu_item.url }}" target="_blank" rel="noopener" class="data-tracker-{{ menu_item.class }}">{{ menu_item.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <a class="module__I7mJdX3e-pRJYa532-08u data-tracker-desktopSiteLogo" href="/">
+            <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor mc__sprite mc__sprite--logo-header" data-icon-type="logo_vanderbilt_health" data-icon="true">
+              
+            </span>
+            </a>
+            <div class="module__37wnfRpwJ9oO_cj731MUmf module__su_JcY0rpmRX1f01uj-Aj">
+              <div class="data-tracker-deskTopNavPrimaryMenu module__2nWlN-IKI0w5Gf_oXw1jLa module__2XJ0GSh02l4f_Qk-Uv5wYw module__2SJHmMQqaR6VY-Sm7Uu9uv">
+                <ul id="PrimaryNavTopMenu" class="module__3Gas0g-TkA94zhL42psPkh module__1v1_BVnSLfcwLgP0-kDHMA">
+                  {% for header_item in crane_main_header %}
+                    <li class="module__2Qq7qWbfQllLbMEjcKO51e module__247X9684xcvPvRjbpNKxxg ">
+                      <a href="{{ header_item.url }}" target="_self" rel="" class="data-tracker-{{ header_item.class }}" data-toggle="">{{ header_item.name }}</a>
+                    </li>
+                  {% endfor %}
+                  <li class="module__2Qq7qWbfQllLbMEjcKO51e module__247X9684xcvPvRjbpNKxxg search-menu">
+                    <button data-target="desktopSearchFormSlideout" class="data-tracker-desktop-topnav-search-button searchButton">
+                      <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:11px" data-icon-type="search" data-icon="true"><svg style="stroke:#0e5981;stroke-width:2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.281 16.281" aria-labelledby="SearchTitle" role="img"><title id="SearchTitle">search</title><g><line class="a" style="stroke:#0e5981;stroke-width:2px" x2="4.604" y2="4.604" transform="translate(10.971 10.971)"></line><g class="a" style="stroke:#0e5981;stroke-width:2px"><circle class="b" style="stroke:none;fill:none" cx="6.814" cy="6.814" r="6.814"></circle><circle class="c" style="fill:none" cx="6.814" cy="6.814" r="5.814"></circle></g></g></svg></span>Search
+                    </button>
+                  </li>
+                </ul>
+                <ul id="PrimaryNavSlideOutMenu" class="module__1HF2nGI_laXt8NGBFZP2OY module__3Kvl7MtsAVEAm_OwIRNlhh">
+                  <li id="desktopSearchFormSlideout" tabindex="0" class="desktopSearchFormSlideout slideOutMenu module__2bxSFPXDtgvN9d5AFEHWo module__-nFmMMRhqZN4A8eOHlLIv">
+                  <div class="desktopGlobalSearchContainer">
+                    <div class="h4"><span>What are you looking for?</span></div>
+                    <form action="https://search.vumc.org" class="desktopGlobalSearchForm" id="DesktopGlobalSearchForm" role="search">
+                      <span class="module__2RBiZjbwWHEuIDPsxrjglD module__2SJHmMQqaR6VY-Sm7Uu9uv module__38rqTmrcmE8h1Vk081K2-O module__t5Zwct0oK27DSeqvRqnTc">
+                        <input type="text" class="st-default-search-input module__196GUGkbukQ-xLtKw90sa7 module__29rLlZGVyyFLcGx_gmqKVc " placeholder="I'm looking for...">
+                      </span>
+                      <button type="submit" form="DesktopGlobalSearchForm" value="Search" class="data-tracker-desktopSearchButton module__2SJHmMQqaR6VY-Sm7Uu9uv module__di2Az7TvAHksDXGVxfVtZ module__2iMoF9X2o0C7B51CRzMDRn undefined" tabindex="0" style="width:200px">
+                      <span class="">Search</span></button>
+                    </form>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      {% if crane_alert_value %}
+        <a class="data-tracker-alert module__2PgVNi9fpQV6jHyO4fH37s" target="_blank" rel="noopener noreferrer">
+          <div class="module__2AVROUEhvivX714GsnnY37 module__2J4jSR1FI_eBwhZwlq2Fhk module__2w09Nw_d6P1IVn9Sxi3iyi #17a2b8 null {{ crane_alert_severity}}">
+            <div>
+              <h2>{{ crane_alert_title }}</h2>
+              <p>{{ crane_alert_value }}</p>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+      <div class="module__ZK94cvlQN4FT_drq0WPa">
+        <div class="data-tracker-mobileHamburgerMenu module__2xIsxIikHmUkPdh6AuKt8I module__2Y_fbfZRhl5rEP3y6RjJ4o module__2SJHmMQqaR6VY-Sm7Uu9uv module__2F1GrEE7UcQoE7asSO5jxr">
+          <div id="MobileHeaderBarContainer" class="module__1pE-lg2rpi5LFkP4hJWA6C module__Hh4JXXCsIe1F49uZ7UmVx">
+            <a class="data-tracker-mobileSiteLogo module__M7kQHjqvxUbl0JNhyj4Hz module__3R1RSy9fKpEkFAFDOvK0GN" href="/">
+              <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor mc__sprite mc__sprite--logo-header" style="" data-icon-type="logo_vanderbilt_health" data-icon="true">
+                  
+              </span>
+            </a>
+          <span class="module__PHRg-jfvIuuOEIH-QPNwU">
+            <button aria-label="press button to search site with search form" class="data-tracker-mobileSearchButton module__1vGF8OXkiUokB1MAV5mDY module__BRMoBauJwvWcYCJawELUX module__3qSse1qu8v5oudHJ8oYv9a" type="button">Search 
+            <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:16px" data-icon-type="search" data-icon="true"><svg style="stroke-width:2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.281 16.281" aria-labelledby="SearchTitle" role="img"><title id="SearchTitle">search</title><g><line class="a" style="stroke-width:2px" x2="4.604" y2="4.604" transform="translate(10.971 10.971)"></line><g class="a" style="stroke-width:2px"><circle class="b" style="stroke:none;fill:none" cx="6.814" cy="6.814" r="6.814"></circle><circle class="c" style="fill:none" cx="6.814" cy="6.814" r="5.814"></circle></g></g></svg></span>
+            </button>
+            <button aria-label="press button to toggle navigation menu" class="data-tracker-mobileHamburgerButton module__1vGF8OXkiUokB1MAV5mDY module__BRMoBauJwvWcYCJawELUX module__1xlXoRB29PJS-DRCeB9eI" type="button">
+              <div class="module__3feCh5nUj1ByVtpdXkLDJI">Menu</div> 
+              <span class="module___vpim2fK4XZzhV1pZfPmk">
+                <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:18px" data-icon-type="hamburger" data-icon="true"><svg style="stroke-width:3px" aria-labelledby="HamburgerTitle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15"><title id="HamburgerTitle">open menu</title><g transform="translate(149.5 -199)"><line x2="18" transform="translate(-149.5 200.5)"></line><line x2="18" transform="translate(-149.5 206.5)"></line><line x2="18" transform="translate(-149.5 212.5)"></line></g></svg></span>
+              </span>
+              <div class="module__2WXwbrXYtCYOp2WkNLNg5g">Close</div> 
+                <span class="module__1frfn9nO2TTXGJHEnfQBX">
+                  <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:18px" data-icon-type="close" data-icon="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" style="color:#e8e8e8;fill:#e8e8e8" aria-labelledby="CloseTitle" role="img"><title id="CloseTitle">close menu</title><g id="close_icon" data-name="close icon" transform="translate(-336 -110)"><g style="fill:#fff;stroke:#e8e8e8;opacity:0.998;stroke-width:3px" id="Ellipse_1" data-name="Ellipse 1" class="cls-1" transform="translate(336 110)"><circle style="stroke:none" class="cls-3" cx="12.5" cy="12.5" r="12.5"></circle><circle style="fill:none" class="cls-4" cx="12.5" cy="12.5" r="11"></circle></g><g id="Group_102" data-name="Group 102" transform="translate(527.383 -242.382) rotate(45)"><line style="fill:none;stroke:#2a2b2e;stroke-width:3px" id="Line_4" data-name="Line 4" class="cls-2" y2="12" transform="translate(131.5 378.5)"></line><line style="fill:none;stroke:#2a2b2e;stroke-width:3px" id="Line_5" data-name="Line 5" class="cls-2" y2="12" transform="translate(137.5 384.5) rotate(90)"></line></g></g></svg></span>
+                </span>
+            </button>
+          </span>
+          </div>
+          <div id="MobileHeaderNavContainer" tabindex="0" class="module__2exNbqNkY1KDmPMUvwxksk module__29kFRTgatK1CWbToyKlX65"><div class="data-tracker-mobileHamburgerMenu module__1QtOlec-hE4cgU0MZQhDAi module__2-VG09gpMGicGlSJaIW5Kj module__2SJHmMQqaR6VY-Sm7Uu9uv">
+            <div class="module__2HqINv6yiiV8rpG1IAoMF_">
+              <nav aria-label="Main Site Navigation Menu" role="navigation">
+              
+              <div class="module__15qpHMBRHtRlNYQyfB6aDS module__3lmHNJo_yqty-XI4JEty7i module__1v4IWxfMNWEOM-6hO8Z53m module__2SJHmMQqaR6VY-Sm7Uu9uv">
+              <form action="https://search.vumc.org" class="module__foSWM_FvkmyCjRpuYozd5 module__NmSMasgCJWm_4T9qfdSnD " id="MobileGlobalSearchForm" role="search">
+                <span class="module__2RBiZjbwWHEuIDPsxrjglD module__2SJHmMQqaR6VY-Sm7Uu9uv module__38rqTmrcmE8h1Vk081K2-O module__t5Zwct0oK27DSeqvRqnTc">
+                  <input type="text" class="st-default-search-input module__196GUGkbukQ-xLtKw90sa7 module__29rLlZGVyyFLcGx_gmqKVc " placeholder="I'm looking for...">
+                </span>
+                <button type="submit" form="MobileGlobalSearchForm" value="Search" class="data-tracker-mobileHamburgerSearchButton module__2SJHmMQqaR6VY-Sm7Uu9uv module__di2Az7TvAHksDXGVxfVtZ module__2iMoF9X2o0C7B51CRzMDRn undefined" tabindex="0" style="width:100px">
+                  <span class="">Search</span>
+                </button>
+              </form>
+                  <div>
+                    {%
+                      include "@vanderbilt_d8/flyout-menu/flyout-menu.twig" with {
+                        'search': search,
+                        'menus': menus
+                      } only
+                    %}
+                </div>
+                <ul class="module__13HG0bPYDSb7E0b2J1eZSn module__35oBIfBh56ydj7tZ2bUYJ1 data-tracker-primaryMenu-menu">
+                  {% for header_item in crane_main_header %}
+                    <li class="module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX ">
+                      <a href="{{ header_item.url }}" target="_self" rel="" class="data-tracker-{{ header_item.class }}" data-toggle="">{{ header_item.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+            <div class="module__j5aSkwCYcwVOeom_iTCTe module__3lmHNJo_yqty-XI4JEty7i module__1v4IWxfMNWEOM-6hO8Z53m module__2SJHmMQqaR6VY-Sm7Uu9uv">
+              <ul class="module__13HG0bPYDSb7E0b2J1eZSn module__35oBIfBh56ydj7tZ2bUYJ1 data-tracker-secondaryMenu-menu">
+                {% for menu_item in crane_secondary %}
+                  <li class="module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX ">
+                    <a href="{{ menu_item.url }}" target="_blank" rel="noopener" class="data-tracker-make-an-appointment-link" data-toggle="">{{ menu_item.name }}</a>
+                 </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+{{ attach_library('vanderbilt_d8/header') }}
+
+<div class="mc__site__wrap mc__site__header__wrap header__wrapper">
+  <div class="container-fluid">
+    <div class="header-container"><div class="module__uCahImzsepiMhVv7LBNgz module__1nKii7fYCsdPGWV6eEE0fj module__2SJHmMQqaR6VY-Sm7Uu9uv">
+      <div class="module__1BJ9NnLJca4H-haVz52jFp">
+        <div class="module__2UisNpHfH9YWnrSm8vSlMv module__2ztLVk8XWokPVw2s7UymSC module__2SJHmMQqaR6VY-Sm7Uu9uv module__39Zge6qcpdInhSOkpxGlqQ">
+          <nav role="navigation">
+            <a class="module__I7mJdX3e-pRJYa532-08u data-tracker-desktopSiteLogo" href="https://www.vumc.org/main/home/">
+            <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor mc__sprite mc__sprite--logo-header" data-icon-type="logo_vanderbilt_health" data-icon="true">
+              
+            </span>
+            </a>
+            <div class="module__37wnfRpwJ9oO_cj731MUmf module__su_JcY0rpmRX1f01uj-Aj">
+              <div class="data-tracker-deskTopNavPrimaryMenu module__2nWlN-IKI0w5Gf_oXw1jLa module__2XJ0GSh02l4f_Qk-Uv5wYw module__2SJHmMQqaR6VY-Sm7Uu9uv">
+                <ul id="PrimaryNavTopMenu" class="module__3Gas0g-TkA94zhL42psPkh module__1v1_BVnSLfcwLgP0-kDHMA">
+                  {% for header_item in header_links %}
+                    <li class="backup module__2Qq7qWbfQllLbMEjcKO51e module__247X9684xcvPvRjbpNKxxg ">
+                      <a href="{{ header_item.href }}" target="_self" rel="" class="{{ header_item.class }}" data-toggle="">{{ header_item.title }}</a>
+                    </li>
+                  {% endfor %}
+                  <li class="module__2Qq7qWbfQllLbMEjcKO51e module__247X9684xcvPvRjbpNKxxg search-menu">
+                    <button data-target="desktopSearchFormSlideout" class="data-tracker-desktop-topnav-search-button searchButton">
+                      <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:11px" data-icon-type="search" data-icon="true"><svg style="stroke:#0e5981;stroke-width:2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.281 16.281" aria-labelledby="SearchTitle" role="img"><title id="SearchTitle">search</title><g><line class="a" style="stroke:#0e5981;stroke-width:2px" x2="4.604" y2="4.604" transform="translate(10.971 10.971)"></line><g class="a" style="stroke:#0e5981;stroke-width:2px"><circle class="b" style="stroke:none;fill:none" cx="6.814" cy="6.814" r="6.814"></circle><circle class="c" style="fill:none" cx="6.814" cy="6.814" r="5.814"></circle></g></g></svg></span>Search
+                    </button>
+                  </li>
+                </ul>
+                <ul id="PrimaryNavSlideOutMenu" class="module__1HF2nGI_laXt8NGBFZP2OY module__3Kvl7MtsAVEAm_OwIRNlhh">
+                  <li id="desktopSearchFormSlideout" tabindex="0" class="desktopSearchFormSlideout slideOutMenu module__2bxSFPXDtgvN9d5AFEHWo module__-nFmMMRhqZN4A8eOHlLIv">
+                  <div class="desktopGlobalSearchContainer">
+                    <div class="h4"><span>What are you looking for?</span></div>
+                    <form action="https://search.vumc.org" class="desktopGlobalSearchForm" id="DesktopGlobalSearchForm" role="search">
+                      <span class="module__2RBiZjbwWHEuIDPsxrjglD module__2SJHmMQqaR6VY-Sm7Uu9uv module__38rqTmrcmE8h1Vk081K2-O module__t5Zwct0oK27DSeqvRqnTc">
+                        <input type="text" class="st-default-search-input module__196GUGkbukQ-xLtKw90sa7 module__29rLlZGVyyFLcGx_gmqKVc " placeholder="I'm looking for...">
+                      </span>
+                      <button type="submit" form="DesktopGlobalSearchForm" value="Search" class="data-tracker-desktopSearchButton module__2SJHmMQqaR6VY-Sm7Uu9uv module__di2Az7TvAHksDXGVxfVtZ module__2iMoF9X2o0C7B51CRzMDRn undefined" tabindex="0" style="width:200px">
+                      <span class="">Search</span></button>
+                    </form>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="module__ZK94cvlQN4FT_drq0WPa">
+        <div class="data-tracker-mobileHamburgerMenu module__2xIsxIikHmUkPdh6AuKt8I module__2Y_fbfZRhl5rEP3y6RjJ4o module__2SJHmMQqaR6VY-Sm7Uu9uv module__2F1GrEE7UcQoE7asSO5jxr">
+          <div id="MobileHeaderBarContainer" class="module__1pE-lg2rpi5LFkP4hJWA6C module__Hh4JXXCsIe1F49uZ7UmVx">
+            <a class="data-tracker-mobileSiteLogo module__M7kQHjqvxUbl0JNhyj4Hz module__3R1RSy9fKpEkFAFDOvK0GN" href="https://www.vumc.org/main/home/">
+              <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor mc__sprite mc__sprite--logo-header" style="" data-icon-type="logo_vanderbilt_health" data-icon="true">
+                  
+              </span>
+            </a>
+          <span class="module__PHRg-jfvIuuOEIH-QPNwU">
+            <button aria-label="press button to search site with search form" class="data-tracker-mobileSearchButton module__1vGF8OXkiUokB1MAV5mDY module__BRMoBauJwvWcYCJawELUX module__3qSse1qu8v5oudHJ8oYv9a" type="button">Search 
+            <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:16px" data-icon-type="search" data-icon="true"><svg style="stroke-width:2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.281 16.281" aria-labelledby="SearchTitle" role="img"><title id="SearchTitle">search</title><g><line class="a" style="stroke-width:2px" x2="4.604" y2="4.604" transform="translate(10.971 10.971)"></line><g class="a" style="stroke-width:2px"><circle class="b" style="stroke:none;fill:none" cx="6.814" cy="6.814" r="6.814"></circle><circle class="c" style="fill:none" cx="6.814" cy="6.814" r="5.814"></circle></g></g></svg></span>
+            </button>
+            <button aria-label="press button to toggle navigation menu" class="data-tracker-mobileHamburgerButton module__1vGF8OXkiUokB1MAV5mDY module__BRMoBauJwvWcYCJawELUX module__1xlXoRB29PJS-DRCeB9eI" type="button">
+              <div class="module__3feCh5nUj1ByVtpdXkLDJI">Menu</div> 
+              <span class="module___vpim2fK4XZzhV1pZfPmk">
+                <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:18px" data-icon-type="hamburger" data-icon="true"><svg style="stroke-width:3px" aria-labelledby="HamburgerTitle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15"><title id="HamburgerTitle">open menu</title><g transform="translate(149.5 -199)"><line x2="18" transform="translate(-149.5 200.5)"></line><line x2="18" transform="translate(-149.5 206.5)"></line><line x2="18" transform="translate(-149.5 212.5)"></line></g></svg></span>
+              </span>
+              <div class="module__2WXwbrXYtCYOp2WkNLNg5g">Close</div> 
+                <span class="module__1frfn9nO2TTXGJHEnfQBX">
+                  <span class="module__2SJHmMQqaR6VY-Sm7Uu9uv module__2vZF2B_mzgO1-EL4cUC8LW module__PeUJHvTe3EAaRtg8FMaor" style="max-width:18px" data-icon-type="close" data-icon="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" style="color:#e8e8e8;fill:#e8e8e8" aria-labelledby="CloseTitle" role="img"><title id="CloseTitle">close menu</title><g id="close_icon" data-name="close icon" transform="translate(-336 -110)"><g style="fill:#fff;stroke:#e8e8e8;opacity:0.998;stroke-width:3px" id="Ellipse_1" data-name="Ellipse 1" class="cls-1" transform="translate(336 110)"><circle style="stroke:none" class="cls-3" cx="12.5" cy="12.5" r="12.5"></circle><circle style="fill:none" class="cls-4" cx="12.5" cy="12.5" r="11"></circle></g><g id="Group_102" data-name="Group 102" transform="translate(527.383 -242.382) rotate(45)"><line style="fill:none;stroke:#2a2b2e;stroke-width:3px" id="Line_4" data-name="Line 4" class="cls-2" y2="12" transform="translate(131.5 378.5)"></line><line style="fill:none;stroke:#2a2b2e;stroke-width:3px" id="Line_5" data-name="Line 5" class="cls-2" y2="12" transform="translate(137.5 384.5) rotate(90)"></line></g></g></svg></span>
+                </span>
+            </button>
+          </span>
+          </div>
+          <div id="MobileHeaderNavContainer" tabindex="0" class="module__2exNbqNkY1KDmPMUvwxksk module__29kFRTgatK1CWbToyKlX65"><div class="data-tracker-mobileHamburgerMenu module__1QtOlec-hE4cgU0MZQhDAi module__2-VG09gpMGicGlSJaIW5Kj module__2SJHmMQqaR6VY-Sm7Uu9uv">
+            <div class="module__2HqINv6yiiV8rpG1IAoMF_">
+              <nav aria-label="Main Site Navigation Menu" role="navigation">
+              
+              <div class="module__15qpHMBRHtRlNYQyfB6aDS module__3lmHNJo_yqty-XI4JEty7i module__1v4IWxfMNWEOM-6hO8Z53m module__2SJHmMQqaR6VY-Sm7Uu9uv">
+              <form action="/search" class="module__foSWM_FvkmyCjRpuYozd5 module__NmSMasgCJWm_4T9qfdSnD " id="MobileGlobalSearchForm" role="search">
+                <span class="module__2RBiZjbwWHEuIDPsxrjglD module__2SJHmMQqaR6VY-Sm7Uu9uv module__38rqTmrcmE8h1Vk081K2-O module__t5Zwct0oK27DSeqvRqnTc">
+                  <input type="search" class="st-default-search-input module__196GUGkbukQ-xLtKw90sa7 module__29rLlZGVyyFLcGx_gmqKVc
+                  " placeholder="I'm looking for...">
+                </span>
+                <button type="submit" form="MobileGlobalSearchForm" value="Search" class="data-tracker-mobileHamburgerSearchButton module__2SJHmMQqaR6VY-Sm7Uu9uv module__di2Az7TvAHksDXGVxfVtZ module__2iMoF9X2o0C7B51CRzMDRn undefined" tabindex="0" style="width:100px">
+                  <span class="">Search</span>
+                </button>
+              </form>
+                <div class="site-nav">
+                  {# Load Menu System. #}
+                  {%
+                    include "@vanderbilt_d8/menus/menus.twig" with {
+                      'menus': menus
+                    } only
+                  %}
+                </div>
+            </div>
+            <ul class="module__13HG0bPYDSb7E0b2J1eZSn module__35oBIfBh56ydj7tZ2bUYJ1 data-tracker-primaryMenu-menu">
+                  {% for header_item in header_links %}
+                    <li class="module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX ">
+                      <a href="{{ header_item.href }}" target="_self" rel="" class="{{ header_item.class }}" data-toggle="">{{ header_item.title }}</a>
+                    </li>
+                  {% endfor %}
+            </ul>
+            <div class="module__j5aSkwCYcwVOeom_iTCTe module__3lmHNJo_yqty-XI4JEty7i module__1v4IWxfMNWEOM-6hO8Z53m module__2SJHmMQqaR6VY-Sm7Uu9uv">
+              <ul class="module__13HG0bPYDSb7E0b2J1eZSn module__35oBIfBh56ydj7tZ2bUYJ1 data-tracker-secondaryMenu-menu">
+                {% for menu_item in crane_secondary %}
+                  <li class="module__1ljDITU36fEMzZ4veK_1vW module__3OGVzirUoUNlr32nOqNijX ">
+                    <a href="{{ menu_item.url }}" target="_blank" rel="noopener" class="data-tracker-make-an-appointment-link" data-toggle="">{{ menu_item.name }}</a>
+                 </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+

@@ -1,0 +1,111 @@
+// Slideshow
+//
+// This is the slideshow component. It can be displayed in a
+// hero banner format with a side banner, in a hero format
+// with a description for each slide, or as a standard
+// image carousel.
+// Looping, slide/fade effect, and pager/control nav can be
+// controlled via data attributes on the outer wrapper.
+//
+// Markup: slideshow.kss.twig
+//
+// Style guide: Components.slideshow
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+// Import slideshow mixins.
+@import 'slideshow-mixins';
+
+.slideshow {
+  overflow: hidden;
+}
+
+// Slideshows with captions.
+.hascaptions {
+
+  &.slideshow {
+    background: $color-mercury;
+  }
+
+  .slideshow__container {
+    @include slideshow-pager-dots--has-captions;
+    @include slideshow-next-prev--has-captions;
+    padding-bottom: 2rem;
+  }
+
+  // Slideshow caption.
+  .slideshow__slide-caption {
+    padding: 2rem 2rem 1rem;
+  }
+}
+
+// Slideshows with captions.
+.nocaptions {
+
+  .slideshow__container {
+    @include slideshow-pager-dots--no-captions;
+    @include slideshow-next-prevs--no-captions;
+  }
+}
+
+// Slideshow overrides for the hero banner, homepage, slideshow.
+.slideshow--homepage {
+  @include slideshow--homepage;
+}
+
+// Slideshow overrides for sidebar slideshow.
+.slideshow-region--sidebar {
+
+  // Slideshow caption.
+  .slideshow__slide-caption {
+    padding: 1rem 1rem 0;
+  }
+
+  .flex-prev,
+  .flex-next {
+    height: 4rem;
+    text-align: center;
+    width: 3rem;
+
+    &::before {
+      font-size: 3rem;
+    }
+  }
+}
+
+// Image gallery slideshow.
+.slideshow--thumbnailgallery {
+
+  &.hascaptions {
+
+    .slideshow__container {
+      padding: 1.5rem 1.5rem 0;
+    }
+  }
+
+  .slideshow__slide-caption {
+    padding: 1.5rem 0 0;
+  }
+}
+
+// Image gallery thumbs.
+.slideshow__thumbs {
+  // Disable important rule to override carousel inline css.
+  // sass-lint:disable-block no-important
+  .slides {
+    padding: 0.75rem;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .slideshow__slide--thumbnailgallery {
+    opacity: 0.4;
+    padding: 0.75rem;
+    width: 20% !important;
+
+    &.flex-active-slide {
+      opacity: 1;
+    }
+  }
+}

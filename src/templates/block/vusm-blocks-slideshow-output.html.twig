@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display Slideshow output.
+ */
+#}
+{{ attach_library('vanderbilt_d8/slideshow') }}
+{# Pass array from preprocess to theme component. #}
+{%
+  include "@vanderbilt_d8/slideshow/slideshow.twig" with {
+    "region": slideshow_component.region,
+    "type": slideshow_component.type,
+    "effect": slideshow_component.effect,
+    "captions_class": slideshow_component.captions_class,
+    "hero_banner": slideshow_component.hero_banner,
+    "header_scale_factor": slideshow_component.header_scale_factor,
+    "slides": slideshow_component.slides,
+    "loop": slideshow_component.loop,
+    "nav": slideshow_component.nav,
+    "pager": slideshow_component.pager
+  } only
+%}

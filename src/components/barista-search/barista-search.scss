@@ -1,0 +1,217 @@
+// Import site utilities.
+@import '../../global/utils/init';
+
+// sass-lint:disable no-ids
+
+.from-gsa table tr {
+  clear: both;
+  overflow: hidden;
+}
+
+.from-gsa table td,
+.from-gsa table th {
+  white-space: normal;
+}
+
+.from-gsa td[align='right'] {
+  float: right;
+}
+
+.section-main-content > .header-page {
+  display: none;
+}
+
+.search-results h2 {
+  margin-left: 10px;
+  margin-bottom: 6px;
+}
+
+.search-results iframe {
+  border: 0;
+  width: 100%;
+  height: 1600px;
+}
+
+.from-gsa {
+  margin-top: 20px;
+  word-break: break-word;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.from-gsa td,
+.from-gsa div,
+.from-gsa .p,
+.from-gsa .d,
+.from-gsa .s,
+.from-gsa blockquote {
+  font-family: $font-family-base;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: $color-charcoal;
+}
+
+/* Sets color of search results title to styleguide's default for links. */
+.from-gsa a {
+  color: $color-pacific;
+}
+
+/* Updates color and weight of word "Cached" in search results. */
+.from-gsa .f {
+  color: $color-pacific;
+  font-weight: 400;
+}
+
+/* updates color of reference url below search sesult. */
+.from-gsa .s {
+  [color='#008000'] {
+    color: $color-menu-bright-green;
+  }
+}
+
+/* Rmoves custom bg color on cells */
+.from-gsa td {
+  background-color: transparent;
+}
+
+.main-results-without-dn td {
+  width: 50%;
+
+  @include breakpoint($bp-xsm) {
+    width: auto;
+  }
+}
+
+.from-gsa td[width='1%'] > font[size='+1'] {
+  display: none;
+}
+
+.from-gsa *[bgcolor='#efefef'] {
+  background: $color-white;
+  min-height: 30px;
+}
+
+.from-gsa .sep {
+  display: none;
+}
+
+.from-gsa tbody {
+  border-top: 0;
+}
+
+.from-gsa blockquote {
+  padding: 0;
+  border-left: 0;
+  margin-left: 0;
+}
+
+.from-gsa img {
+  max-width: auto;
+}
+
+.from-gsa #bottom-navigation {
+  margin-top: 20px;
+}
+
+.from-gsa #bottom-navigation table {
+  width: auto;
+  display: block;
+  overflow: hidden;
+
+  tbody {
+    width: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.from-gsa #bottom-navigation table td:first-child {
+  display: none;
+}
+
+.from-gsa #bottom-navigation table td {
+  display: inline-block;
+  padding: 0;
+}
+
+.from-gsa #bottom-navigation table tr {
+  display: block;
+  text-align: center;
+}
+
+.from-gsa div.main-results-without-dn {
+  @include font-stack-base;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 14px;
+
+  table {
+    border-bottom: 1px solid $color-menu-lt-gray;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    width: 100%;
+  }
+}
+
+.from-gsa #top-navigation {
+  padding-top: 0;
+}
+
+.from-gsa b:empty {
+  display: none;
+}
+
+.search-tabs {
+  text-align: center;
+}
+
+.search-tabs.nav-tabs > li {
+  display: inline-block;
+  float: none;
+}
+
+@media screen and (max-width: 650px) {
+  .search-tabs.nav-tabs > li.active > a,
+  .search-tabs.nav-tabs > li.active > a:hover,
+  .search-tabs.nav-tabs > li.active > a:focus {
+    border: 0;
+    background: $color-mercury;
+  }
+
+  .search-tabs.nav-tabs > li > a {
+    border-radius: 4px;
+    border: 0;
+  }
+
+  .search-tabs.nav-tabs > li > a:hover {
+    border: 0;
+  }
+
+  .search-tabs.nav-tabs {
+    border-bottom: 0;
+  }
+}
+
+.search-in-body {
+  padding-bottom: 0;
+  width: 50%;
+  min-width: 275px;
+  background: none;
+  display: inline-block;
+}
+
+.searchbox-tab {
+  text-align: center;
+}
+
+.search-in-body.form-search button {
+  color: $color-dusty-gray;
+  font-size: 22px;
+}

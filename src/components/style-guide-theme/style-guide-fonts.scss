@@ -1,0 +1,6 @@
+// Since fonts are added to the theme via a Drupal library,
+// we add this file for the Google fonts call so that it will
+// be included in the concatenated CSS, and add the necessary
+// fonts to the style guide.
+// sass-lint:disable-all
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,300,400,500');

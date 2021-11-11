@@ -1,0 +1,62 @@
+// Styling for RSS Block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.rss-block__list-item {
+  border-bottom: 1px solid $color-ash;
+  display: flex;
+  margin-bottom: $padding-md;
+  padding-bottom: $padding-md;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .blockstyle-accent & {
+    border-color: $color-slate;
+  }
+}
+
+.rss-block__item-image {
+  padding-right: 15px;
+  padding-top: $padding-xsm;
+  width: 90px;
+
+  img {
+    min-width: 75px;
+  }
+}
+
+.rss-block__content {
+  width: 100%;
+
+  &.with-image {
+    max-width: calc(100% - 90px);
+  }
+}
+
+// <h3> required to override
+// default body text styling.
+h3.rss-block__item-title {
+  font-size: 1.4rem;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.rss-block__item-date,
+.rss-block__meta {
+  color: $color-charcoal;
+  margin: $padding-sm 0;
+}
+
+.rss-block__item-author {
+  margin: 0 0 $padding-sm;
+}
+
+.rss-block__item-description {
+  margin: 0 0 $padding-sm;
+}

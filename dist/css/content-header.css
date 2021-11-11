@@ -1,0 +1,73 @@
+.content-header {
+  padding: 1.4rem; 
+  margin-top: 20px; }
+  .content-header.col-sm-12 + * {
+    clear: both; }
+
+.content-header__page-title {
+  margin-bottom: 1rem; }
+
+.site-title {
+  color: #02535a;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 3.65rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-top: 0;
+  padding-bottom: 10px; }
+
+.site-title__link {
+  color: #02535a; }
+  .site-title__link:hover {
+    color: #02535a;
+    text-decoration: none; }
+
+.content-header__parent-links {
+  margin-top: -1rem;
+  margin-bottom: 2rem; }
+
+.parent-links {
+  display: inline-block;
+  font-size: 12px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  text-transform: uppercase; }
+
+.parent-links__item {
+  display: inline-block;
+  margin: 0 1rem 1rem 0; }
+
+.parent-links__link {
+  background: #ececec;
+  color: #02535a;
+  line-height: 1;
+  padding: 0.5rem 1rem; }
+
+.content-header__patient-link {
+  display: none;
+  float: right;
+  text-align: right;
+  width: 14rem; }
+  @media (min-width: 768px) {
+    .content-header__patient-link {
+      display: block; } }
+
+.patient-link {
+  color: #4b4b4b;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300; }
+
+.patient-link__link {
+  color: #4b4b4b;
+  display: block;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  white-space: nowrap; }
+  .patient-link__link:hover, .patient-link__link:focus {
+    color: #4b4b4b;
+    text-decoration: none; }

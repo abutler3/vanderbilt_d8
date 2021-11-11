@@ -1,0 +1,1354 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the vanderbilt_d8 theme.
+ */
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\Component\Serialization\Json;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Guzzle\Common\Exception\MultiTransferException;
+use GuzzleHttp\Promise;
+use Drupal\Core\Cache\Cache;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\ClientException;
+
+// function getFooterLinkData() {
+//   // Pull JSON, ideally from footer
+//   $client = \Drupal::httpClient();
+//   $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+//   // $response = $client->get($url, ['verify' => false]);
+//   $request = $client->get($url, ['verify' => false]);
+//   // $request->setHeader('Accept', 'application/json');
+//   // $response = $client->send($request);
+//   $array = json_decode($request->getBody()->getContents(), true);
+//   // var_dump($array);
+//   // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['links'], TRUE) . '</code></pre>');
+//   return $array['footer']['links'];
+// }
+
+function compareByLastName($a, $b) {
+  return strcmp($a["last_name"], $b["last_name"]);
+}
+
+function compareByName($a, $b) {
+  return strcmp($a["name"], $b["name"]);
+}
+
+function search_data_id($exif)
+{
+    $id_list = [];
+    foreach ($exif as $data)
+    {
+        // \Drupal::logger('Barista JSON 1')->warning('<pre><code>' . print_r($data['relationships']['field_menu_item']['data']['id'], TRUE) . '</code></pre>');
+        // if ($data['field_menu_item']['data']['id'] == $field)
+            $id_list[] = $data['relationships']['field_menu_item']['data']['id'];
+    }
+    return $id_list;
+}
+
+function getStartEnd($array, $string)
+{
+  $j = 0;
+  $length = count($array);
+  $pointer = 0;
+  for ($j = 0;$j < $length;$j++)
+  {
+    // Get Main Header
+    if ($array[$j]['attributes']['name'] == $string) {
+      $pointer = $j;
+    }
+    
+  }
+  return $pointer;
+}
+
+function getMainMenu($array)
+{
+  $k = 0;
+  $length = count($array);
+  $menu_array = [];
+  $crane_pv_dropdown = 0;
+  $crane_pv_dropdown_end = 0;
+  $crane_hp_dropdown = 0;
+  $crane_hp_dropdown_end = 0;
+
+  for ($k = 0;$k < $length;$k++)
+  {
+    // Get P-V dropdown
+    if ($array[$k]['attributes']['name'] == "Patients and Visitors") {
+      $crane_pv_dropdown = $k;
+    }
+
+    if ($array[$k]['attributes']['name'] == "(615) 320-5000") {
+      $crane_pv_dropdown_end = $k;
+    }
+
+  }
+  
+  array_splice($array, $crane_pv_dropdown, $crane_pv_dropdown_end);
+  $l = 0;
+  $second_length = count($array);
+  for ($l = 0;$l < $second_length;$l++)
+  {
+    // Get Healthcare Professionals
+    if ($array[$l]['attributes']['name'] == "Healthcare Professionals") {
+
+      $crane_hp_dropdown = $l;
+    }
+
+    if ($array[$l]['attributes']['name'] == "(615) 222-3333") {
+      $crane_hp_dropdown_end = $l;
+    }
+
+  }
+  // \Drupal::logger('Barista JSON first pass array')->warning('<pre><code>' . print_r($array, TRUE) . '</code></pre>');
+  // \Drupal::logger('Barista JSON hp start')->warning('<pre><code>' . print_r($crane_hp_dropdown, TRUE) . '</code></pre>');
+  // \Drupal::logger('Barista JSON hp end')->warning('<pre><code>' . print_r($crane_hp_dropdown_end, TRUE) . '</code></pre>');
+  array_splice($array, $crane_hp_dropdown, ($crane_hp_dropdown_end - $crane_hp_dropdown + 1));
+  // $final_menu_array = array_slice(array_values($menu_array), $crane_hp_dropdown, ($crane_hp_dropdown_end - $crane_hp_dropdown) + 1);
+
+  return $array;
+}
+
+function getAlertData() {
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/alert.json';
+  $url2 = 'http://live-vumc-crane.pantheonsite.io/jsonapi/node/alert?filter[field_site_property.name]=Barista%20Auxiliary&filter[status]=1&include=field_alert_severity&fields[node--alert]=title,body,field_banner_link,field_alert_severity,field_date,field_end_date,changed&fields[taxonomy_term--alert_severity]=name';
+  // $response = $client->get($url, ['verify' => false]);
+  $request = $client->get($url2, ['http_errors' => false], [
+    'auth' => ['barista', '3401vumc']
+  ]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  $array = json_decode($request->getBody()->getContents(), true);
+  // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array, TRUE) . '</code></pre>');
+  return $array;
+}
+
+function getFooterUrl($column_array, $links_column) {
+  $s = 0;
+  foreach ($column_array as $key => $value) {
+    if (isset($value["attributes"]["field_link"])) {
+      foreach ($value["attributes"]["field_link"] as $key => $attribute) {
+        if ($attribute != "") {
+          if ($attribute == "#" || strpos($attribute, "http") !== false || strpos($attribute, "/") !== false) {
+            $links_column[$s] += array("url" => $attribute);
+            $s++;
+          } 
+        }       
+      }
+    }
+  }
+  return $links_column;
+}
+
+
+// function getFooterSocialLinks() {
+
+//   // Pull JSON, ideally from footer
+//   $client = \Drupal::httpClient();
+//   $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+//   // $response = $client->get($url, ['verify' => false]);
+//   $request = $client->get($url, ['verify' => false]);
+//   // $request->setHeader('Accept', 'application/json');
+//   // $response = $client->send($request);
+//   $array = json_decode($request->getBody()->getContents(), true);
+//   // var_dump($array);
+//   // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['links'], TRUE) . '</code></pre>');
+//   return $array['footer']['social_links'];
+
+
+// }
+
+function getFooterLogo() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+  // $response = $client->get($url, ['verify' => false]);
+  $request = $client->get($url, ['http_errors' => false], ['verify' => false]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  $array = json_decode($request->getBody()->getContents(), true);
+  // var_dump($array);
+  // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['logo'], TRUE) . '</code></pre>');
+  return $array['footer']['logo'];
+
+  // try {
+
+  //     // Pull JSON, ideally from footer
+  //     $client = \Drupal::httpClient();
+  //     $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer2.json';
+  //     $getUri = $client->get($url, ['verify' => false]);
+  //     if ($url == NULL) throw new Exception('Connection failed.');
+
+  //     // $response = $client->get($url, ['verify' => false]);
+  //     $request = $client->get($url, ['verify' => false]);
+  //     // $request->setHeader('Accept', 'application/json');
+  //     // $response = $client->send($request);
+  //     // $array = json_decode($request->getBody()->getContents(), true);
+
+  // } catch (\GuzzleHttp\Exception\ClientException $e) {
+  //   $client = \Drupal::httpClient();
+  //   $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+  //   $request = $client->get($url, ['verify' => false]);
+
+  //   watchdog_exception('type', $e);
+
+  // }
+  // $array = json_decode($request->getBody()->getContents(), true);
+
+  // return $array['footer']['logo'];
+
+}
+
+function getFooterTextSection1() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+  // $response = $client->get($url, ['verify' => false]);
+  $request = $client->get($url, ['http_errors' => false], ['verify' => false]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  $array = json_decode($request->getBody()->getContents(), true);
+  // var_dump($array);
+  // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['links'], TRUE) . '</code></pre>');
+  return $array['footer']['textsection1'];
+
+
+}
+
+function getFooterTextSection2() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/footer.json';
+  // $response = $client->get($url, ['verify' => false]);
+  $request = $client->get($url, ['http_errors' => false], ['verify' => false]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  $array = json_decode($request->getBody()->getContents(), true);
+  // var_dump($array);
+  // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['links'], TRUE) . '</code></pre>');
+  return $array['footer']['textsection2'];
+
+
+}
+
+function getHeaderLinks() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'https://raw.githubusercontent.com/abutler3/json_list/master/header.json';
+  // $response = $client->get($url, ['verify' => false]);
+  $request = $client->get($url, ['http_errors' => false], ['verify' => false]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  $array = json_decode($request->getBody()->getContents(), true);
+  // var_dump($array);
+  // \Drupal::logger('Barista JSON 2')->warning('<pre><code>' . print_r($array['footer']['links'], TRUE) . '</code></pre>');
+  return $array['header']['links'];
+
+
+}
+
+function getCraneFooterSocial() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url = 'http://live-vumc-crane.pantheonsite.io/jsonapi/taxonomy_term/barista_auxiliary_menu?include=field_menu_item.field_image.field_media_image&fields[taxonomy_term--barista_auxiliary_menu]=name,field_expand_children,field_hide_name,parent,field_menu_item,weight&fields[paragraph--menu_link]=name,field_link,field_link_target,field_link_type,field_mobile_sticky_bottom&fields[paragraph--menu_text]=field_text&fields[paragraph--menu_image]=url,alt,field_link,field_link_target,field_image&fields[media--menu_image]=name,field_media_image&fields[file--file]=filename';
+  $url3 = 'http://live-vumc-crane.pantheonsite.io/jsonapi/taxonomy_term/barista_auxiliary_menu?include=field_menu_item.field_image.field_media_image&fields%5Btaxonomy_term--barista_auxiliary_menu%5D=name%2Cfield_expand_children%2Cfield_hide_name%2Cparent%2Cfield_menu_item%2Cweight&fields%5Bparagraph--menu_link%5D=field_link%2Cfield_link_target%2Cfield_link_type%2Cfield_mobile_sticky_bottom&fields%5Bparagraph--menu_text%5D=field_text&fields%5Bparagraph--menu_image%5D=field_link%2Cfield_link_target%2Cfield_image&fields%5Bmedia--menu_image%5D=name%2Cfield_media_image&fields%5Bfile--file%5D=filename&page%5Boffset%5D=31&page%5Blimit%5D=50';
+
+  // $response = $client->get($url, ['verify' => false]);
+  // $request = $client->get($url, ['verify' => false]);
+  // // $request->setHeader('Accept', 'application/json');
+  // // $response = $client->send($request);
+  // $array = json_decode($request->getBody()->getContents(), true);
+  $request = $client->get($url, ['http_errors' => false], [
+    'auth' => ['barista', '3401vumc']
+  ]);
+  $request2 = $client->get($url3, ['http_errors' => false], [
+    'auth' => ['barista', '3401vumc']
+  ]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  // $array = json_decode($request->getBody()->getContents(), true);
+  // $array2 = json_decode($request2->getBody()->getContents(), true);
+  // $array_merge = array_merge(array($array, $array2));
+  // // var_dump($array_merge);
+  // return $array_merge;
+
+  try {
+      $array = json_decode($request->getBody()->getContents(), true);
+      $array2 = json_decode($request2->getBody()->getContents(), true);
+      $array_merge = array_merge(array($array, $array2));
+      // var_dump($array_merge);
+      return $array_merge;
+  // } catch (\GuzzleHttp\Exception\ClientException $e) {
+  //   \Drupal::logger('Guzzle Error')->warning('Caught response: ' . $e->getResponse()->getStatusCode());
+  // } catch (\GuzzleHttp\Exception\RequestException $e) {
+  //   \Drupal::logger('Guzzle Error')->warning('Caught response: ' . $e->getResponse()->getStatusCode());
+  // }
+  } catch (ClientException $e) {
+      return '';
+  } catch (RequestException $e) {
+      return '';
+  }
+
+
+}
+
+function getCraneFooterLink() {
+
+  // Pull JSON, ideally from footer
+  $client = \Drupal::httpClient();
+  $url3 = 'http://live-vumc-crane.pantheonsite.io/jsonapi/taxonomy_term/barista_auxiliary_menu?include=field_menu_item.field_image.field_media_image&fields%5Btaxonomy_term--barista_auxiliary_menu%5D=name%2Cfield_expand_children%2Cfield_hide_name%2Cparent%2Cfield_menu_item%2Cweight&fields%5Bparagraph--menu_link%5D=field_link%2Cfield_link_target%2Cfield_link_type%2Cfield_mobile_sticky_bottom&fields%5Bparagraph--menu_text%5D=field_text&fields%5Bparagraph--menu_image%5D=field_link%2Cfield_link_target%2Cfield_image&fields%5Bmedia--menu_image%5D=name%2Cfield_media_image&fields%5Bfile--file%5D=filename';
+
+  // $response = $client->get($url, ['verify' => false]);
+  // $request = $client->get($url, ['verify' => false]);
+  // // $request->setHeader('Accept', 'application/json');
+  // // $response = $client->send($request);
+  // $array = json_decode($request->getBody()->getContents(), true);
+  // $request = $client->get($url, [
+  //   'auth' => ['barista', '3401vumc']
+  // ]);
+  $request2 = $client->get($url3, ['http_errors' => false], [
+    'auth' => ['barista', '3401vumc'],
+  ]);
+  // $request->setHeader('Accept', 'application/json');
+  // $response = $client->send($request);
+  // $array = json_decode($request->getBody()->getContents(), true);
+  try {
+     $array2 = json_decode($request2->getBody()->getContents(), true);
+    // $array_merge = array_merge(array($array, $array2));
+    // var_dump($array_merge);
+    return $array2;
+    
+  // } catch (\GuzzleHttp\Exception\ClientException $e) {
+  //   \Drupal::logger('Guzzle Error')->warning('Caught response: ' . $e->getResponse()->getStatusCode());
+  // } catch (\GuzzleHttp\Exception\RequestException $e) {
+  //   \Drupal::logger('Guzzle Error')->warning('Caught response: ' . $e->getResponse()->getStatusCode());
+  // }
+  } catch (ClientException $e) {
+      return '';
+  } catch (RequestException $e) {
+      return '';
+  }
+
+
+}
+
+function getColumnLinks($linkArray, $id_list, $name) {
+  $x = 0;
+  $column_id = null;
+  $save_space_1 = 'false';
+
+
+  foreach ($linkArray as $key_a => $val_a) {
+    // \Drupal::logger('Column vals')->warning('<pre><code>' . print_r($val_a, TRUE) . '</code></pre>');
+
+    // Get ID for Column 0
+    if ($val_a['attributes']['name'] == $name) {
+      $column_id = $val_a['id'];
+      // \Drupal::logger('Column ID')->warning('<pre><code>' . print_r($val_a['id'], TRUE) . '</code></pre>');
+    }
+    foreach ($val_a['relationships'] as $key => $value) {
+      // \Drupal::logger('Column ID')->warning('<pre><code>' . print_r($value, TRUE) . '</code></pre>');
+      foreach ($value as $subkey => $subvalue) {
+        if (isset($subvalue[0]['id'])) {
+          if ($column_id == $subvalue[0]['id']) {
+          // \Drupal::logger('Column ID')->warning('<pre><code>' . print_r($subvalue[0]['id'], TRUE) . '</code></pre>');
+            $save_space_1 = 'true';
+            foreach ($val_a['relationships']["field_menu_item"] as $field_key => $field_value) {
+              if (isset($field_value["id"])) {
+                array_push($id_list, $field_value["id"]);
+              }
+              
+            }
+          }
+        // \Drupal::logger('Column ID 1 id list')->warning('<pre><code>' . print_r($id_list, TRUE) . '</code></pre>');
+        }
+
+      }  
+    }
+    // \Drupal::logger('All Column ID')->warning('<pre><code>' . print_r($val_a['id'], TRUE) . '</code></pre>');
+  }
+
+  return $id_list;
+
+}
+
+function addUrlToLinks($link_included_Array, $id_list, $links_column) {
+  $y = 0;
+  foreach ($link_included_Array as $key => $value) {
+    if (in_array($value["id"], $id_list)) {
+      $links_column[$y] += array("url" => $value["attributes"]["field_link"]["url"]);
+      $y++;
+      // \Drupal::logger('Included array')->warning('<pre><code>' . print_r($value["id"], TRUE) . '</code></pre>');
+      // \Drupal::logger('Included url')->warning('<pre><code>' . print_r($value["attributes"]["field_link"]["url"], TRUE) . '</code></pre>');
+    }
+  }
+
+  usort($links_column, function ($item1, $item2) {
+      return $item1['weight'] > $item2['weight'];
+  });
+
+  return $links_column;
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function vanderbilt_d8_page_attachments_alter(array &$page) {
+  // Tell IE to use latest rendering engine (not to use compatibility mode).
+  /*$ie_edge = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+    'http-equiv' => 'X-UA-Compatible',
+    'content' => 'IE=edge',
+    ],
+  ];
+  $page['#attached']['html_head'][] = [$ie_edge, 'ie_edge'];*/
+  $variables['theme_path'] = base_path() . !isset($variables['directory']);
+  $variables['search_base_path'] = substr(base_path(), 0, -1);
+  $variables['base_path'] = base_path();
+  $variables['swifttype_base_path'] = str_replace('/','',$variables['search_base_path']);
+  $swifttype_base_path = str_replace('/','',$variables['search_base_path']);
+
+  $xuacompatible = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'class' => 'swiftype',
+      'name' => 'site_url',
+      'data-type' => 'string',
+      'content' => $swifttype_base_path,
+    ],
+  ];
+
+
+  $page['#attached']['html_head'][] = [$xuacompatible, 'x-ua-compatible'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function vanderbilt_d8_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $entity */
+  $entity = $variables['paragraph'];
+  $new_data_structure = [];
+  // $variables['#cache']['max-age'] = 0;
+  if ($entity->getType() == 'directorygroup') {
+    $node_view = \Drupal::entityManager()->getViewBuilder('node');
+    $directory = $entity->getParentEntity();
+    if ($directory->field_use_alphabetical_order->value) {
+      $use_alphabetical_order = $directory->field_use_alphabetical_order->value;
+    }
+    $persons = $entity->get('field_directorygroup_person_nids')->getValue();
+    $person_sort = [];
+    $alphabetical_sort = [];
+    $sorted_keys = [];
+
+    if ($use_alphabetical_order) {
+      foreach ($persons as $value) {
+        $nid = $value['target_id'];
+        $node = \Drupal\node\Entity\Node::load($nid);
+        $person = $node->get('field_last_name')->value;
+        $person_sort[$nid] = $person;
+        $alphabetical_sort[] = $person_sort;
+        // $person_sort["last_name"] = $node->get('field_last_name')->value;
+
+        // \Drupal::logger('Barista Persons node 2')->warning('<pre><code>' . print_r($node_last_name, TRUE) . '</code></pre>');
+        // Steps
+          // 1. Sort by last name get nid in alphabetical order
+          // 2. Save alphatized list by nid
+          // 3. Save nid into array and save as persons variable
+          // 4. Find control for if auto alpha check run this foreach. If not, run like normal
+      }
+      if ($alphabetical_sort) {
+        \Drupal::logger('Barista Persons node 4')->warning('<pre><code>' . print_r($alphabetical_sort, TRUE) . '</code></pre>');
+        $last_index = end($alphabetical_sort);
+        \Drupal::logger('Barista Persons node 5')->warning('<pre><code>' . print_r($last_index, TRUE) . '</code></pre>');
+        asort($last_index);
+        foreach(array_keys($last_index) as $paramName) {
+          $sorted_keys[] = $paramName;
+        }
+        \Drupal::logger('Barista Persons node 5')->warning('<pre><code>' . print_r($sorted_keys, TRUE) . '</code></pre>');
+
+        }
+    }
+
+
+    $variables['persons'] = [];
+    if (!empty($persons)) {
+      if (!empty($sorted_keys)) {
+        $persons = NULL;
+        $persons = $sorted_keys;
+      } else {
+
+      }
+      \Drupal::logger('Barista Persons node 3')->warning('<pre><code>' . print_r($persons, TRUE) . '</code></pre>');
+      foreach ($persons as $value) {
+        if ($use_alphabetical_order) {
+          $nid = $value;
+        } else {
+          $nid = $value['target_id'];
+        }
+        $node = \Drupal\node\Entity\Node::load($nid);
+
+        $node_fields = [];
+        $i = 0;
+        foreach ($variables['fields_to_show'] as $field_to_show) {
+          $field = NULL;
+          // Photo.
+          if ($field_to_show === 'photo') {
+            if ($node) {
+              if (!$node->get('field_barista_person_photo')->isEmpty()) {
+                $field = $node_view->viewField($node->get('field_barista_person_photo'), 'teaser');
+                $new_data_structure[$i]["photo"] = $node_view->viewField($node->get('field_barista_person_photo'), 'teaser');
+              }
+            }
+          }
+          // Full Name.
+          elseif ($field_to_show === 'name') {
+            if ($node) {
+              if ($node->get('field_first_name')->value || $node->get('field_middle_name')->value || $node->get('field_last_name')->value) {
+                    $field = $node->get('field_first_name')->value . ' ' .
+                  $node->get('field_middle_name')->value . ' ' .
+                  $node->get('field_last_name')->value;
+                  $new_data_structure[$i]["name"] = $node->get('field_first_name')->value . ' ' .
+                  $node->get('field_middle_name')->value . ' ' .
+                  $node->get('field_last_name')->value;
+
+              }
+            }
+          }
+          // Last Name.
+          elseif ($field_to_show === 'last_name') {
+            if ($node) {
+              if ($node->get('field_last_name')->value) {
+                  $field = $node->get('field_last_name')->value;
+                  $new_data_structure[$i]["last_name"] = $node->get('field_last_name')->value;
+              }
+            }
+          }
+          // Suffix / Credentials.
+          elseif ($field_to_show === 'suffix') {
+            if ($node) {
+              $field = $node_view->viewField($node->get('field_suffix'), 'teaser');
+            }
+          }
+          // Link to Full Person Profile.
+          elseif ($field_to_show === 'link') {
+            if ($node) {
+              $field = $node->toUrl();
+              $new_data_structure[$i]["link"] = $node->toUrl();
+            }
+          }
+          // Title(s).
+          elseif ($field_to_show === 'title') {
+            if ($node) {
+              if ($node->get('field_title')) {
+                $field = $node_view->viewField($node->get('field_title'), 'teaser');
+                $new_data_structure[$i]["title"] = $node_view->viewField($node->get('field_title'), 'teaser');
+              }
+            }
+          }
+          // Brief Description.
+          elseif ($field_to_show === 'brief_description') {
+            if ($node) {
+              if ($node->get('field_brief_description')) {
+                $field = $node_view->viewField($node->get('field_brief_description'), 'teaser');
+              }
+            }
+          }
+          // Address(es).
+          elseif ($field_to_show === 'address') {
+            $field = $node_view->viewField($node->get('field_address'), 'teaser');
+          }
+          // Phone(s).
+          elseif ($field_to_show === 'phone') {
+            $field = $node_view->viewField($node->get('field_phone_numbers'), 'teaser');
+          }
+          // E-mail Address.
+          elseif ($field_to_show === 'email') {
+            if ($node) {
+              if (!$node->get('field_email')->isEmpty()) {
+                $field = $node->get('field_email')->value;
+                $new_data_structure[$i]["email"] = $node->get('field_email')->value;
+              }
+            }
+          }
+          // Full Bio.
+          elseif ($field_to_show === 'bio') {
+            $field = $node_view->viewField($node->get('body'), 'teaser');
+          }
+          // Link to CV.
+          elseif ($field_to_show === 'cv_link') {
+            $field = $node_view->viewField($node->get('field_cv'), 'teaser');
+          }
+          // Clinical Interests.
+          elseif ($field_to_show === 'clinical') {
+            $field = $node_view->viewField($node->get('field_clinical_interest'), 'teaser');
+          }
+          // Research Description.
+          elseif ($field_to_show === 'research') {
+            $field = $node_view->viewField($node->get('field_research_description'), 'teaser');
+          }
+          // Postdoctoral Positions Available.
+          elseif ($field_to_show === 'postdoc_positions') {
+            $field = $node_view->viewField($node->get('field_postdoctoral_positions'), 'teaser');
+          }
+          // Link to patient website.
+          elseif ($field_to_show === 'patient_link') {
+            $field = $node_view->viewField($node->get('field_website_for_patients'), 'teaser');
+          }
+          // Link to lab website.
+          elseif ($field_to_show === 'lab_link') {
+            $field = $node_view->viewField($node->get('field_lab_website'), 'teaser');
+          }
+          // Link to external bio.
+          elseif ($field_to_show === 'external_link') {
+            if ($node) {
+              if ($node->get('field_more_information_link')) {
+                $field = $node_view->viewField($node->get('field_more_information_link'), 'teaser');
+              }
+            } 
+          }
+
+          if (!empty($field)) {
+            $node_fields[$field_to_show] = $field;
+          }
+        }
+
+        $variables['persons'][] = $node_fields;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html() for html.html.twig.
+ */
+function vanderbilt_d8_preprocess_html(array &$variables) {
+
+  // Override default favicon
+  $icon = [
+        '#tag' => 'link',
+        '#attributes' => [
+            'href' => 'https://www.vumc.org/includes/images/favicon.ico',
+            'rel' => 'shortcut icon'
+        ],
+    ];
+  $variables['#attached']['html_head'][] = [
+      $icon,
+  ];
+
+  $is_front_page = \Drupal::service('path.matcher')->isFrontPage();
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['search_base_path'] = substr(base_path(), 0, -1);
+  $variables['base_path'] = base_path();
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['swifttype_base_path'] = str_replace('/','',$variables['search_base_path']);
+  $swifttype_base_path = str_replace('/','',$variables['search_base_path']);
+  // Override head title on front page to be site name.
+  if ($is_front_page) {
+    $config = \Drupal::config('system.site');
+    $variables['head_title'] = [
+      'name' => $config->get('name'),
+    ];
+  }
+
+  // if ($node = \Drupal::request()->attributes->get('node')) {
+  //    $variables['nid'] = $node->id();
+  // }
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $variables['nid'] = $node->id();
+  }
+  // $xuacompatible = [
+  //   '#tag' => 'meta',
+  //   '#attributes' => [
+  //     'class' => 'swiftype',
+  //     'name' => 'site_url',
+  //     'data-type' => 'string',
+  //     'content' => $swifttype_base_path,
+  //   ],
+  // ];
+
+
+  // $variables['page']['#attached']['html_head'][] = [$xuacompatible, 'x-ua-compatible'];
+
+}
+
+/**
+ * Implements hook_preprocess_page_title() for page-title.html.twig.
+ */
+function vanderbilt_d8_preprocess_page_title(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+    if ($node->hasField('field_exclude_title_from_display') && !empty($node->get('field_exclude_title_from_display')->value)) {
+      $variables['title_attributes']['class'][] = 'hidden-title';
+  }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page() for page.html.twig.
+ */
+function vanderbilt_d8_preprocess_page(array &$variables) {
+
+  // Process variables for Content Header component in the page template.
+  // Page title can exist as text or a link when displayed via the
+  // Content Header. Including the 'url' key will trigger the link to render
+  // in the Page title; send `null`, or exclude array key, to remove link.
+  $footer_tags = ['footer_headers:1', 'links_column_0:1', 'links_column_1:1', 'links_column_2:1', 'mission_statement:1', 'legal:1'];
+  Cache::invalidateTags($footer_tags);
+  // $variables['#cache']['max-age'] = 0;
+  $variables['search_base_path'] = substr(base_path(), 0, -1);
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['base_path'] = base_path();
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['swifttype_base_path'] = str_replace('/','',$variables['search_base_path']);
+
+  $config = \Drupal::config('system.site');
+  $variables['page_title'] = [
+    'text' => $config->get('name'),
+    'url' => base_path(),
+    'font_size_adjustment' => theme_get_setting('header_scale_factor')
+  ];
+
+  // Code to add Crane footer
+  $crane_footer_array = getCraneFooterSocial();
+  $crane_footer_links = getCraneFooterLink();
+  // \Drupal::logger('Barista JSON 6')->warning('<pre><code>' . print_r($crane_footer_array, TRUE) . '</code></pre>');
+  // \Drupal::logger('Barista JSON 6b')->warning('<pre><code>' . print_r($crane_footer_links, TRUE) . '</code></pre>');
+
+  if (is_array($crane_footer_array) && is_array($crane_footer_links)) {
+    // Get Array starting and ending points for Social Icons, Header, Dropdowns, etc
+    // \Drupal::logger('Crane footer waring')->warning('Crane footer displayed');
+    $crane_array_start = getStartEnd($crane_footer_array[0]['data'], "Social");
+    $crane_main_header_start = getStartEnd($crane_footer_array[0]['data'], "Main");
+    $crane_main_header_end = getStartEnd($crane_footer_array[0]['data'], "Mission Statement");
+    $crane_pv_dropdown = getStartEnd($crane_footer_array[0]['data'], "Patients and Visitors");
+    $crane_pv_dropdown_end = getStartEnd($crane_footer_array[0]['data'], "Services We Offer");
+    $crane_array_end = getStartEnd($crane_footer_array[0]['data'], "Links");
+    // $crane_array_banner_start = getStartEnd($crane_footer_array[0]['data'], "Accolades");
+    // $crane_array_banner_end = getStartEnd($crane_footer_array[0]['data'], "Links");
+    $crane_secondary_start = getStartEnd($crane_footer_array[0]['data'], "Secondary");
+    $crane_secondary_end = getStartEnd($crane_footer_array[0]['data'], "Quick Links");
+    $crane_quick_links = getStartEnd($crane_footer_array[0]['data'], "Quick Links");
+    $crane_quick_links_end = getStartEnd($crane_footer_array[0]['data'], "Footer");
+    $crane_address_start = getStartEnd($crane_footer_array[0]['data'], "Address");
+    $crane_address_end = getStartEnd($crane_footer_array[0]['data'], "Header");
+    // \Drupal::logger('Barista JSON 7a')->warning('<pre><code>' . print_r($crane_array_function, TRUE) . '</code></pre>');
+
+    // \Drupal::logger('Barista JSON 7b')->warning('<pre><code>' . print_r($crane_secondary_start, TRUE) . '</code></pre>');
+    // \Drupal::logger('Barista JSON 7b')->warning('<pre><code>' . print_r($crane_secondary_end, TRUE) . '</code></pre>');
+    $newArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_array_start, ($crane_array_end - $crane_array_start) + 1);
+    // $newBannerArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_array_banner_start, ($crane_array_banner_end - $crane_array_banner_start) + 1);
+    $newMainHeaderArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_main_header_start, ($crane_main_header_end - $crane_main_header_start) + 1);
+    $newSecondaryHeaderArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_secondary_start, ($crane_secondary_end - $crane_secondary_start) + 1);
+    $newQuickLinksArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_quick_links, ($crane_quick_links_end - $crane_quick_links) + 1);
+    $newQuickLinksArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_quick_links, ($crane_quick_links_end - $crane_quick_links) + 1);
+     // \Drupal::logger('Barista JSON 14')->warning('<pre><code>' . print_r($newArray, TRUE) . '</code></pre>');
+    $newAddressArray = array_slice(array_values($crane_footer_array[0]['data']), $crane_address_start, 1);
+    // \Drupal::logger('Barista JSON 14')->warning('<pre><code>' . print_r($newAddressArray, TRUE) . '</code></pre>');
+
+    // Remove headers from both ends of array
+    array_pop($newArray);
+    // array_pop($newBannerArray);
+    // array_shift($newBannerArray);
+    array_pop($newMainHeaderArray);
+    array_shift($newMainHeaderArray);
+    array_pop($newSecondaryHeaderArray);
+    array_shift($newSecondaryHeaderArray);
+    array_pop($newQuickLinksArray);
+    array_shift($newQuickLinksArray);
+    // Get Link IDs from includes array
+    $id_list_data = search_data_id($newArray);
+    // $id_list_banner_data = search_data_id($newBannerArray);
+    $id_list_main_header_data = search_data_id($newMainHeaderArray);
+    $id_list_secondary_header_data = search_data_id($newSecondaryHeaderArray);
+    $id_list_quick_links_data = search_data_id($newQuickLinksArray);
+    $id_list_new_address_data = search_data_id($newAddressArray);
+    // \Drupal::logger('Barista JSON 14b')->warning('<pre><code>' . print_r($id_list_new_address_data, TRUE) . '</code></pre>');
+    // Loop to match ids in both parts of the json and save result in new array
+    $crane_social_links_array = [];
+    $crane_banner_links_array = [];
+    $crane_banner_images_array = [];
+    $crane_banner_images_detail_array = [];
+    $crane_banner_images_filename_array = [];
+    $crane_banner_filename = [];
+    $crane_main_header_links = [];
+    $crane_secondary_header_links = [];
+    $crane_address_array = [];
+    // \Drupal::logger('Barista JSON 14b')->warning('<pre><code>' . print_r($newBannerArray, TRUE) . '</code></pre>');
+    // $crane_banner_images_array[] = $newBannerArray[0]['relationships']['field_menu_item']['data']['id'];
+    $crane_quick_links_array = [];
+
+    foreach ($crane_footer_array[0]['included'] as $key_a => $val_a) {
+      foreach ($id_list_main_header_data as $val_include) {
+        if ($val_include == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute_value) {
+            if (is_array($attribute_value)) {
+              foreach ($attribute_value as $subvalue) {
+                if ($subvalue) {
+                  $crane_main_header_links[] = $subvalue;
+                  unset($subvalue);
+                }
+              }
+            }
+          }
+        }
+      }
+      foreach ($id_list_secondary_header_data as $val_include) {
+        if ($val_include == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute_value) {
+            if (is_array($attribute_value)) {
+              foreach ($attribute_value as $subvalue) {
+                if ($subvalue) {
+                  $crane_secondary_header_links[] = $subvalue;
+                  unset($subvalue);
+                }
+              }
+            }
+          }
+        }
+      }
+      foreach ($id_list_quick_links_data as $quick_include) {
+        if ($quick_include == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute_value) {
+            if (is_array($attribute_value)) {
+              $crane_quick_links_array[] = $attribute_value['url'];
+              unset($attribute_value['url']);
+            }
+          }
+        }
+      }
+      foreach ($id_list_data as $val_b) {
+        if ($val_b == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute) {
+            if (is_array($attribute)) {
+              foreach ($attribute as $value) {
+                if ($value != '') {
+                  $crane_social_links_array[] = $value;
+                }
+              }
+            }
+          }
+        }
+      }
+      foreach ($id_list_new_address_data as $val_b) {
+        if ($val_b == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute) {
+            if (is_array($attribute)) {
+              foreach ($attribute as $value) {
+                if ($value != '') {
+                  $crane_address_array[] = $value;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    array_shift($newArray);
+    // array_shift($newBannerArray);
+    $vumc_menu_array = [];
+    foreach ($newArray as $key => &$tmp) {
+        $tmp["url"] = $crane_social_links_array[$key];
+    }
+    // foreach ($newBannerArray as $key2 => &$tmp2) {
+    //     $tmp2["url"] = $crane_banner_links_array[$key2];
+    //     $tmp2["filename"] = $crane_banner_filename[$key2];
+    // }
+    foreach ($newMainHeaderArray as $key3 => &$tmp3) {
+        $tmp3["name"] = $tmp3["attributes"]["name"];
+        $format = str_replace(' ', '-', strtolower($tmp3["attributes"]["name"]));
+        $tmp3["class"] = $format . '-link';
+        $tmp3["url"] = $crane_main_header_links[$key3];
+    }
+
+    $variables['crane_main_header'] = $newMainHeaderArray;
+    // \Drupal::logger('Barista JSON 17miheader')->warning('<pre><code>' . print_r($variables['crane_main_header'], TRUE) . '</code></pre>');
+    // $variables['crane_pv_header'] = $pv_dropdownArray;
+    // $variables['crane_hp_header'] = $hp_dropdownArray;
+    // $variables['crane_secondary'] = $newSecondaryHeaderArray;
+    // $variables['crane_banner_menu'] = $newBannerArray;
+    $variables['crane_social'] = $newArray;
+    $variables['crane_social_links'] = $crane_social_links_array;
+    // $variables['crane_banner'] = array_shift($newBannerArray);
+    // $variables['crane_banner_filename'] = $crane_banner_filename;
+    $variables['crane_address'] = $crane_address_array[0];
+
+
+    // Get Links
+    $m = 0;
+    $length = count($crane_footer_links['data']);
+    $included_length = count($crane_footer_links['included']);
+    $crane_array_links_start = 0;
+    $crane_footer_links_array = [];
+    // $crane_array_banner_start = 0;
+    // $crane_array_banner_end = 0;
+    for ($m = 0;$m < $length;$m++)
+    {
+      // Get Social
+      if ($crane_footer_links['data'][$m]['attributes']['name'] == "Links") {
+        if ($crane_array_links_start == '') {
+          $crane_array_links_start = $m;
+        } else {
+          continue;
+        }
+      }
+      if ($crane_footer_links['data'][$m]['attributes']['name'] == "Mission Statement") {
+        $crane_array_info_start = $m;
+      }
+
+      
+    }
+
+    $linkArray = array_slice(array_values($crane_footer_links['data']), $crane_array_links_start);
+    $infoArray = array_slice(array_values($crane_footer_links['data']), $crane_array_info_start);
+
+    $column_0a_id_list = [];
+    $column_1a_id_list = [];
+    $column_2a_id_list = [];
+    $column0_ids = getColumnLinks($linkArray, $column_0a_id_list, 'Column 1');
+    $column1_ids = getColumnLinks($linkArray, $column_1a_id_list, 'Column 2');
+    $column2_ids = getColumnLinks($linkArray, $column_2a_id_list, 'Popular Links');
+
+    $link_included_Array = array_slice(array_values($crane_footer_links['included']), 4);
+    $info_modified_included = $link_included_Array;
+    // $info_included_Array = array_slice(array_values($crane_footer_links['included']), -6, 6, true);
+    array_shift($linkArray);
+    // array_shift($infoArray);
+    $footerLinkHeader = array_slice(array_values($linkArray), 0, 3);
+    $footerLinks = array_slice(array_values($linkArray), 3);
+    $header_array_ids = [];
+    $header_array_name = [];
+    $id_info_data = search_data_id($infoArray);
+    $id_info_data_slice = array_slice($id_info_data, 0, 2);
+    // \Drupal::logger('Barista JSON 28')->warning('<pre><code>' . print_r($linkArray, TRUE) . '</code></pre>');
+    // \Drupal::logger('Barista JSON 29')->warning('<pre><code>' . print_r($footerLinkHeader, TRUE) . '</code></pre>');
+    // \Drupal::logger('Barista JSON 30')->warning('<pre><code>' . print_r($footerLinks, TRUE) . '</code></pre>');
+    // \Drupal::logger('Barista JSON 25')->warning('<pre><code>' . print_r($link_included_Array, TRUE) . '</code></pre>');
+    // \Drupal::logger('Barista JSON 26')->warning('<pre><code>' . print_r($info_modified_included, TRUE) . '</code></pre>');
+
+    // $crane_footer_links_array[0] = "#";
+
+
+    $textsection_mission = [];
+    $textsection_legal = [];
+    $textsection_info = [];
+
+    foreach ($info_modified_included as $key_a => $val_a) {
+      foreach ($id_info_data_slice as $val_b) {
+        if ($val_b == $val_a['id']) {
+          foreach ($val_a['attributes'] as $attribute) {
+            if (is_array($attribute)) {
+              if (isset($attribute['value'])) {
+                $textsection_info[] = $attribute['value'];
+              }
+            }
+          }
+        }
+      }
+    }
+    $textsection_break_first = substr($textsection_info[0], 0, strpos($textsection_info[0], "Vanderbilt University Medical Center"));
+     // \Drupal::logger('Barista JSON 27')->warning('<pre><code>' . print_r($textsection_break_first, TRUE) . '</code></pre>');
+    $textsection_mission = $textsection_info[0];
+    // $textsection_legal = $textsection_info[1];
+    // Get Footer Header Names
+    foreach ($footerLinkHeader as $base_k => $base_v) {
+      $header_array_ids[] = $base_v['id'];
+      if ($base_v['attributes']['field_hide_name'] == "1") {
+          $header_array_name[] = "";
+      } else {
+        $header_array_name[] = $base_v['attributes']['name'];
+      }
+    }
+
+    $links_column_0 = [];
+    $links_column_1 = [];
+    $links_column_2 = [];
+
+    
+    foreach ($footerLinks as $base_key => $base_value) {
+      foreach ($base_value['relationships']['parent']['data'] as $key => $value) {
+        if ($header_array_ids[0] == $value['id']) {
+          // \Drupal::logger('Barista JSON 29')->warning('<pre><code>' . print_r($value, TRUE) . '</code></pre>');
+              $links_column_0[] = array("weight" => $base_value["attributes"]["weight"], "name" => $base_value["attributes"]["name"]);
+              // $links_column_0a[] = array("id" => $value['id'], "name" => $base_value["attributes"]["name"]);
+        } elseif ($header_array_ids[1] == $value['id']) {
+            $links_column_1[] = array("weight" => $base_value["attributes"]["weight"], "name" => $base_value["attributes"]["name"]);
+        } elseif ($header_array_ids[2] == $value['id']) {
+            $links_column_2[] = array("weight" => $base_value["attributes"]["weight"], "name" => $base_value["attributes"]["name"]);
+          // } elseif ($header_array_ids[3] == $value['id']) {
+          //   $links_column_3[] = array("name" => $base_value["attributes"]["name"]);
+          // }
+        }
+      }
+    }
+    // Loop through included array
+    // Find IDs in array
+    // If ID in array, get url
+    // Add url to final array
+    // Column 0
+    $final_column0 = addUrlToLinks($link_included_Array, $column0_ids, $links_column_0);
+    $final_column1 = addUrlToLinks($link_included_Array, $column1_ids, $links_column_1);
+    $final_column2 = addUrlToLinks($link_included_Array, $column2_ids, $links_column_2);
+    // \Drupal::logger('Column 0 array function')->warning('<pre><code>' . print_r($final_column0, TRUE) . '</code></pre>');
+    // \Drupal::logger('Column 1 array function')->warning('<pre><code>' . print_r($final_column1, TRUE) . '</code></pre>');
+    // \Drupal::logger('Column 2 array function')->warning('<pre><code>' . print_r($final_column2, TRUE) . '</code></pre>');
+
+    $subdirectory = $variables['swifttype_base_path'];
+    $textsection_mission_replace = str_replace("/user/login?saml_login=false", $subdirectory, $textsection_mission);
+    // $get_test_column = getFooterUrl($column0array, $links_column_0);
+    // \Drupal::logger('Test Column')->warning('<pre><code>' . print_r($get_test_column, TRUE) . '</code></pre>');
+    $variables['footer_headers_clear'] = [
+      '#markup' => $header_array_name,
+      '#cache' => [
+          'tags' => ['footer_headers:1'],
+          'max-age' => 0,
+      ],
+    ];
+    $variables['links_column_0_clear'] = [
+      '#markup' => $final_column0,
+      '#cache' => [
+          'tags' => ['links_column_0:1'],
+          'max-age' => 0,
+      ],
+    ];
+    $variables['links_column_1_clear'] = [
+      '#markup' => $final_column1,
+      '#cache' => [
+          'tags' => ['links_column_1:1'],
+          'max-age' => 0,
+      ],
+    ];
+    $variables['links_column_2_clear'] = [
+      '#markup' => $final_column2,
+      '#cache' => [
+          'tags' => ['links_column_2:1'],
+          'max-age' => 0,
+      ],
+    ];
+
+    $variables['mission_statement_clear'] = [
+      '#markup' => $textsection_mission_replace,
+      '#cache' => [
+          'tags' => ['mission_statement:1'],
+          'max-age' => 0,
+      ],
+    ];
+    $variables['legal_clear'] = [
+      '#markup' => $textsection_legal,
+      '#cache' => [
+          'tags' => ['legal:1'],
+          'max-age' => 0,
+      ],
+    ];
+    $variables['footer_headers'] = $variables['footer_headers_clear']['#markup'];
+    $variables['links_column_0'] = $variables['links_column_0_clear']['#markup'];
+    $variables['links_column_1'] = $variables['links_column_1_clear']['#markup'];
+    $variables['links_column_2'] = $variables['links_column_2_clear']['#markup'];
+    $variables['mission_statement'] = $variables['mission_statement_clear']['#markup'];
+    $variables['legal'] = $variables['legal_clear']['#markup'];
+  } else {
+    $variables['header_links'] = getHeaderLinks();
+    $variables['logo'] = getFooterLogo();
+    $variables['textsection1'] = getFooterTextSection1();
+    $variables['textsection2'] = getFooterTextSection2();
+    \Drupal::logger('Crane footer')->warning('Default footer ran in place of Crane Footer. Call to Crane did not return an array.');
+  }
+
+  // The Parent Links is an array of text/url pairs. This array is looped over
+  // in the Content Header component, which produces a list of parent links
+  // under the title, and above the menu. If the page is a top-level menu item,
+  // the page links to `Home`; no parent link should display from
+  // the Content Header on the homepage.
+  $parent_links = [];
+
+  // Check for/assign parent link.
+  if (theme_get_setting('parent_entity_name') && theme_get_setting('parent_entity_link')) {
+    $parent_links[] = [
+      'text' => theme_get_setting('parent_entity_name'),
+      'url' => theme_get_setting('parent_entity_link'),
+    ];
+  }
+
+  // Check for/assign additional parent link.
+  if (theme_get_setting('parent2_entity_name') && theme_get_setting('parent2_entity_link')) {
+    $parent_links[] = [
+      'text' => theme_get_setting('parent2_entity_name'),
+      'url' => theme_get_setting('parent2_entity_link'),
+    ];
+  }
+
+  // Send parent links array to template.
+  $variables['parent_links'] = $parent_links;
+
+  // Define machine_name of menu to display in Content Header.
+  $variables['content_header_menu'] = 'main';
+
+  // Define VUMC static menu.
+  $variables['vumc_menu']['menu_tree'][] = [
+    'text' => 'Vanderbilt University Medical Center',
+    'submenu' => [
+      [
+        'text' => 'Monroe Carell Jr. Children\'s Hospital at Vanderbilt',
+        'url' => 'https://www.childrenshospitalvanderbilt.org/'
+      ],
+      [
+        'text' => 'Vanderbilt University',
+        'url' => 'http://www.vanderbilt.edu'
+      ],
+      [
+        'text' => 'Research',
+        'url' => 'http://research.vanderbilt.edu'
+      ],
+      [
+        'text' => 'For Patients and Visitors',
+        'url' => 'http://www.vanderbilthealth.com'
+      ],
+      [
+        'text' => 'Resources for Employees and Researchers',
+        'url' => 'https://www.vumc.org/'
+      ],
+    ]
+  ];
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function vanderbilt_d8_preprocess_menu(&$variables, $hook) {
+  if ($hook == 'menu') {
+    $current_path = \Drupal::request()->getRequestUri();
+    $items = $variables['items'];
+     // $variables['items']['#cache']['max-age'] = 0;
+    foreach ($items as $key => $item) {
+      // Set active when path of menu item matches current path.
+      if ($item['in_active_trail']) {
+
+        // Add active-trail class.
+        $item['attributes']->addClass('active-trail');
+
+        if ($item['url']->toString() == $current_path) {
+          // Add active class
+          $variables['items'][$key]['attributes']->addClass('active');
+        }
+        elseif (count($item['below'])) {
+          // Process if sub-menu tree exists.
+          _menu_process_submenu($item['below'], $current_path);
+        }
+        else {
+          // Set active to menu item if path of menu item matches
+          // first part of current path.
+          $url_fragments = explode('/', $current_path);
+          if (count($url_fragments) > 1 AND '/' . $url_fragments[1] == $item['url']->toString()) {
+            $variables['items'][$key]['attributes']->addClass('active');
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Process function for hook_preprocess_menu().
+ *
+ * Set active and active-trail class for sub-menus recursively.
+ */
+function _menu_process_submenu(&$submenu, $current_path) {
+  foreach ($submenu as $item) {
+    if ($item['in_active_trail']) {
+      // Add active-trail class.
+      $item['attributes']->addClass('active-trail');
+      if ($item['url']->toString() == $current_path) {
+        // Add active class.
+        $item['attributes']->addClass('active');
+        // Process if sub-menu tree exists.
+      } elseif (count($item['below'])) {
+        _menu_process_submenu($item['below'], $current_path);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function vanderbilt_d8_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_theme_suggestions_menu_alter().
+ */
+function vanderbilt_d8_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  // Check for block id set in preprocess, and create suggestion if found.
+  if (isset($variables['attributes']['block'])) {
+    // Remove the block and replace dashes with underscores in the block ID to
+    // use for the hook name.
+    $hook = str_replace(array('block-', '-'), array('', '_'), $variables['attributes']['block']);
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $hook;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_node_alter().
+ */
+function vanderbilt_d8_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  /*$node = $variables['elements']['#node'];
+
+  if ($variables['elements']['#view_mode'] == "full") {
+
+  }*/
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function vanderbilt_d8_preprocess_block(&$variables) {
+  // Custom block type helper classes.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $bundle = $variables['elements']['content']['#block_content']->bundle();
+    $bundle_class = str_replace('_', '-', $bundle);
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('block--bundle-' . $bundle_class);
+    $variables['attributes']['data-bundle-class'] = $bundle_class;
+  }
+
+  // Adding id as an avaialbe attribute for theme suggestions.
+  $variables['content']['#attributes']['block'] = $variables['attributes']['id'];
+}
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+function vanderbilt_d8_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  /*$element = $variables['element'];
+  $suggestions[] = 'field__' . $element['#view_mode'];
+  $suggestions[] = 'field__' . $element['#view_mode'] . '__' . $element['#field_name'];*/
+}
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+function vanderbilt_d8_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
+  /*$element = $variables['element'];
+  if (isset($element['#attributes']['class'])
+    && in_array('form-composite', $element['#attributes']['class'])) {
+    $suggestions[] = 'fieldset__form_composite';
+  }*/
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function vanderbilt_d8_preprocess_node(array &$variables) {
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter().
+ */
+function vanderbilt_d8_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function vanderbilt_d8_preprocess_form(array &$variables) {
+  //$variables['attributes']['novalidate'] = 'novalidate';
+}
+
+/**
+ * Implements hook_preprocess_select().
+ */
+function vanderbilt_d8_preprocess_select(array &$variables) {
+  //$variables['attributes']['class'][] = 'select-chosen';
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function vanderbilt_d8_preprocess_field(array &$variables, $hook) {
+  /*switch ($variables['element']['#field_name']) {
+  }*/
+}
+
+/**
+ * Implements hook_preprocess_details().
+ */
+function vanderbilt_d8_preprocess_details(array &$variables) {
+  /*$variables['attributes']['class'][] = 'details';
+  $variables['summary_attributes']['class'] = 'summary';*/
+}
+
+/**
+ * Implements hook_theme_suggestions_details_alter().
+ */
+function vanderbilt_d8_theme_suggestions_details_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ */
+function vanderbilt_d8_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+
+  if(strpos($variables['element']['#form_id'], 'user_login_form') !== FALSE) {
+    $suggestions[] = 'form__user_login_cas';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function vanderbilt_d8_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Add a class to the cas button provided by cas module.
+  $form['cas_login_link']['#attributes']['class'][] = 'btn btn-primary';
+  // Add a container class so we can toggle.
+  $form['cas_login_link']["#prefix"] = '<div class="login-block__vunet-uselogin-block__vunet-use">';
+  // Add html so we can activate the toggle between states.
+  $form['cas_not_cas_link'] = [
+    '#weight' => -1,
+    '#markup' => '<div class="btn btn-no-bg js-login-toggle">'.t('Cancel VUnetID Login').'</div>',
+    '#suffix' => '</div><div class="login-block__vunet-not-use js-login-hidden js-login">',
+  ];
+  // Add html to toggle back to the cas login.
+  // TODO SAML: Comment out when ready for SAML module
+  // $form['cas_not_cas_cancel'] = [
+  //   '#weight' => 150,
+  //   '#markup' => '<div class="btn btn-no-bg js-login-toggle">'.t('Log in using VUNetID').'</div>',
+  // ];
+  // Add a class to the drupal btn.
+  $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary';
+  // Add the container classes.
+  $form["#prefix"] = '
+    <div class="panel panel-default user-login-well login-block">
+    <div class="panel-heading"><h3><i class="fa fa-lock"></i> Log in</h3></div>
+    <div class="panel-body"><p>You will be redirected to the secure VUNetID login page. To log in without a VUNetID, click "Cancel VUNetID login" to proceed.</p>';
+  $form["#suffix"] = '</div></div></div><div class="panel-body-footer">Remember, the sites managed on this platform are not HIPAA-compliant. Do not upload, store, or solicit PHI/PII through this platform\'s sites or forms.</div>';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ * @param array $suggestions
+ * @param array $variables
+ */
+function vanderbilt_d8_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}

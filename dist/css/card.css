@@ -1,0 +1,21 @@
+.card {
+  position: relative;
+  max-width: 990px; }
+
+.card__image img {
+  max-width: 100%; }
+
+.card__title {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  /* padding added by boostrap */
+  left: 15px;
+  right: 15px;
+  padding: 2rem;
+  background: rgba(236, 236, 236, 0.9); }
+  @media (min-width: 64em) {
+    .card__title {
+      /* removes left/right padding */
+      left: 0;
+      right: 0; } }

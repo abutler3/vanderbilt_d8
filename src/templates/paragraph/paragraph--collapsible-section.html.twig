@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * vanderbilt_d8 theme implementation to display a collapsible-section paragraph.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  ]
+%}
+{% if content.field_section_title.0['#context'].value %}
+  {%
+    include '@vanderbilt_d8/accordions/accordions.twig' with {
+      'title': content.field_section_title.0['#context'].value,
+      'body': content.field_section_body,
+    } only
+  %}
+{% endif %}

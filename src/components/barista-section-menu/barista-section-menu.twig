@@ -1,0 +1,11 @@
+{{ attach_library('vanderbilt_d8/barista-section-menu') }}
+<nav role="navigation" class="barista-section-menu">
+  <h2 class="barista-section-menu__title">
+    <a href="#">{{ title }}</a>
+  </h2>
+  {%
+    include "@vanderbilt_d8/menus/menus.twig" with {
+      'menus': menus
+    } only
+  %}
+</nav>

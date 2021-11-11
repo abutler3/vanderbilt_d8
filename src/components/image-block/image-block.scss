@@ -1,0 +1,32 @@
+// Image Block
+//
+// This is the card component.
+//
+// Markup: image-block.twig
+//
+// Style guide: Components.Image block
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.image-block__content {
+  background: $color-dust;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+}
+
+.block-title-wrapper {
+  background: $color-smoke;
+  padding: $padding-md;
+
+  h1 {
+    color: $color-peacock;
+    font-weight: 400;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

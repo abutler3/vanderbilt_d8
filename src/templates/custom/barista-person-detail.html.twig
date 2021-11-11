@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override to display a person detail when the data is remote.
+ *
+ * This closely mimics the node--person--full.html.twig file but does not theme
+ * a real node object.
+ *
+ * @see BaristaPeopleController::buildPersonFromRemoteResult().
+ */
+#}
+
+{%
+set classes = [
+  'faux-node',
+  'node',
+  'node--type-person',
+  'node--published',
+  'node--view-mode-full',
+  'person-page',
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {#
+    See src/templates/node/node--person--full.html.twig
+    for expected variables.
+    TODO:
+    - update photo, email, phone, and address to pass a markup
+      that mostly matches rendered Drupal fields.
+  #}
+  {% include "@vanderbilt_d8/person/person--detail.twig" with {
+    'classes': classes,
+    'label': label,
+    'url': url,
+    'content': content
+  } only %}
+
+</div>
